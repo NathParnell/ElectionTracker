@@ -46,8 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Candidate.cs" />
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Controls\ctrLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrLogin.Designer.cs">
+      <DependentUpon>ctrLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ctrRegister.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrRegister.Designer.cs">
+      <DependentUpon>ctrRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmElectionTracker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +69,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Infrastructure\UserService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <EmbeddedResource Include="Controls\ctrLogin.resx">
+      <DependentUpon>ctrLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ctrRegister.resx">
+      <DependentUpon>ctrRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmElectionTracker.resx">
       <DependentUpon>frmElectionTracker.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,8 +102,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
