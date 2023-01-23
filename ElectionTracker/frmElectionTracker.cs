@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElectionTracker.Services;
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,10 @@ namespace ElectionTracker
 {
     public partial class frmElectionTracker : Form
     {
+
+        protected IUserService UserService { get; set; }
+
+
         public frmElectionTracker()
         {
             InitializeComponent();

@@ -1,4 +1,5 @@
 ﻿using ElectionTracker.Services;
+using ElectionTracker.Services.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,9 @@ namespace ElectionTracker.Controls
 {
     public partial class ctrRegister : UserControl
     {
-        protected IUserService UserService { get; set; }
+        //private readonly IUserService _userService { get; set; }
+
+        IUserService userService = new UserService();
 
 
         public ctrRegister()
@@ -34,7 +37,7 @@ namespace ElectionTracker.Controls
                 return;
             }
 
-            UserService.CreateAccount(txtForename.Text,
+            bool hello = userService.CreateAccount(txtForename.Text,
                 txtSurname.Text,
                 txtEmail.Text,
                 txtUsername.Text,
