@@ -18,15 +18,18 @@ namespace ElectionTracker.Controls
 {
     public partial class ctrRegister : UserControl
     {
-        //private readonly IUserService _userService { get; set; }
 
-        IUserService userService = new UserService();
+        private readonly IUserService _userService;
+
+        public event Action RegistrationSuccess;
 
 
-        public ctrRegister()
+        public ctrRegister(IUserService userService)
         {
+            _userService = userService;
             InitializeComponent();
         }
+
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -37,15 +40,25 @@ namespace ElectionTracker.Controls
                 return;
             }
 
-            bool hello = userService.CreateAccount(txtForename.Text,
+            bool RegistrationComplete = _userService.CreateAccount(txtForename.Text,
                 txtSurname.Text,
                 txtEmail.Text,
-                txtUsername.Text,
                 txtPassword.Text,
-                cmbAccountType.Text);
+                cmbAccountType.Text.ToString());
+
+            if (RegistrationComplete == false)
+                return;
+            
+            if (RegistrationSuccess != null)
+            {
+                RegistrationSuccess();
+            }
             
         }
 
+        /// <summary>
+        /// Resets the registration fieldsso the colors retuen to normal
+        /// </summary>
         private void ResetRegistration()
         {
             foreach (Control c in this.Controls)
@@ -59,34 +72,15 @@ namespace ElectionTracker.Controls
             
         }
 
+
+        /// <summary>
+        /// Goes through all of the registration controls and ensures that certain entries such as passwords follow appropriate standards
+        /// </summary>
+        /// <returns></returns>
         private bool UserAuthenticator()
         {
             var errorMessage = new System.Text.StringBuilder();
             bool Authenticated = true;
-
-            // Username Regex string from - https://codereview.stackexchange.com/questions/55841/optimizing-and-improving-a-username-regex
-            if (ExpressionValidator(txtUsername.Text, "^(?=.{3,32}$)(?!.*[._-]{2})(?!.*[0-9]{5,})[a-z](?:[\\w]*|[a-z\\d\\.]*|[a-z\\d-]*)[a-z0-9]$") == false)
-            {
-                errorMessage.AppendLine("The Username you have entered is invalid!") ;
-                lblUsername.ForeColor = Color.Red;
-                Authenticated = false;
-            }
-
-            //Password Regex String from - https://uibakery.io/regex-library/password-regex-csharp
-            if (ExpressionValidator(txtPassword.Text, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$") == false)
-            {
-                errorMessage.AppendLine("The Password you have entered is invalid!");
-                lblPassword.ForeColor = Color.Red;
-                Authenticated = false;
-            }        
-
-            //Email Regex String from - https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression
-            if (ExpressionValidator(txtEmail.Text, "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") == false)
-            {
-                errorMessage.AppendLine("The Email you have entered is invalid!");
-                lblEmail.ForeColor = Color.Red;
-                Authenticated = false;
-            }
 
             if (String.IsNullOrEmpty(txtForename.Text))
             {
@@ -104,6 +98,24 @@ namespace ElectionTracker.Controls
                 Authenticated = false;
             }
 
+
+            //Email Regex String from - https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression
+            if (ExpressionValidator(txtEmail.Text, "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") == false)
+            {
+                errorMessage.AppendLine("The Email you have entered is invalid!");
+                lblEmail.ForeColor = Color.Red;
+                Authenticated = false;
+            }
+
+            //Password Regex String from - https://uibakery.io/regex-library/password-regex-csharp
+            if ((ExpressionValidator(txtPassword.Text, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$") == false) || txtPassword.Text != txtRePassword.Text)
+            {
+                errorMessage.AppendLine("The Password you have entered is invalid!");
+                lblPassword.ForeColor = Color.Red;
+                Authenticated = false;
+            }        
+
+
             if (String.IsNullOrEmpty(cmbAccountType.Text))
             {
                 errorMessage.AppendLine("Please select an Account Type!");
@@ -116,7 +128,12 @@ namespace ElectionTracker.Controls
             return Authenticated;
         }
 
-
+        /// <summary>
+        /// passes in a user input and a validation string to compare the input against
+        /// </summary>
+        /// <param name="UserInput"></param>
+        /// <param name="ValidationString"></param>
+        /// <returns></returns>
         private bool ExpressionValidator(string UserInput, string ValidationString)
         {
             // I used this regex validator to ensure that user inputs are valid for the system - https://uibakery.io/regex-library/password-regex-csharp

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblForename = new System.Windows.Forms.Label();
             this.txtForename = new System.Windows.Forms.TextBox();
             this.lblSurname = new System.Windows.Forms.Label();
@@ -44,105 +42,100 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.lblRegistrationError = new System.Windows.Forms.Label();
+            this.lblRePassword = new System.Windows.Forms.Label();
+            this.txtRePassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(602, 87);
+            this.lblTitle.Location = new System.Drawing.Point(452, 71);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(260, 69);
+            this.lblTitle.Size = new System.Drawing.Size(211, 55);
             this.lblTitle.TabIndex = 7;
             this.lblTitle.Text = "Register";
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(474, 265);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(73, 16);
-            this.lblUsername.TabIndex = 9;
-            this.lblUsername.Text = "Username:";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtUsername.Location = new System.Drawing.Point(477, 284);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(228, 22);
-            this.txtUsername.TabIndex = 8;
             // 
             // lblForename
             // 
             this.lblForename.AutoSize = true;
-            this.lblForename.Location = new System.Drawing.Point(474, 336);
+            this.lblForename.Location = new System.Drawing.Point(356, 200);
+            this.lblForename.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblForename.Name = "lblForename";
-            this.lblForename.Size = new System.Drawing.Size(86, 16);
+            this.lblForename.Size = new System.Drawing.Size(70, 13);
             this.lblForename.TabIndex = 11;
             this.lblForename.Text = "First Name/s:";
             // 
             // txtForename
             // 
-            this.txtForename.Location = new System.Drawing.Point(477, 355);
+            this.txtForename.Location = new System.Drawing.Point(358, 215);
+            this.txtForename.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtForename.Name = "txtForename";
-            this.txtForename.Size = new System.Drawing.Size(228, 22);
+            this.txtForename.Size = new System.Drawing.Size(172, 20);
             this.txtForename.TabIndex = 10;
             // 
             // lblSurname
             // 
             this.lblSurname.AutoSize = true;
-            this.lblSurname.Location = new System.Drawing.Point(753, 336);
+            this.lblSurname.Location = new System.Drawing.Point(565, 200);
+            this.lblSurname.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(64, 16);
+            this.lblSurname.Size = new System.Drawing.Size(52, 13);
             this.lblSurname.TabIndex = 13;
             this.lblSurname.Text = "Surname:";
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(756, 355);
+            this.txtSurname.Location = new System.Drawing.Point(567, 215);
+            this.txtSurname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(228, 22);
+            this.txtSurname.Size = new System.Drawing.Size(172, 20);
             this.txtSurname.TabIndex = 12;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(753, 265);
+            this.lblPassword.Location = new System.Drawing.Point(356, 308);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(70, 16);
+            this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 15;
             this.lblPassword.Text = "Password:";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(756, 284);
+            this.txtPassword.Location = new System.Drawing.Point(358, 323);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(228, 22);
+            this.txtPassword.Size = new System.Drawing.Size(172, 20);
             this.txtPassword.TabIndex = 14;
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(474, 404);
+            this.lblEmail.Location = new System.Drawing.Point(356, 254);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(98, 16);
+            this.lblEmail.Size = new System.Drawing.Size(76, 13);
             this.lblEmail.TabIndex = 17;
             this.lblEmail.Text = "Email Address:";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(477, 423);
+            this.txtEmail.Location = new System.Drawing.Point(358, 269);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(507, 22);
+            this.txtEmail.Size = new System.Drawing.Size(381, 20);
             this.txtEmail.TabIndex = 16;
             // 
             // lblAccountType
             // 
             this.lblAccountType.AutoSize = true;
-            this.lblAccountType.Location = new System.Drawing.Point(474, 468);
+            this.lblAccountType.Location = new System.Drawing.Point(356, 365);
+            this.lblAccountType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAccountType.Name = "lblAccountType";
-            this.lblAccountType.Size = new System.Drawing.Size(93, 16);
+            this.lblAccountType.Size = new System.Drawing.Size(77, 13);
             this.lblAccountType.TabIndex = 19;
             this.lblAccountType.Text = "Account Type:";
             // 
@@ -153,25 +146,28 @@
             "Administrator",
             "Auditor",
             "Voter"});
-            this.cmbAccountType.Location = new System.Drawing.Point(477, 487);
+            this.cmbAccountType.Location = new System.Drawing.Point(358, 380);
+            this.cmbAccountType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbAccountType.Name = "cmbAccountType";
-            this.cmbAccountType.Size = new System.Drawing.Size(507, 24);
+            this.cmbAccountType.Size = new System.Drawing.Size(381, 21);
             this.cmbAccountType.TabIndex = 20;
             // 
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(611, 196);
+            this.lblMessage.Location = new System.Drawing.Point(458, 159);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(225, 16);
+            this.lblMessage.Size = new System.Drawing.Size(177, 13);
             this.lblMessage.TabIndex = 21;
             this.lblMessage.Text = "Please note: All fields are mandatory";
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(477, 532);
+            this.btnRegister.Location = new System.Drawing.Point(358, 432);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(507, 40);
+            this.btnRegister.Size = new System.Drawing.Size(380, 32);
             this.btnRegister.TabIndex = 22;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
@@ -181,16 +177,37 @@
             // 
             this.lblRegistrationError.AutoSize = true;
             this.lblRegistrationError.ForeColor = System.Drawing.Color.Red;
-            this.lblRegistrationError.Location = new System.Drawing.Point(587, 605);
+            this.lblRegistrationError.Location = new System.Drawing.Point(440, 492);
+            this.lblRegistrationError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegistrationError.Name = "lblRegistrationError";
-            this.lblRegistrationError.Size = new System.Drawing.Size(0, 16);
+            this.lblRegistrationError.Size = new System.Drawing.Size(0, 13);
             this.lblRegistrationError.TabIndex = 24;
+            // 
+            // lblRePassword
+            // 
+            this.lblRePassword.AutoSize = true;
+            this.lblRePassword.Location = new System.Drawing.Point(565, 308);
+            this.lblRePassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRePassword.Name = "lblRePassword";
+            this.lblRePassword.Size = new System.Drawing.Size(73, 13);
+            this.lblRePassword.TabIndex = 26;
+            this.lblRePassword.Text = "Re-Password:";
+            // 
+            // txtRePassword
+            // 
+            this.txtRePassword.Location = new System.Drawing.Point(567, 323);
+            this.txtRePassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRePassword.Name = "txtRePassword";
+            this.txtRePassword.Size = new System.Drawing.Size(172, 20);
+            this.txtRePassword.TabIndex = 25;
             // 
             // ctrRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.Controls.Add(this.lblRePassword);
+            this.Controls.Add(this.txtRePassword);
             this.Controls.Add(this.lblRegistrationError);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.lblMessage);
@@ -204,13 +221,12 @@
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.lblForename);
             this.Controls.Add(this.txtForename);
-            this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblTitle);
-            this.MaximumSize = new System.Drawing.Size(1467, 805);
-            this.MinimumSize = new System.Drawing.Size(1467, 805);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(1100, 654);
+            this.MinimumSize = new System.Drawing.Size(1100, 654);
             this.Name = "ctrRegister";
-            this.Size = new System.Drawing.Size(1467, 805);
+            this.Size = new System.Drawing.Size(1100, 654);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,8 +235,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label lblForename;
         private System.Windows.Forms.TextBox txtForename;
         private System.Windows.Forms.Label lblSurname;
@@ -234,5 +248,7 @@
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label lblRegistrationError;
+        private System.Windows.Forms.Label lblRePassword;
+        private System.Windows.Forms.TextBox txtRePassword;
     }
 }

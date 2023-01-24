@@ -1,4 +1,5 @@
-﻿using ElectionTracker.Services;
+﻿using ElectionTracker.Controls;
+using ElectionTracker.Services;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -15,12 +16,19 @@ namespace ElectionTracker
     public partial class frmElectionTracker : Form
     {
 
-        protected IUserService UserService { get; set; }
+        private readonly IUserService _userService;
+        private readonly ctrRegister _ctrRegister;
+        private readonly ctrLogin _ctrLogin;
+        private readonly ctrMainMenu _ctrMainMenu;
 
 
-        public frmElectionTracker()
+        public frmElectionTracker(IUserService userService, ctrRegister ctrRegister, ctrLogin ctrLogin, ctrMainMenu ctrMainMenu)
         {
             InitializeComponent();
+            _userService = userService;
+            _ctrRegister = ctrRegister;
+            _ctrLogin = ctrLogin;
+            _ctrMainMenu = ctrMainMenu;
         }
 
         private void frmElectionTracker_Load(object sender, EventArgs e)
@@ -41,18 +49,25 @@ namespace ElectionTracker
         private void GenerateLoginControl()
         {
             ClearPanel();
-            var loginControl = new ElectionTracker.Controls.ctrLogin();
-            loginControl.RegisterClicked += GenerateRegistrationControl;
-            pnlElectionTracker.Controls.Add(loginControl);
+            _ctrLogin.RegisterClicked += GenerateRegistrationControl;
+            _ctrLogin.LogInSuccess += GenerateMainMenuControl;
+            pnlElectionTracker.Controls.Add(_ctrLogin);
         }
 
         private void GenerateRegistrationControl()
         {
             ClearPanel();
-            var registrationControl = new ElectionTracker.Controls.ctrRegister();
-
-            pnlElectionTracker.Controls.Add(registrationControl);
+            _ctrRegister.RegistrationSuccess+= GenerateMainMenuControl;
+            pnlElectionTracker.Controls.Add(_ctrRegister);
         }
+
+        private void GenerateMainMenuControl()
+        {
+            ClearPanel();
+
+            pnlElectionTracker.Controls.Add(_ctrMainMenu);
+        }
+
     }
     
 }

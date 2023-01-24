@@ -8,6 +8,9 @@ namespace ElectionTracker.Classes
 {
     public class Person
     {
+        public Person()
+        { }
+
         public Person(string Forename, string Surname, string Email)
         {
             this.Forename = Forename;

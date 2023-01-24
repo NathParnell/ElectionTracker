@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElectionTracker.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,13 @@ namespace ElectionTracker.Controls
     public partial class ctrLogin : UserControl
     {
         public event Action RegisterClicked;
+        public event Action LogInSuccess;
 
-        public ctrLogin()
+        private readonly IUserService _userService;
+
+        public ctrLogin(IUserService userService)
         {
+            _userService = userService;
             InitializeComponent();
         }
 
@@ -24,6 +29,19 @@ namespace ElectionTracker.Controls
             if (RegisterClicked != null)
             {
                 RegisterClicked();
+            }
+        }
+
+        private void btnSignin_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtEmail.Text) || String.IsNullOrEmpty(txtPassword.Text))
+                return;
+
+            _userService.AttemptLogin(txtEmail.Text, txtPassword.Text);
+
+            if (LogInSuccess != null)
+            {
+                LogInSuccess();
             }
         }
     }
