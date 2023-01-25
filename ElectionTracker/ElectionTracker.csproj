@@ -200,6 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Candidate.cs" />
+    <Compile Include="Classes\ElectionGroup.cs" />
+    <Compile Include="Classes\ElectionGroupMembership.cs" />
+    <Compile Include="Classes\Election.cs" />
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Controls\ctrLogin.cs">
@@ -220,6 +223,18 @@
     <Compile Include="Controls\ctrRegister.Designer.cs">
       <DependentUpon>ctrRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCreateElectionGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCreateElectionGroup.Designer.cs">
+      <DependentUpon>frmCreateElectionGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRegisterElectionGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRegisterElectionGroup.Designer.cs">
+      <DependentUpon>frmRegisterElectionGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmElectionTracker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,9 +244,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IDataService.cs" />
+    <Compile Include="Services\IElectionService.cs" />
     <Compile Include="Services\Infrastructure\DataService.cs" />
+    <Compile Include="Services\Infrastructure\ElectionService.cs" />
     <Compile Include="Services\Infrastructure\UserService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <None Include="Imgs\ElectionTrackerLogo.png" />
     <EmbeddedResource Include="Controls\ctrLogin.resx">
       <DependentUpon>ctrLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +258,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrRegister.resx">
       <DependentUpon>ctrRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCreateElectionGroup.resx">
+      <DependentUpon>frmCreateElectionGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRegisterElectionGroup.resx">
+      <DependentUpon>frmRegisterElectionGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmElectionTracker.resx">
       <DependentUpon>frmElectionTracker.cs</DependentUpon>
@@ -252,6 +276,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Content Include="ElectionTrackerDatabase.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

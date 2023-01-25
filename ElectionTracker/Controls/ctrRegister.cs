@@ -36,15 +36,14 @@ namespace ElectionTracker.Controls
             ResetRegistration();
             bool detailsValid = UserAuthenticator();
 
-            if (detailsValid == false) { 
+            if (detailsValid != true) { 
                 return;
             }
 
             bool RegistrationComplete = _userService.CreateAccount(txtForename.Text,
                 txtSurname.Text,
                 txtEmail.Text,
-                txtPassword.Text,
-                cmbAccountType.Text.ToString());
+                txtPassword.Text);
 
             if (RegistrationComplete == false)
                 return;
@@ -98,6 +97,29 @@ namespace ElectionTracker.Controls
                 Authenticated = false;
             }
 
+            if (String.IsNullOrEmpty(txtAddress.Text))
+            {
+                errorMessage.AppendLine("Please provide an Address!");
+                lblAddress.ForeColor = Color.Red;
+
+                Authenticated = false;
+            }
+
+            if (String.IsNullOrEmpty(txtPostcode.Text))
+            {
+                errorMessage.AppendLine("Please provide a Postcode!");
+                lblPostcode.ForeColor = Color.Red;
+
+                Authenticated = false;
+            }
+            //create an over 18 checker
+            if (String.IsNullOrEmpty(dtDateOfBirth.Value.ToString()) )
+            {
+                errorMessage.AppendLine("Please provide a Postcode!");
+                lblPostcode.ForeColor = Color.Red;
+
+                Authenticated = false;
+            }
 
             //Email Regex String from - https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression
             if (ExpressionValidator(txtEmail.Text, "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") == false)
@@ -114,14 +136,6 @@ namespace ElectionTracker.Controls
                 lblPassword.ForeColor = Color.Red;
                 Authenticated = false;
             }        
-
-
-            if (String.IsNullOrEmpty(cmbAccountType.Text))
-            {
-                errorMessage.AppendLine("Please select an Account Type!");
-                lblAccountType.ForeColor = Color.Red;
-                Authenticated = false;
-            }
 
             lblRegistrationError.Text = errorMessage.ToString();
 

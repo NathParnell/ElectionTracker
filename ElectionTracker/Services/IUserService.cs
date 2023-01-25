@@ -9,9 +9,11 @@ namespace ElectionTracker.Services
 {
     public interface IUserService
     {
-        bool CreateAccount(string Forename, string Surname, string Email, string Password, string AccountType);
+        User CurrentUser { get; set; }
+        bool CreateAccount(string Forename, string Surname, string Email, string Password);
         bool AttemptLogin(string email, string passwordAttempt);
         string GenerateHashSalt();
         string Hasher(string saltString, string stringToHash);
+        List<ElectionGroup> GetElectionGroupsUserIsNotAPartOf(User user = null);
     }
 }

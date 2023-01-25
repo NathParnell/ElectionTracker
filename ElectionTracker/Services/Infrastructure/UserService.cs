@@ -14,19 +14,25 @@ namespace ElectionTracker.Services.Infrastructure
 {
     public class UserService : IUserService
     {
-        IDataService dataService = new DataService();
+        //IDataService dataService = new DataService();
+        private readonly IDataService _dataService;
+        public UserService(IDataService dataService) 
+        {
+            _dataService = dataService;
+        }
 
-        public User CurrentUser;
+
+        public User CurrentUser { get; set; }
 
         
 
-        public bool CreateAccount(string Forename, string Surname, string Email, string Password, string AccountType)
+        public bool CreateAccount(string Forename, string Surname, string Email, string Password)
         {
-            User NewUser = new User(Forename, Surname, Email, AccountType);
+            User NewUser = new User(Forename, Surname, Email);
             NewUser.PasswordSalt = GenerateHashSalt();
             NewUser.Password = Hasher(NewUser.PasswordSalt, Password);
-            dataService.CreateUser(NewUser);
-            CurrentUser = dataService.GetUserByUserID(NewUser.UserID); 
+            _dataService.CreateUser(NewUser);
+            CurrentUser = _dataService.GetUserByUserID(NewUser.UserID); 
             //should this include a check to see if the db command has worked
             return true;
         }
@@ -36,12 +42,12 @@ namespace ElectionTracker.Services.Infrastructure
         {
             try
             {
-                string passwordSalt = dataService.GetPasswordSalt(email);
-                string hashedPassword = dataService.GetPassword(email);
+                string passwordSalt = _dataService.GetPasswordSalt(email);
+                string hashedPassword = _dataService.GetPassword(email);
                 string hashedPasswordAttempt = Hasher(passwordSalt, passwordAttempt);
                 if (hashedPasswordAttempt == hashedPassword)
                 {
-                    CurrentUser = dataService.GetUserByEmail(email);
+                    CurrentUser = _dataService.GetUserByEmail(email);
                     
                     return true;
 
@@ -51,10 +57,7 @@ namespace ElectionTracker.Services.Infrastructure
             catch(Exception ex)
             {
                 return false;
-            }
-            
-            
-            
+            }  
         }
 
         public string GenerateHashSalt()
@@ -84,5 +87,30 @@ namespace ElectionTracker.Services.Infrastructure
 
             return hashedString;
          }
+
+        public List<ElectionGroup> GetElectionGroupsUserIsNotAPartOf(User user = null)
+        {
+            if (user == null)
+                user = CurrentUser;
+
+
+            List<ElectionGroup> electionGroups = _dataService.GetAllElectionGroups();
+            List<string> userElectionGroupIDs = _dataService.GetUserElectionGroupIDs(user.UserID);
+
+            foreach (string userElectionGroupID in userElectionGroupIDs)
+            {
+                foreach(ElectionGroup electionGroup in electionGroups)
+                {
+                    if (electionGroup.ElectionGroupID == userElectionGroupID)
+                    {
+                        electionGroups.Remove(electionGroup);
+                    }
+                }
+            }
+
+            return electionGroups;
+
+
+        }
     }
 }

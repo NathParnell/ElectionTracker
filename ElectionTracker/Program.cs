@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ElectionTracker.Controls;
+using ElectionTracker.Forms;
 
 namespace ElectionTracker
 {
@@ -41,7 +42,11 @@ namespace ElectionTracker
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) => {
                     services.AddSingleton<IUserService, UserService>();
+                    services.AddSingleton<IDataService, DataService>();
+                    services.AddSingleton<IElectionService, ElectionService>();
                     services.AddTransient<frmElectionTracker>();
+                    services.AddTransient<frmCreateElectionGroup>();
+                    services.AddTransient<frmRegisterElectionGroup>();
                     services.AddTransient<ctrRegister>();
                     services.AddTransient<ctrLogin>();
                     services.AddTransient<ctrMainMenu>();

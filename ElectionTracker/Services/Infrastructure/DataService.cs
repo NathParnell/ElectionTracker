@@ -21,6 +21,36 @@ namespace ElectionTracker.Services.Infrastructure
     /// </summary>
     public class DataService : IDataService
     {
+        public void CreateUser(User user)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string createUserQuery = "Insert into User (UserID, Forename, Surname, Email, Password, PasswordSalt, Address, Postcode, DateofBirth, EntryDate)" +
+                                        "values (@UserID, @Forename, @Surname, @Email, @Password, @PasswordSalt, @Address, @Postcode, @DateofBirth, @EntryDate) ";
+                conn.Execute(createUserQuery, user);
+            }
+        }
+
+        public void CreateElectionGroup(ElectionGroup electionGroup)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string createElectionGroupQuery = "Insert into ElectionGroup (ElectionGroupID, Name, Description, EntryDate)" +
+                                        "values (@ElectionGroupID, @Name, @Description, @EntryDate) ";
+                conn.Execute(createElectionGroupQuery, electionGroup);
+            }
+        }
+
+        public void CreateElectionGroupMembership(ElectionGroupMembership electionGroupMembership)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string createElectionGroupMembershipQuery = "Insert into ElectionGroupMembership (ElectionGroupMembershipID, ElectionGroupID, UserID, UserRole, Accepted)" +
+                                        "values (@ElectionGroupMembershipID, @ElectionGroupID, @UserID, @UserRole, @Accepted) ";
+                conn.Execute(createElectionGroupMembershipQuery, electionGroupMembership);
+            }
+        }
+
         public List<User> GetAllUsers()
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -51,13 +81,23 @@ namespace ElectionTracker.Services.Infrastructure
             }
         }
 
-        public void CreateUser(User user)
+        public List<ElectionGroup> GetAllElectionGroups()
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
             {
-                string createUserQuery = "Insert into User (UserID, Password, Forename, Surname, Email, PasswordSalt, Address, DateofBirth, EntryDate, AccountType)" +
-                                        "values (@UserID, @Password, @Forename, @Surname, @Email, @PasswordSalt, @Address, @DateofBirth, @EntryDate, @AccountType) ";
-                conn.Execute(createUserQuery, user);
+                string getAllElectionGroups = "Select * from ElectionGroup";
+                var output = conn.Query<ElectionGroup>(getAllElectionGroups, new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
+        public List<string> GetUserElectionGroupIDs(string userID)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string getUserElectionGroupIDs = "Select ElectionGroupID from ElectionGroupMembership where UserID = @UserID";
+                var output = conn.Query<string>(getUserElectionGroupIDs, new {UserID = userID});
+                return output.ToList();
             }
         }
 

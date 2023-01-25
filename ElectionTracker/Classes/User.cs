@@ -32,11 +32,10 @@ namespace ElectionTracker.Classes
         /// <param name="Surname"></param>
         /// <param name="Email"></param>
         /// <param name="Password"></param>
-        public User (string Forename, string Surname, string Email, string AccountType)
+        public User (string Forename, string Surname, string Email)
             : base(Forename, Surname, Email)
         {
             this.EntryDate = DateTime.Now;
-            SetAccountType(AccountType);
             this.UserID = Taikandi.SequentialGuid.NewGuid().ToString();
         }
 
@@ -45,22 +44,13 @@ namespace ElectionTracker.Classes
         public string Password { get; set; }
         public string PasswordSalt { get; set; }
         public string Address { get; set; }
+        public string Postcode { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime EntryDate { get; set; }
-        public UserAccountType AccountType { get; set; }
 
 
-        public void SetAccountType(string AccountType)
-        {
-            if (AccountType == "Administrator")
-                this.AccountType = UserAccountType.Administrator;
 
-            else if (AccountType == "Auditor")
-                this.AccountType = UserAccountType.Auditor;
 
-            else
-                this.AccountType = UserAccountType.Voter;
-        }
 
     }
 }
