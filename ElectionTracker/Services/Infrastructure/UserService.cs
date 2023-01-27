@@ -88,29 +88,8 @@ namespace ElectionTracker.Services.Infrastructure
             return hashedString;
          }
 
-        public List<ElectionGroup> GetElectionGroupsUserIsNotAPartOf(User user = null)
-        {
-            if (user == null)
-                user = CurrentUser;
+        
 
 
-            List<ElectionGroup> electionGroups = _dataService.GetAllElectionGroups();
-            List<string> userElectionGroupIDs = _dataService.GetUserElectionGroupIDs(user.UserID);
-
-            foreach (string userElectionGroupID in userElectionGroupIDs)
-            {
-                foreach(ElectionGroup electionGroup in electionGroups)
-                {
-                    if (electionGroup.ElectionGroupID == userElectionGroupID)
-                    {
-                        electionGroups.Remove(electionGroup);
-                    }
-                }
-            }
-
-            return electionGroups;
-
-
-        }
     }
 }

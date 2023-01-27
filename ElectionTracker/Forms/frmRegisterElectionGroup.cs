@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace ElectionTracker.Forms
 {
@@ -30,14 +31,26 @@ namespace ElectionTracker.Forms
         private void frmRegisterElectionGroup_Load(object sender, EventArgs e)
         {
             cmbElectionGroup.Items.Clear();
-            List<ElectionGroup> selectableElectionGroups = _userService.GetElectionGroupsUserIsNotAPartOf();
+            List<ElectionGroup> selectableElectionGroups = _electionService.GetElectionGroupsUserIsNotAPartOf();
             foreach(ElectionGroup electionGroup in selectableElectionGroups)
             {
                 cmbElectionGroup.Items.Add(electionGroup.Name);
             }
+        }
 
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            bool requestMade = _electionService.JoinElectionGroupRequest(cmbElectionGroup.Text, cmbRole.Text);
+            if (requestMade)
+            {
+                MessageBox.Show("Your request has been made");
+                this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Request failes! Please try again");
+            }
 
-            
         }
     }
 }

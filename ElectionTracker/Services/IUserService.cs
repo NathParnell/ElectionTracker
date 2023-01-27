@@ -14,6 +14,5 @@ namespace ElectionTracker.Services
         bool AttemptLogin(string email, string passwordAttempt);
         string GenerateHashSalt();
         string Hasher(string saltString, string stringToHash);
-        List<ElectionGroup> GetElectionGroupsUserIsNotAPartOf(User user = null);
     }
 }

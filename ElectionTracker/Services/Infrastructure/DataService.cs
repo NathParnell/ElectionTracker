@@ -90,6 +90,15 @@ namespace ElectionTracker.Services.Infrastructure
                 return output.ToList();
             }
         }
+        public ElectionGroup GetElectionGroupByName(string electionName)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string getElectionGroupByName = "Select ElectionGroupID from ElectionGroup where Name = @Name";
+                ElectionGroup electionGroup = conn.QuerySingle<ElectionGroup>(getElectionGroupByName, new { Name = electionName});
+                return electionGroup;
+            }
+        }
 
         public List<string> GetUserElectionGroupIDs(string userID)
         {
@@ -99,6 +108,26 @@ namespace ElectionTracker.Services.Infrastructure
                 var output = conn.Query<string>(getUserElectionGroupIDs, new {UserID = userID});
                 return output.ToList();
             }
+        }
+
+        public List<ElectionGroupMembership> GetUserElectionGroupMemberships(string userID)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getUserElectionGroupIDs = "Select * from ElectionGroupMembership Where UserID = @UserID";
+                    var userElectionGroupMemberships = (conn.Query<ElectionGroupMembership>(getUserElectionGroupIDs, new { UserID = userID }));
+                    return userElectionGroupMemberships.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                var empty = new List<ElectionGroupMembership>();
+                return empty;
+            }
+            
         }
 
         public string GetPassword(string email)

@@ -9,12 +9,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ElectionTracker.Controls;
 using ElectionTracker.Forms;
+using ElectionTracker.Controls.FLPControls;
 
 namespace ElectionTracker
 {
     internal static class Program
     {
         public static IServiceProvider ServiceProvider { get; private set; }
+
 
 
         /// <summary>
@@ -50,6 +52,8 @@ namespace ElectionTracker
                     services.AddTransient<ctrRegister>();
                     services.AddTransient<ctrLogin>();
                     services.AddTransient<ctrMainMenu>();
+                    services.AddTransient<ctrElectionGroupManager>();
+                    services.AddTransient<ctrElectionGroup>();
                 });
         }
     }

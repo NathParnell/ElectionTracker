@@ -11,5 +11,9 @@ namespace ElectionTracker.Services
     {
         bool CreateElectionGroup(string name, string description);
         void CreateElectionGroupMembership(ElectionGroup electionGroup, string userRole, User user = null);
+        List<ElectionGroup> GetAllElectionGroups();
+        List<ElectionGroup> GetElectionGroupsUserIsNotAPartOf(User user = null);
+        List<ElectionGroupMembership> GetUserElectionGroupMemberships(User user = null);
+        bool JoinElectionGroupRequest(string name, string userRole);
     }
 }

@@ -113,7 +113,7 @@ namespace ElectionTracker.Controls
                 Authenticated = false;
             }
             //create an over 18 checker
-            if (String.IsNullOrEmpty(dtDateOfBirth.Value.ToString()) )
+            if (String.IsNullOrEmpty(dtDateOfBirth.Value.ToString()))
             {
                 errorMessage.AppendLine("Please provide a Postcode!");
                 lblPostcode.ForeColor = Color.Red;
@@ -141,6 +141,7 @@ namespace ElectionTracker.Controls
 
             return Authenticated;
         }
+
 
         /// <summary>
         /// passes in a user input and a validation string to compare the input against

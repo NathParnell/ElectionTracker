@@ -20,15 +20,17 @@ namespace ElectionTracker
         private readonly ctrRegister _ctrRegister;
         private readonly ctrLogin _ctrLogin;
         private readonly ctrMainMenu _ctrMainMenu;
+        private readonly ctrElectionGroupManager _ctrElectionGroupManager;
 
 
-        public frmElectionTracker(IUserService userService, ctrRegister ctrRegister, ctrLogin ctrLogin, ctrMainMenu ctrMainMenu)
+        public frmElectionTracker(IUserService userService, ctrRegister ctrRegister, ctrLogin ctrLogin, ctrMainMenu ctrMainMenu, ctrElectionGroupManager ctrElectionGroupManager)
         {
             InitializeComponent();
             _userService = userService;
             _ctrRegister = ctrRegister;
             _ctrLogin = ctrLogin;
             _ctrMainMenu = ctrMainMenu;
+            _ctrElectionGroupManager = ctrElectionGroupManager;
         }
 
         private void frmElectionTracker_Load(object sender, EventArgs e)
@@ -64,8 +66,14 @@ namespace ElectionTracker
         private void GenerateMainMenuControl()
         {
             ClearPanel();
-
+            _ctrMainMenu.ElectionGroupClicked1+= GenerateMainMenuControl;
             pnlElectionTracker.Controls.Add(_ctrMainMenu);
+        }
+
+        private void GenerateElectionGroupManagerControl()
+        {
+            ClearPanel();
+            pnlElectionTracker.Controls.Add(_ctrElectionGroupManager);
         }
 
     }

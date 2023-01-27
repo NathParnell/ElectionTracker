@@ -16,7 +16,9 @@ namespace ElectionTracker.Services
         User GetUserByUserID(string userID);
         User GetUserByEmail(string email);
         List<ElectionGroup> GetAllElectionGroups();
+        ElectionGroup GetElectionGroupByName(string electionName);
         List<string> GetUserElectionGroupIDs(string userID);
+        List<ElectionGroupMembership> GetUserElectionGroupMemberships(string userID);
         string GetPassword(string email);
         string GetPasswordSalt(string email);
         string LoadConnectionString(string id = "Default");
