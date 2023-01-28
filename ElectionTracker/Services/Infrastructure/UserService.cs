@@ -24,7 +24,10 @@ namespace ElectionTracker.Services.Infrastructure
 
         public User CurrentUser { get; set; }
 
-        
+        public void SetCurrentUser(User user)
+        {
+            this.CurrentUser = user;
+        }
 
         public bool CreateAccount(string Forename, string Surname, string Email, string Password)
         {
@@ -32,7 +35,7 @@ namespace ElectionTracker.Services.Infrastructure
             NewUser.PasswordSalt = GenerateHashSalt();
             NewUser.Password = Hasher(NewUser.PasswordSalt, Password);
             _dataService.CreateUser(NewUser);
-            CurrentUser = _dataService.GetUserByUserID(NewUser.UserID); 
+            SetCurrentUser(_dataService.GetUserByUserID(NewUser.UserID)); 
             //should this include a check to see if the db command has worked
             return true;
         }
@@ -47,7 +50,7 @@ namespace ElectionTracker.Services.Infrastructure
                 string hashedPasswordAttempt = Hasher(passwordSalt, passwordAttempt);
                 if (hashedPasswordAttempt == hashedPassword)
                 {
-                    CurrentUser = _dataService.GetUserByEmail(email);
+                    SetCurrentUser(_dataService.GetUserByEmail(email));
                     
                     return true;
 

@@ -130,6 +130,26 @@ namespace ElectionTracker.Services.Infrastructure
             
         }
 
+        public List<ElectionGroupMembership> GetUnaccpetedElectionGroupMembershipsForGroup(string electionGroupID)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getUserElectionGroupIDs = "Select * from ElectionGroupMembership Where ElectionGroupID = @ElectionGroupID and Accepted = 0";
+                    var userElectionGroupMemberships = (conn.Query<ElectionGroupMembership>(getUserElectionGroupIDs, new { ElectionGroupID = electionGroupID }));
+                    return userElectionGroupMemberships.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                var empty = new List<ElectionGroupMembership>();
+                return empty;
+            }
+
+        }
+
         public string GetPassword(string email)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))

@@ -12,10 +12,18 @@ namespace ElectionTracker.Services.Infrastructure
     {
         private readonly IUserService _userService;
         private readonly IDataService _dataService;
+
         public ElectionService(IUserService userService, IDataService dataService) 
         {
             _userService = userService;
             _dataService = dataService;
+        }
+
+        public ElectionGroup SelectedElectionGroup { get; set; }
+
+        public void SetSelectedElectionGroup(ElectionGroup selectedElectionGroup)
+        {
+            this.SelectedElectionGroup = selectedElectionGroup;
         }
 
         public bool CreateElectionGroup(string name, string description)
@@ -92,7 +100,11 @@ namespace ElectionTracker.Services.Infrastructure
             catch (Exception ex) { return false; }
         }
 
-
+        public List<ElectionGroupMembership> GetUnacceptedElectionGroupRequests(ElectionGroup electionGroup)
+        {
+            List<ElectionGroupMembership> unacceptedElectionGroupRequests = _dataService.GetUnaccpetedElectionGroupMembershipsForGroup(electionGroup.ElectionGroupID);
+            return unacceptedElectionGroupRequests;
+        }
 
     }
 

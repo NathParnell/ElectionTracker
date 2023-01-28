@@ -28,21 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
+            this.lblElectionGroupName = new System.Windows.Forms.Label();
+            this.btnCreateElection = new System.Windows.Forms.Button();
+            this.btnAcceptElectionGroupMembers = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pbxLogo
+            // 
+            this.pbxLogo.Image = global::ElectionTracker.Properties.Resources.ElectionTrackerLogo;
+            this.pbxLogo.Location = new System.Drawing.Point(2, 2);
+            this.pbxLogo.Margin = new System.Windows.Forms.Padding(2);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(334, 92);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 8;
+            this.pbxLogo.TabStop = false;
+            // 
+            // lblElectionGroupName
+            // 
+            this.lblElectionGroupName.AutoSize = true;
+            this.lblElectionGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblElectionGroupName.Location = new System.Drawing.Point(294, 149);
+            this.lblElectionGroupName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblElectionGroupName.Name = "lblElectionGroupName";
+            this.lblElectionGroupName.Size = new System.Drawing.Size(502, 55);
+            this.lblElectionGroupName.TabIndex = 9;
+            this.lblElectionGroupName.Text = "Election Group Name";
+            // 
+            // btnCreateElection
+            // 
+            this.btnCreateElection.BackColor = System.Drawing.Color.LightGray;
+            this.btnCreateElection.Location = new System.Drawing.Point(365, 2);
+            this.btnCreateElection.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCreateElection.Name = "btnCreateElection";
+            this.btnCreateElection.Size = new System.Drawing.Size(196, 92);
+            this.btnCreateElection.TabIndex = 10;
+            this.btnCreateElection.Text = "Create Election";
+            this.btnCreateElection.UseVisualStyleBackColor = false;
+            this.btnCreateElection.Click += new System.EventHandler(this.btnCreateElection_Click);
+            // 
+            // btnAcceptElectionGroupMembers
+            // 
+            this.btnAcceptElectionGroupMembers.BackColor = System.Drawing.Color.LightGray;
+            this.btnAcceptElectionGroupMembers.Location = new System.Drawing.Point(565, 2);
+            this.btnAcceptElectionGroupMembers.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAcceptElectionGroupMembers.Name = "btnAcceptElectionGroupMembers";
+            this.btnAcceptElectionGroupMembers.Size = new System.Drawing.Size(196, 92);
+            this.btnAcceptElectionGroupMembers.TabIndex = 11;
+            this.btnAcceptElectionGroupMembers.Text = "Accept Election Group Members";
+            this.btnAcceptElectionGroupMembers.UseVisualStyleBackColor = false;
+            this.btnAcceptElectionGroupMembers.Click += new System.EventHandler(this.btnAcceptElectionGroupMembers_Click);
             // 
             // ctrElectionGroupManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.Controls.Add(this.btnAcceptElectionGroupMembers);
+            this.Controls.Add(this.btnCreateElection);
+            this.Controls.Add(this.lblElectionGroupName);
+            this.Controls.Add(this.pbxLogo);
             this.MaximumSize = new System.Drawing.Size(1100, 654);
             this.MinimumSize = new System.Drawing.Size(1100, 654);
             this.Name = "ctrElectionGroupManager";
             this.Size = new System.Drawing.Size(1100, 654);
+            this.Load += new System.EventHandler(this.ctrElectionGroupManager_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox pbxLogo;
+        private System.Windows.Forms.Label lblElectionGroupName;
+        private System.Windows.Forms.Button btnCreateElection;
+        private System.Windows.Forms.Button btnAcceptElectionGroupMembers;
     }
 }

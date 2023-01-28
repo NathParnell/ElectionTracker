@@ -49,11 +49,11 @@ namespace ElectionTracker
                     services.AddTransient<frmElectionTracker>();
                     services.AddTransient<frmCreateElectionGroup>();
                     services.AddTransient<frmRegisterElectionGroup>();
+                    services.AddTransient<frmAcceptUserToElectionGroup>();
                     services.AddTransient<ctrRegister>();
                     services.AddTransient<ctrLogin>();
                     services.AddTransient<ctrMainMenu>();
                     services.AddTransient<ctrElectionGroupManager>();
-                    services.AddTransient<ctrElectionGroup>();
                 });
         }
     }

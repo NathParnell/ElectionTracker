@@ -1,4 +1,5 @@
 ﻿using ElectionTracker.Classes;
+using ElectionTracker.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ namespace ElectionTracker.Controls.FLPControls
         private ElectionGroupMembership _userElectionGroupMembership;
         private ElectionGroup _userElectionGroup;
 
-        public event Action ElectionGroupClicked;
+        public event Action<ElectionGroup> ElectionGroupClicked;
 
         public ctrElectionGroup(ElectionGroupMembership userElectionGroupMembership, ElectionGroup userElectionGroup)
         {
@@ -39,7 +40,7 @@ namespace ElectionTracker.Controls.FLPControls
         {
             if (ElectionGroupClicked != null)
             {
-                ElectionGroupClicked();
+                ElectionGroupClicked(_userElectionGroup);
             }
         }
     }

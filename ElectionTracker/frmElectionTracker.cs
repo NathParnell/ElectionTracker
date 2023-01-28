@@ -66,7 +66,7 @@ namespace ElectionTracker
         private void GenerateMainMenuControl()
         {
             ClearPanel();
-            _ctrMainMenu.ElectionGroupClicked1+= GenerateMainMenuControl;
+            _ctrMainMenu.ElectionGroupClicked+= GenerateElectionGroupManagerControl;
             pnlElectionTracker.Controls.Add(_ctrMainMenu);
         }
 

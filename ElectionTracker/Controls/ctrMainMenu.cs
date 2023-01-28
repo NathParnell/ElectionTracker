@@ -19,16 +19,14 @@ namespace ElectionTracker.Controls
     {
         private readonly IUserService _userService;
         private readonly IElectionService _electionService;
-        private ctrElectionGroup _ctrElectionGroup;
 
-        public event Action ElectionGroupClicked1;
+        public event Action ElectionGroupClicked;
 
-        public ctrMainMenu(IUserService userService, IElectionService electionService, ctrElectionGroup ctrElectionGroup)
+        public ctrMainMenu(IUserService userService, IElectionService electionService)
         {
             InitializeComponent();
             _userService = userService;
             _electionService = electionService;
-            _ctrElectionGroup = ctrElectionGroup;
         }
 
         private void ctrMainMenu_Load(object sender, EventArgs e)
@@ -85,16 +83,17 @@ namespace ElectionTracker.Controls
 
         private void GenerateElectionGroupControl(ElectionGroupMembership userElectionGroupMembership, ElectionGroup electionGroup)
         {
-            var electionGroupControl = _ctrElectionGroup;
-            electionGroupControl.ElectionGroupClicked += GenerateElectionGroupManager();
+            var electionGroupControl = new FLPControls.ctrElectionGroup(userElectionGroupMembership, electionGroup);
+            electionGroupControl.ElectionGroupClicked += GenerateElectionGroupManager;
             flpUserElectionGroups.Controls.Add(electionGroupControl);
         }
 
-        private void GenerateElectionGroupManager()
+        private void GenerateElectionGroupManager(ElectionGroup eg)
         {
-            if (ElectionGroupClicked1 != null)
+            if (ElectionGroupClicked != null)
             {
-                ElectionGroupClicked1() ;
+                _electionService.SelectedElectionGroup = eg;
+                ElectionGroupClicked() ;
             }
         }
 
