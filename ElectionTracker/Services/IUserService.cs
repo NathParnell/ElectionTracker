@@ -15,5 +15,7 @@ namespace ElectionTracker.Services
         bool AttemptLogin(string email, string passwordAttempt);
         string GenerateHashSalt();
         string Hasher(string saltString, string stringToHash);
+        List<User> GetAllUsers();
+        User GetUserByUserID(string userID);
     }
 }

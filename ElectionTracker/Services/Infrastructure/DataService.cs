@@ -51,6 +51,16 @@ namespace ElectionTracker.Services.Infrastructure
             }
         }
 
+        public void AcceptElectionGroupRequest(string electionGroupMembershipID)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string createElectionGroupMembershipQuery = "Update ElectionGroupMembership Set Accepted = 1 Where ElectionGroupMembershipID = @ElectionGroupMembershipID";
+                                        
+                conn.Execute(createElectionGroupMembershipQuery, new { ElectionGroupMembershipID = electionGroupMembershipID});
+            }
+        }
+
         public List<User> GetAllUsers()
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))

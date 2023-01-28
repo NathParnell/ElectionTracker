@@ -40,6 +40,9 @@ namespace ElectionTracker.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            if ((cmbElectionGroup.SelectedIndex == -1) || cmbRole.SelectedIndex == -1)
+                return;
+             
             bool requestMade = _electionService.JoinElectionGroupRequest(cmbElectionGroup.Text, cmbRole.Text);
             if (requestMade)
             {

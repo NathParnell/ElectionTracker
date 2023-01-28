@@ -100,6 +100,12 @@ namespace ElectionTracker.Services.Infrastructure
             catch (Exception ex) { return false; }
         }
 
+        public bool AcceptElectionGroupRequest(ElectionGroupMembership electionGroupMembership)
+        {
+            _dataService.AcceptElectionGroupRequest(electionGroupMembership.ElectionGroupMembershipID);
+            return true;
+        }
+
         public List<ElectionGroupMembership> GetUnacceptedElectionGroupRequests(ElectionGroup electionGroup)
         {
             List<ElectionGroupMembership> unacceptedElectionGroupRequests = _dataService.GetUnaccpetedElectionGroupMembershipsForGroup(electionGroup.ElectionGroupID);

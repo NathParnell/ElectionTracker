@@ -12,6 +12,7 @@ namespace ElectionTracker.Services
         void CreateUser(User user);
         void CreateElectionGroup(ElectionGroup electiongroup);
         void CreateElectionGroupMembership(ElectionGroupMembership electionGroupMembership);
+        void AcceptElectionGroupRequest(string electionGroupMembershipID);
         List<User> GetAllUsers();
         User GetUserByUserID(string userID);
         User GetUserByEmail(string email);

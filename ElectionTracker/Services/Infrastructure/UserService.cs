@@ -91,7 +91,15 @@ namespace ElectionTracker.Services.Infrastructure
             return hashedString;
          }
 
-        
+        public List<User> GetAllUsers()
+        {
+            return _dataService.GetAllUsers();
+        }
+
+        public User GetUserByUserID(string userID)
+        { 
+            return _dataService.GetUserByUserID(userID);
+        }
 
 
     }

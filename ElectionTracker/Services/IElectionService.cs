@@ -17,6 +17,7 @@ namespace ElectionTracker.Services
         List<ElectionGroup> GetElectionGroupsUserIsNotAPartOf(User user = null);
         List<ElectionGroupMembership> GetUserElectionGroupMemberships(User user = null);
         bool JoinElectionGroupRequest(string name, string userRole);
+        bool AcceptElectionGroupRequest(ElectionGroupMembership electionGroupMembership);
         List<ElectionGroupMembership> GetUnacceptedElectionGroupRequests(ElectionGroup electionGroup);
     }
 }

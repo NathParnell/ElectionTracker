@@ -59,7 +59,7 @@
             // 
             this.btnCreateElectionGroup.BackColor = System.Drawing.Color.LightGray;
             this.btnCreateElectionGroup.Location = new System.Drawing.Point(381, 2);
-            this.btnCreateElectionGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreateElectionGroup.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateElectionGroup.Name = "btnCreateElectionGroup";
             this.btnCreateElectionGroup.Size = new System.Drawing.Size(334, 92);
             this.btnCreateElectionGroup.TabIndex = 2;
@@ -71,7 +71,7 @@
             // 
             this.btnElectionGroupRegister.BackColor = System.Drawing.Color.LightGray;
             this.btnElectionGroupRegister.Location = new System.Drawing.Point(761, 2);
-            this.btnElectionGroupRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnElectionGroupRegister.Margin = new System.Windows.Forms.Padding(2);
             this.btnElectionGroupRegister.Name = "btnElectionGroupRegister";
             this.btnElectionGroupRegister.Size = new System.Drawing.Size(334, 92);
             this.btnElectionGroupRegister.TabIndex = 3;
@@ -83,7 +83,7 @@
             // 
             this.flpUserElectionGroups.Location = new System.Drawing.Point(75, 180);
             this.flpUserElectionGroups.Name = "flpUserElectionGroups";
-            this.flpUserElectionGroups.Size = new System.Drawing.Size(757, 310);
+            this.flpUserElectionGroups.Size = new System.Drawing.Size(944, 310);
             this.flpUserElectionGroups.TabIndex = 4;
             // 
             // pbxLogo
