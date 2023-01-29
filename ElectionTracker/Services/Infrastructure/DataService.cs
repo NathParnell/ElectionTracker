@@ -51,6 +51,16 @@ namespace ElectionTracker.Services.Infrastructure
             }
         }
 
+        public void CreateElection(Election election)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string createElectionQuery = "Insert into Election (ElectionID, Name, Description, ElectionGroupID, StartDate, EndDate)" +
+                                        "values (@ElectionID, @Name, @Description, @ElectionGroupID, @StartDate, @EndDate) ";
+                conn.Execute(createElectionQuery, election);
+            }
+        }
+
         public void AcceptElectionGroupRequest(string electionGroupMembershipID)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))

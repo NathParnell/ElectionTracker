@@ -12,6 +12,7 @@ namespace ElectionTracker.Services
         void CreateUser(User user);
         void CreateElectionGroup(ElectionGroup electiongroup);
         void CreateElectionGroupMembership(ElectionGroupMembership electionGroupMembership);
+        void CreateElection(Election election);
         void AcceptElectionGroupRequest(string electionGroupMembershipID);
         List<User> GetAllUsers();
         User GetUserByUserID(string userID);
@@ -21,9 +22,9 @@ namespace ElectionTracker.Services
         List<string> GetUserElectionGroupIDs(string userID);
         List<ElectionGroupMembership> GetUserElectionGroupMemberships(string userID);
         List<ElectionGroupMembership> GetUnaccpetedElectionGroupMembershipsForGroup(string electionID);
-        
         string GetPassword(string email);
         string GetPasswordSalt(string email);
+
         string LoadConnectionString(string id = "Default");
     }
 }

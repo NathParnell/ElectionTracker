@@ -112,6 +112,12 @@ namespace ElectionTracker.Services.Infrastructure
             return unacceptedElectionGroupRequests;
         }
 
+        public bool CreateElection(Election newElection)
+        {
+            //I need to create a DataService method which will add in an election to the database 
+            _dataService.CreateElection(newElection);
+            return true;
+        }
     }
 
    

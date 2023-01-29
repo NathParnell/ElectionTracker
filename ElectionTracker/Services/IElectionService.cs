@@ -19,5 +19,6 @@ namespace ElectionTracker.Services
         bool JoinElectionGroupRequest(string name, string userRole);
         bool AcceptElectionGroupRequest(ElectionGroupMembership electionGroupMembership);
         List<ElectionGroupMembership> GetUnacceptedElectionGroupRequests(ElectionGroup electionGroup);
+        bool CreateElection(Election newElection);
     }
 }

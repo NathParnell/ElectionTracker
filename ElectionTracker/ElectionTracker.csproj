@@ -241,6 +241,12 @@
     <Compile Include="Forms\frmAcceptUserToElectionGroup.Designer.cs">
       <DependentUpon>frmAcceptUserToElectionGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCreateElection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCreateElection.Designer.cs">
+      <DependentUpon>frmCreateElection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCreateElectionGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAcceptUserToElectionGroup.resx">
       <DependentUpon>frmAcceptUserToElectionGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCreateElection.resx">
+      <DependentUpon>frmCreateElection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCreateElectionGroup.resx">
       <DependentUpon>frmCreateElectionGroup.cs</DependentUpon>

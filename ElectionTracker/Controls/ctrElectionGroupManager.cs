@@ -36,7 +36,8 @@ namespace ElectionTracker.Controls
 
         private void btnCreateElection_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            frmCreateElection frmCreateElection = new frmCreateElection(_electionService);
+            frmCreateElection.ShowDialog();
         }
 
         private void btnAcceptElectionGroupMembers_Click(object sender, EventArgs e)

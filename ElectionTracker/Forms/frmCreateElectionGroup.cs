@@ -1,4 +1,5 @@
-﻿using ElectionTracker.Services;
+﻿using ElectionTracker.Classes;
+using ElectionTracker.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,12 @@ namespace ElectionTracker
         private void btnCreateElectionGroup_Click(object sender, EventArgs e)
         {
             bool success = _electionService.CreateElectionGroup(txtElectionGroupName.Text, txtElectionGroupDescription.Text);
-            this.Dispose();
+            if (success)
+            {
+                MessageBox.Show("Election group created");
+                this.Dispose();
+            }
+
         }
     }
 }
