@@ -240,6 +240,16 @@ namespace ElectionTracker.Services.Infrastructure
             }
         }
 
+        public List<Vote> GetVotesByCandidateID(string candidateID)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string getVotesByCandidateIDQuery = "Select * from Vote Where CandidateID = @CandidateID";
+                var votes = (conn.Query<Vote>(getVotesByCandidateIDQuery, new { CandidateID = candidateID }));
+                return votes.ToList();
+            }
+        }
+
         public string GetPassword(string email)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))

@@ -29,6 +29,7 @@ namespace ElectionTracker.Services
         List<Election> GetElectionsByElectionGroupID(string electionGroupID);
         List<Candidate> GetCandidatesByElectionID(string electionID);
         List<Vote> GetVotesByUserID(string userID);
+        List<Vote> GetVotesByCandidateID(string candidateID);
         string GetPassword(string email);
         string GetPasswordSalt(string email);
         void DeleteCandidate(string candidateID);

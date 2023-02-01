@@ -230,6 +230,12 @@
     <Compile Include="Controls\ctrRegister.Designer.cs">
       <DependentUpon>ctrRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FLPControls\ctrCandidateVote.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FLPControls\ctrCandidateVote.Designer.cs">
+      <DependentUpon>ctrCandidateVote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FLPControls\ctrElectionSelect.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -247,6 +253,12 @@
     </Compile>
     <Compile Include="Forms\frmAcceptUserToElectionGroup.Designer.cs">
       <DependentUpon>frmAcceptUserToElectionGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCountVotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCountVotes.Designer.cs">
+      <DependentUpon>frmCountVotes.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmCreateElection.cs">
       <SubType>Form</SubType>
@@ -305,6 +317,9 @@
     <EmbeddedResource Include="Controls\ctrRegister.resx">
       <DependentUpon>ctrRegister.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FLPControls\ctrCandidateVote.resx">
+      <DependentUpon>ctrCandidateVote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\FLPControls\ctrElectionSelect.resx">
       <DependentUpon>ctrElectionSelect.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAcceptUserToElectionGroup.resx">
       <DependentUpon>frmAcceptUserToElectionGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCountVotes.resx">
+      <DependentUpon>frmCountVotes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCreateElection.resx">
       <DependentUpon>frmCreateElection.cs</DependentUpon>

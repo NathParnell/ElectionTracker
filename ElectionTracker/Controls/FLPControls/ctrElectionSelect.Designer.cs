@@ -87,6 +87,7 @@
             this.btnCountVotes.TabIndex = 5;
             this.btnCountVotes.Text = "Count Votes";
             this.btnCountVotes.UseVisualStyleBackColor = true;
+            this.btnCountVotes.Click += new System.EventHandler(this.btnCountVotes_Click);
             // 
             // btnVote
             // 

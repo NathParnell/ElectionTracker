@@ -89,5 +89,10 @@ namespace ElectionTracker.Controls.FLPControls
             frmVote frmVote = new frmVote(_electionService, _userService, _election, "BallotBox");
             frmVote.ShowDialog();
         }
+
+        private void btnCountVotes_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

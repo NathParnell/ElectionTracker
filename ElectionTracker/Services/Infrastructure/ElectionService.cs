@@ -166,6 +166,26 @@ namespace ElectionTracker.Services.Infrastructure
             return votes;
         }
 
+        public List<Vote> GetVotesbyCandidate(Candidate candidate)
+        {
+            List<Vote> votes = _dataService.GetVotesByCandidateID(candidate.CandidateID);
+            return votes;
+        }
+
+        public Candidate GetElectionWinner(Election election)
+        {
+            List<Candidate> electionCandidates = GetCandidatesByElection(election);
+            List<int> numOfVotes = new List<int>();
+
+            foreach(Candidate candidate in electionCandidates)
+            {
+                numOfVotes.Add(GetVotesbyCandidate(candidate).Count());
+            }
+
+            return electionCandidates[numOfVotes.IndexOf(numOfVotes.Max())];
+
+        }
+
         public bool DeleteVote(Vote vote)
         {
             _dataService.DeleteVote(vote.VoteID);

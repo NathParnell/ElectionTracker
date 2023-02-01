@@ -48,7 +48,7 @@
             // 
             // btnAddCandidate
             // 
-            this.btnAddCandidate.Location = new System.Drawing.Point(124, 562);
+            this.btnAddCandidate.Location = new System.Drawing.Point(52, 429);
             this.btnAddCandidate.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddCandidate.Name = "btnAddCandidate";
             this.btnAddCandidate.Size = new System.Drawing.Size(160, 28);
@@ -60,7 +60,7 @@
             // lblCandidateForename
             // 
             this.lblCandidateForename.AutoSize = true;
-            this.lblCandidateForename.Location = new System.Drawing.Point(40, 398);
+            this.lblCandidateForename.Location = new System.Drawing.Point(49, 265);
             this.lblCandidateForename.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCandidateForename.Name = "lblCandidateForename";
             this.lblCandidateForename.Size = new System.Drawing.Size(72, 16);
@@ -69,7 +69,7 @@
             // 
             // txtCandidateForename
             // 
-            this.txtCandidateForename.Location = new System.Drawing.Point(124, 395);
+            this.txtCandidateForename.Location = new System.Drawing.Point(133, 262);
             this.txtCandidateForename.Margin = new System.Windows.Forms.Padding(4);
             this.txtCandidateForename.Name = "txtCandidateForename";
             this.txtCandidateForename.Size = new System.Drawing.Size(161, 22);
@@ -78,7 +78,7 @@
             // lblCandidateSurname
             // 
             this.lblCandidateSurname.AutoSize = true;
-            this.lblCandidateSurname.Location = new System.Drawing.Point(299, 398);
+            this.lblCandidateSurname.Location = new System.Drawing.Point(308, 265);
             this.lblCandidateSurname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCandidateSurname.Name = "lblCandidateSurname";
             this.lblCandidateSurname.Size = new System.Drawing.Size(64, 16);
@@ -87,7 +87,7 @@
             // 
             // txtCandidateSurname
             // 
-            this.txtCandidateSurname.Location = new System.Drawing.Point(383, 395);
+            this.txtCandidateSurname.Location = new System.Drawing.Point(392, 262);
             this.txtCandidateSurname.Margin = new System.Windows.Forms.Padding(4);
             this.txtCandidateSurname.Name = "txtCandidateSurname";
             this.txtCandidateSurname.Size = new System.Drawing.Size(161, 22);
@@ -95,7 +95,7 @@
             // 
             // txtCandidateEmail
             // 
-            this.txtCandidateEmail.Location = new System.Drawing.Point(124, 434);
+            this.txtCandidateEmail.Location = new System.Drawing.Point(133, 301);
             this.txtCandidateEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtCandidateEmail.Name = "txtCandidateEmail";
             this.txtCandidateEmail.Size = new System.Drawing.Size(420, 22);
@@ -104,7 +104,7 @@
             // lblCandidateEmail
             // 
             this.lblCandidateEmail.AutoSize = true;
-            this.lblCandidateEmail.Location = new System.Drawing.Point(40, 438);
+            this.lblCandidateEmail.Location = new System.Drawing.Point(49, 305);
             this.lblCandidateEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCandidateEmail.Name = "lblCandidateEmail";
             this.lblCandidateEmail.Size = new System.Drawing.Size(44, 16);
@@ -113,7 +113,7 @@
             // 
             // txtCandidateDescription
             // 
-            this.txtCandidateDescription.Location = new System.Drawing.Point(124, 475);
+            this.txtCandidateDescription.Location = new System.Drawing.Point(133, 342);
             this.txtCandidateDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtCandidateDescription.Name = "txtCandidateDescription";
             this.txtCandidateDescription.Size = new System.Drawing.Size(420, 22);
@@ -122,7 +122,7 @@
             // lblCandidateDescription
             // 
             this.lblCandidateDescription.AutoSize = true;
-            this.lblCandidateDescription.Location = new System.Drawing.Point(40, 479);
+            this.lblCandidateDescription.Location = new System.Drawing.Point(49, 346);
             this.lblCandidateDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCandidateDescription.Name = "lblCandidateDescription";
             this.lblCandidateDescription.Size = new System.Drawing.Size(78, 16);
@@ -131,7 +131,7 @@
             // 
             // txtCandidatePartyname
             // 
-            this.txtCandidatePartyname.Location = new System.Drawing.Point(124, 518);
+            this.txtCandidatePartyname.Location = new System.Drawing.Point(133, 385);
             this.txtCandidatePartyname.Margin = new System.Windows.Forms.Padding(4);
             this.txtCandidatePartyname.Name = "txtCandidatePartyname";
             this.txtCandidatePartyname.Size = new System.Drawing.Size(420, 22);
@@ -140,7 +140,7 @@
             // lblCandidatePartyname
             // 
             this.lblCandidatePartyname.AutoSize = true;
-            this.lblCandidatePartyname.Location = new System.Drawing.Point(40, 522);
+            this.lblCandidatePartyname.Location = new System.Drawing.Point(49, 389);
             this.lblCandidatePartyname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCandidatePartyname.Name = "lblCandidatePartyname";
             this.lblCandidatePartyname.Size = new System.Drawing.Size(81, 16);
@@ -149,7 +149,7 @@
             // 
             // btnDeleteCandidate
             // 
-            this.btnDeleteCandidate.Location = new System.Drawing.Point(349, 562);
+            this.btnDeleteCandidate.Location = new System.Drawing.Point(393, 429);
             this.btnDeleteCandidate.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteCandidate.Name = "btnDeleteCandidate";
             this.btnDeleteCandidate.Size = new System.Drawing.Size(160, 28);
@@ -169,7 +169,7 @@
             // 
             // btnNewEntry
             // 
-            this.btnNewEntry.Location = new System.Drawing.Point(278, 608);
+            this.btnNewEntry.Location = new System.Drawing.Point(270, 432);
             this.btnNewEntry.Name = "btnNewEntry";
             this.btnNewEntry.Size = new System.Drawing.Size(75, 23);
             this.btnNewEntry.TabIndex = 13;
@@ -190,7 +190,7 @@
             // 
             this.lblCandidateDetails.AutoSize = true;
             this.lblCandidateDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCandidateDetails.Location = new System.Drawing.Point(128, 330);
+            this.lblCandidateDetails.Location = new System.Drawing.Point(137, 197);
             this.lblCandidateDetails.Name = "lblCandidateDetails";
             this.lblCandidateDetails.Size = new System.Drawing.Size(351, 46);
             this.lblCandidateDetails.TabIndex = 15;
@@ -200,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 667);
+            this.ClientSize = new System.Drawing.Size(615, 482);
             this.Controls.Add(this.lblCandidateDetails);
             this.Controls.Add(this.lblSelectCandidate);
             this.Controls.Add(this.btnNewEntry);
