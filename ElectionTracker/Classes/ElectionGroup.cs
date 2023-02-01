@@ -15,7 +15,6 @@ namespace ElectionTracker.Classes
         {
         }
 
-
         /// <summary>
         /// constructor to be called upon creation
         /// </summary>

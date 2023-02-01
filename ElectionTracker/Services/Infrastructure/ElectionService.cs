@@ -88,6 +88,17 @@ namespace ElectionTracker.Services.Infrastructure
             return userElectionGroupMembership;
         }
 
+        /// <summary>
+        /// Gets the user role of a user relative to the Election group they are in, and it converts the value into the correct type.
+        /// </summary>
+        /// <returns></returns>
+        public ElectionGroupUserRole GetUserRole()
+        {
+            ElectionGroupUserRole userRole = (ElectionGroupUserRole) int.Parse(_dataService.GetUserRole(_userService.CurrentUser.UserID, SelectedElectionGroup.ElectionGroupID)); ;
+
+            return userRole;
+        }
+
         public bool JoinElectionGroupRequest(string name, string userRole)
         {
             try
@@ -118,6 +129,31 @@ namespace ElectionTracker.Services.Infrastructure
             _dataService.CreateElection(newElection);
             return true;
         }
+
+        public List<Election> GetElectionsbyElectionGroupID(string electionGroupID)
+        {
+            List<Election> elections = _dataService.GetElectionsByElectionGroupID(electionGroupID);
+            return elections;
+        }
+
+        public bool CreateCandidate(Candidate candidate)
+        {
+            _dataService.CreateCandidate(candidate);
+            return true;
+        }
+
+        public List<Candidate> GetCandidatesByElection(Election election)
+        {
+            List<Candidate> candidates = _dataService.GetCandidatesByElectionID(election.ElectionID);
+            return candidates;
+        }
+
+        public bool DeleteCandidate(Candidate candidate)
+        {
+            _dataService.DeleteCandidate(candidate.CandidateID);
+            return true;
+        }
+
     }
 
    

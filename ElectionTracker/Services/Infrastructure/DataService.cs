@@ -11,6 +11,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Collections.Specialized.BitVector32;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 
@@ -58,6 +59,16 @@ namespace ElectionTracker.Services.Infrastructure
                 string createElectionQuery = "Insert into Election (ElectionID, Name, Description, ElectionGroupID, StartDate, EndDate)" +
                                         "values (@ElectionID, @Name, @Description, @ElectionGroupID, @StartDate, @EndDate) ";
                 conn.Execute(createElectionQuery, election);
+            }
+        }
+
+        public void CreateCandidate(Candidate candidate)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string createCandidateQuery = "Insert into Candidate (CandidateID, Forename, Surname, Email, ElectionID, Description, Partyname)" +
+                                        "values (@CandidateID, @Forename, @Surname, @Email, @ElectionID, @Description, @Partyname) ";
+                conn.Execute(createCandidateQuery, candidate);
             }
         }
 
@@ -167,7 +178,46 @@ namespace ElectionTracker.Services.Infrastructure
                 var empty = new List<ElectionGroupMembership>();
                 return empty;
             }
+        }
 
+        public string GetUserRole(string userID, string electionGroupID)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string getUserRoleInElectionGroupQuery = "Select UserRole from ElectionGroupMembership Where ElectionGroupID = @ElectionGroupID and UserID = @UserID";
+                var userElectionGroupMemberships = (conn.QuerySingle<string>(getUserRoleInElectionGroupQuery, new { ElectionGroupID = electionGroupID, UserID = userID }));
+                return userElectionGroupMemberships;
+            }
+        }
+
+        public List<Election> GetAllElections()
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string getAllUsersQuery = "Select * from Election";
+                var output = conn.Query<Election>(getAllUsersQuery, new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
+        public List<Election> GetElectionsByElectionGroupID(string electionGroupID)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string getElectionsByElectionGroupIDQuery = "Select * from Election Where ElectionGroupID = @ElectionGroupID";
+                var elections = (conn.Query<Election>(getElectionsByElectionGroupIDQuery, new { ElectionGroupID = electionGroupID }));
+                return elections.ToList();
+            }
+        }
+
+        public List<Candidate> GetCandidatesByElectionID(string electionID)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string getCandidatesByElectionIDQuery = "Select * from Candidate Where ElectionID = @ElectionID";
+                var candidates = (conn.Query<Candidate>(getCandidatesByElectionIDQuery, new { ElectionID = electionID }));
+                return candidates.ToList();
+            }
         }
 
         public string GetPassword(string email)
@@ -189,6 +239,16 @@ namespace ElectionTracker.Services.Infrastructure
                 return passwordSalt;
             }
 
+        }
+
+        public void DeleteCandidate(string candidateID)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string DeleteCandidateQuery = "Delete from Candidate Where CandidateID = @CandidateID";
+                conn.Query(DeleteCandidateQuery, new { CandidateID = candidateID });
+                return;
+            }
         }
 
         public string LoadConnectionString(string id = "Default")

@@ -20,7 +20,7 @@ namespace ElectionTracker.Classes
             this.EndDate = endDate;
         }
 
-        public string ElectionID { get; set; }
+        public string ElectionID { get; set; }        
         public string Name { get; set; }
         public string Description { get; set; }
         public string ElectionGroupID { get; set; }

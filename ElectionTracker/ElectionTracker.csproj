@@ -229,6 +229,12 @@
     <Compile Include="Controls\ctrRegister.Designer.cs">
       <DependentUpon>ctrRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FLPControls\ctrElectionSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FLPControls\ctrElectionSelect.Designer.cs">
+      <DependentUpon>ctrElectionSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FLPControls\ctrElectionGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -252,6 +258,12 @@
     </Compile>
     <Compile Include="Forms\frmCreateElectionGroup.Designer.cs">
       <DependentUpon>frmCreateElectionGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCandidates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCandidates.Designer.cs">
+      <DependentUpon>frmCandidates.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmRegisterElectionGroup.cs">
       <SubType>Form</SubType>
@@ -286,6 +298,9 @@
     <EmbeddedResource Include="Controls\ctrRegister.resx">
       <DependentUpon>ctrRegister.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FLPControls\ctrElectionSelect.resx">
+      <DependentUpon>ctrElectionSelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\FLPControls\ctrElectionGroup.resx">
       <DependentUpon>ctrElectionGroup.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCreateElectionGroup.resx">
       <DependentUpon>frmCreateElectionGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCandidates.resx">
+      <DependentUpon>frmCandidates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRegisterElectionGroup.resx">
       <DependentUpon>frmRegisterElectionGroup.cs</DependentUpon>

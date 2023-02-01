@@ -33,8 +33,6 @@ namespace ElectionTracker.Controls
         {
             DisplayUserDetails();
             DisplayUserElectionGroups();
-
-
         }
 
 
@@ -71,7 +69,7 @@ namespace ElectionTracker.Controls
                         {
                             GenerateElectionGroupControl(userElectionGroupMembership, electionGroup);
                         }
-                    }
+                    }                 
                 }
             }
             catch(Exception ex)

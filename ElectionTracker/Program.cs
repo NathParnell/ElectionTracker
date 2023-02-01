@@ -51,6 +51,7 @@ namespace ElectionTracker
                     services.AddTransient<frmRegisterElectionGroup>();
                     services.AddTransient<frmAcceptUserToElectionGroup>();
                     services.AddTransient<frmCreateElection>();
+                    services.AddTransient<frmCandidates>();
                     services.AddTransient<ctrRegister>();
                     services.AddTransient<ctrLogin>();
                     services.AddTransient<ctrMainMenu>();

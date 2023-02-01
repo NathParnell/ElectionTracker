@@ -35,8 +35,8 @@ namespace ElectionTracker.Classes
         public User (string Forename, string Surname, string Email)
             : base(Forename, Surname, Email)
         {
-            this.EntryDate = DateTime.Now;
             this.UserID = Taikandi.SequentialGuid.NewGuid().ToString();
+            this.EntryDate = DateTime.Now;
         }
 
 

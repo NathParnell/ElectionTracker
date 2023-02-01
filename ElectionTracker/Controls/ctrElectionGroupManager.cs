@@ -19,6 +19,7 @@ namespace ElectionTracker.Controls
         private readonly IUserService _userService;
         private readonly IElectionService _electionService;
         private ElectionGroup _electionGroup;
+        private ElectionGroupUserRole _userRole;
 
         public ctrElectionGroupManager(IElectionService electionService, IUserService userService)
         {
@@ -32,6 +33,11 @@ namespace ElectionTracker.Controls
             _electionGroup = _electionService.SelectedElectionGroup;
 
             lblElectionGroupName.Text = _electionGroup.Name;
+
+            _userRole = _electionService.GetUserRole();
+
+            DisplayElections();
+
         }
 
         private void btnCreateElection_Click(object sender, EventArgs e)
@@ -45,5 +51,23 @@ namespace ElectionTracker.Controls
             frmAcceptUserToElectionGroup frmAcceptUserToElectionGroup = new frmAcceptUserToElectionGroup(_userService, _electionService);
             frmAcceptUserToElectionGroup.ShowDialog();
         }
+
+        private void DisplayElections()
+        {
+            List<Election> elections = _electionService.GetElectionsbyElectionGroupID(_electionGroup.ElectionGroupID);
+
+            foreach(Election election in elections)
+            {
+                GenerateElectionControl(election);
+            }
+        }
+
+        private void GenerateElectionControl(Election election)
+        {
+            var electionControl = new FLPControls.ctrElectionSelect(election, _userRole, _electionService);
+            //electionControl.ElectionGroupClicked += GenerateElectionGroupManager;
+            flpActiveElections.Controls.Add(electionControl);
+        }
+
     }
 }
