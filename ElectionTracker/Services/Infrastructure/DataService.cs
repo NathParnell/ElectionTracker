@@ -72,6 +72,16 @@ namespace ElectionTracker.Services.Infrastructure
             }
         }
 
+        public void CreateVote(Vote vote)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string createVoteQuery = "Insert into Vote (VoteID, CandidateID, VoteID, VoteMethod)" +
+                                        "values (@VoteID, @CandidateID, @VoteID, @VoteMethod) ";
+                conn.Execute(createVoteQuery, vote);
+            }
+        }
+
         public void AcceptElectionGroupRequest(string electionGroupMembershipID)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -220,6 +230,16 @@ namespace ElectionTracker.Services.Infrastructure
             }
         }
 
+        public List<Vote> GetVotesByUserID(string userID)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string getVotesByUserIDQuery = "Select * from Vote Where UserID = @UserID";
+                var votes = (conn.Query<Vote>(getVotesByUserIDQuery, new { UserID = userID }));
+                return votes.ToList();
+            }
+        }
+
         public string GetPassword(string email)
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
@@ -247,6 +267,16 @@ namespace ElectionTracker.Services.Infrastructure
             {
                 string DeleteCandidateQuery = "Delete from Candidate Where CandidateID = @CandidateID";
                 conn.Query(DeleteCandidateQuery, new { CandidateID = candidateID });
+                return;
+            }
+        }
+
+        public void DeleteVote(string voteID)
+        {
+            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string DeleteVoteQuery = "Delete from Vote Where VoteID = @VoteID";
+                conn.Query(DeleteVoteQuery, new { VoteID = voteID });
                 return;
             }
         }

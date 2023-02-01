@@ -205,6 +205,7 @@
     <Compile Include="Classes\Election.cs" />
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\Vote.cs" />
     <Compile Include="Controls\ctrElectionGroupManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -271,6 +272,12 @@
     <Compile Include="Forms\frmRegisterElectionGroup.Designer.cs">
       <DependentUpon>frmRegisterElectionGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmVote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmVote.Designer.cs">
+      <DependentUpon>frmVote.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmElectionTracker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRegisterElectionGroup.resx">
       <DependentUpon>frmRegisterElectionGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmVote.resx">
+      <DependentUpon>frmVote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmElectionTracker.resx">
       <DependentUpon>frmElectionTracker.cs</DependentUpon>

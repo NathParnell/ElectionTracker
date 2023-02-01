@@ -17,13 +17,15 @@ namespace ElectionTracker.Controls.FLPControls
     {
         private Election _election;
         private ElectionGroupUserRole _userRole;
-        private IElectionService _electionService;
+        private readonly IElectionService _electionService;
+        private readonly IUserService _userService;
 
-        public ctrElectionSelect(Election election, ElectionGroupUserRole userRole, IElectionService electionService)
+        public ctrElectionSelect(Election election, ElectionGroupUserRole userRole, IElectionService electionService, IUserService userService)
         {
             _electionService = electionService;
             _election = election;
             _userRole = userRole;
+            _userService = userService;
             InitializeComponent();
         }
 
@@ -68,6 +70,24 @@ namespace ElectionTracker.Controls.FLPControls
         {
             frmCandidates frmCandidates = new frmCandidates(_election, _electionService, _userRole);
             frmCandidates.ShowDialog();
+        }
+
+        private void btnVote_Click(object sender, EventArgs e)
+        {
+            frmVote frmVote = new frmVote(_electionService, _userService, _election, "ElectionTracker");
+            frmVote.ShowDialog();
+        }
+
+        private void btnAddPostalVote_Click(object sender, EventArgs e)
+        {
+            frmVote frmVote = new frmVote(_electionService, _userService, _election, "Postal");
+            frmVote.ShowDialog();
+        }
+
+        private void btnAddBallotStationVote_Click(object sender, EventArgs e)
+        {
+            frmVote frmVote = new frmVote(_electionService, _userService, _election, "BallotBox");
+            frmVote.ShowDialog();
         }
     }
 }

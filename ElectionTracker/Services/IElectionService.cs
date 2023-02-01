@@ -25,5 +25,8 @@ namespace ElectionTracker.Services
         bool CreateCandidate(Candidate candidate);
         List<Candidate> GetCandidatesByElection(Election election);
         bool DeleteCandidate(Candidate candidate);
+        bool CreateVote(Vote vote);
+        List<Vote> GetVotesbyUser(User user);
+        bool DeleteVote(Vote vote);
     }
 }

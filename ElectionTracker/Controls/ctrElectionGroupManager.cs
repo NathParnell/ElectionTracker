@@ -64,7 +64,7 @@ namespace ElectionTracker.Controls
 
         private void GenerateElectionControl(Election election)
         {
-            var electionControl = new FLPControls.ctrElectionSelect(election, _userRole, _electionService);
+            var electionControl = new FLPControls.ctrElectionSelect(election, _userRole, _electionService, _userService);
             //electionControl.ElectionGroupClicked += GenerateElectionGroupManager;
             flpActiveElections.Controls.Add(electionControl);
         }

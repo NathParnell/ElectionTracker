@@ -65,6 +65,7 @@
             this.btnAddPostalVote.TabIndex = 3;
             this.btnAddPostalVote.Text = "Add Postal Vote";
             this.btnAddPostalVote.UseVisualStyleBackColor = true;
+            this.btnAddPostalVote.Click += new System.EventHandler(this.btnAddPostalVote_Click);
             // 
             // btnAddBallotStationVote
             // 
@@ -75,6 +76,7 @@
             this.btnAddBallotStationVote.TabIndex = 4;
             this.btnAddBallotStationVote.Text = "Add Ballot Station Vote";
             this.btnAddBallotStationVote.UseVisualStyleBackColor = true;
+            this.btnAddBallotStationVote.Click += new System.EventHandler(this.btnAddBallotStationVote_Click);
             // 
             // btnCountVotes
             // 
@@ -95,6 +97,7 @@
             this.btnVote.TabIndex = 6;
             this.btnVote.Text = "Vote";
             this.btnVote.UseVisualStyleBackColor = true;
+            this.btnVote.Click += new System.EventHandler(this.btnVote_Click);
             // 
             // btnCandidates
             // 

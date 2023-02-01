@@ -154,6 +154,24 @@ namespace ElectionTracker.Services.Infrastructure
             return true;
         }
 
+        public bool CreateVote(Vote vote)
+        {
+            _dataService.CreateVote(vote);
+            return true;
+        }
+
+        public List<Vote> GetVotesbyUser(User User)
+        {
+            List<Vote> votes = _dataService.GetVotesByUserID(User.UserID);
+            return votes;
+        }
+
+        public bool DeleteVote(Vote vote)
+        {
+            _dataService.DeleteVote(vote.VoteID);
+            return true;
+        }
+
     }
 
    
