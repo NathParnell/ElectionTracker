@@ -50,6 +50,7 @@ namespace ElectionTracker.Forms
                 List<Vote> candidateVotes = _electionService.GetVotesbyCandidate(candidate);
 
                 var candidateVoteControl = new ctrCandidateVote(candidate.Forename + " " + candidate.Surname, candidateVotes.Count);
+                flpCandidateVotes.Controls.Add(candidateVoteControl);
             }
         }
 
