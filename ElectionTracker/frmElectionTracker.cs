@@ -38,6 +38,9 @@ namespace ElectionTracker
             GenerateLoginControl();
         }
 
+        /// <summary>
+        /// closes current panel control and redirects to the login control
+        /// </summary>
         private void GenerateLoginControl()
         {
             ClearPanel();
@@ -47,23 +50,33 @@ namespace ElectionTracker
             pnlElectionTracker.Controls.Add(_ctrLogin);
         }
 
+        /// <summary>
+        /// closes current panel control and redirects to the registration control
+        /// </summary>
         private void GenerateRegistrationControl()
         {
             ClearPanel();
-            _ctrRegister.RegistrationSuccess+= GenerateMainMenuControl;
+            _ctrRegister.RegistrationSuccess += GenerateMainMenuControl;
+            _ctrRegister.LoginClicked += GenerateLoginControl;
             _ctrRegister.Init();
             pnlElectionTracker.Controls.Add(_ctrRegister);
         }
 
+        /// <summary>
+        /// closes current panel control and redirects to the main menu control
+        /// </summary>
         private void GenerateMainMenuControl()
         {
             ClearPanel();
-            _ctrMainMenu.ElectionGroupClicked+= GenerateElectionGroupManagerControl;
+            _ctrMainMenu.ElectionGroupClicked += GenerateElectionGroupManagerControl;
             _ctrMainMenu.LogOutClicked += GenerateLoginControl;
             _ctrMainMenu.Init();
             pnlElectionTracker.Controls.Add(_ctrMainMenu);
         }
 
+        /// <summary>
+        /// closes current panel control and redirects to the election group manager control
+        /// </summary>
         private void GenerateElectionGroupManagerControl()
         {
             ClearPanel();

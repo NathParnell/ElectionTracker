@@ -33,7 +33,6 @@ namespace ElectionTracker.Services.Infrastructure
 
             CreateElectionGroupMembership(newElectiongroup, "Administrator");
             return true;
-
         }
 
         public void CreateElectionGroupMembership(ElectionGroup electionGroup, string userRole, User user = null) 
@@ -172,6 +171,11 @@ namespace ElectionTracker.Services.Infrastructure
             return votes;
         }
 
+        /// <summary>
+        /// method which counts the votes of each candidate in an election and then returns the candidate with the most votes
+        /// </summary>
+        /// <param name="election"></param>
+        /// <returns></returns>
         public Candidate GetElectionWinner(Election election)
         {
             List<Candidate> electionCandidates = GetCandidatesByElection(election);

@@ -1,18 +1,9 @@
 ﻿using ElectionTracker.Services;
-using ElectionTracker.Services.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace ElectionTracker.Controls
 {
@@ -22,6 +13,7 @@ namespace ElectionTracker.Controls
         private readonly IUserService _userService;
 
         public event Action RegistrationSuccess;
+        public event Action LoginClicked;
 
 
         public ctrRegister(IUserService userService)
@@ -62,7 +54,14 @@ namespace ElectionTracker.Controls
             {
                 RegistrationSuccess();
             }
-            
+        }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+            if (LoginClicked != null)
+            {
+                LoginClicked();
+            }
         }
 
         /// <summary>
@@ -168,6 +167,7 @@ namespace ElectionTracker.Controls
 
             return false;
         }
+
 
     }
 }

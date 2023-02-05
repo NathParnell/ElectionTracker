@@ -1,14 +1,8 @@
 ﻿using ElectionTracker.Classes;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ElectionTracker.Services.Infrastructure
 {
@@ -24,11 +18,29 @@ namespace ElectionTracker.Services.Infrastructure
 
         public User CurrentUser { get; set; }
 
+        /// <summary>
+        /// sets the current user variable to be the user passed through
+        /// can also be used to reset the current user value to be null
+        /// </summary>
+        /// <param name="user"></param>
         public void SetCurrentUser(User user = null)
         {
             this.CurrentUser = user;
         }
 
+
+        /// <summary>
+        /// Takes in account parameters and creates a user in the database
+        /// Then sets the current user variable to be the new user
+        /// </summary>
+        /// <param name="forename"></param>
+        /// <param name="surname"></param>
+        /// <param name="address"></param>
+        /// <param name="postcode"></param>
+        /// <param name="dateOfBirth"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns> confirmation account has been created </returns>
         public bool CreateAccount(string forename, string surname, string address, string postcode, DateTime dateOfBirth, string email, string password)
         {
             User NewUser = new User(forename, surname, address, postcode, dateOfBirth, email);
@@ -40,7 +52,13 @@ namespace ElectionTracker.Services.Infrastructure
             return true;
         }
 
-        
+        /// <summary>
+        /// compares attempted password to the one stored in the database
+        /// if the password is not the same or if the email address does not exist, then method returns false
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="passwordAttempt"></param>
+        /// <returns></returns>
         public bool AttemptLogin(string email, string passwordAttempt)
         {
             try
@@ -63,6 +81,12 @@ namespace ElectionTracker.Services.Infrastructure
             }  
         }
 
+        /// <summary>
+        /// method which generates a new has salt
+        /// I used this along with previous work i have done using password encyption here 
+        /// https://stackoverflow.com/questions/11412882/hash-password-in-c-bcrypt-pbkdf2
+        /// </summary>
+        /// <returns></returns>
         public string GenerateHashSalt()
         {
             const int saltSize = 128;
@@ -73,11 +97,11 @@ namespace ElectionTracker.Services.Infrastructure
         }
 
         /// <summary>
-        /// Takes in a string and salt as parameters and hashes the string accordingly
+        /// Takes in a string and hash salt as parameters and hashes the string accordingly
         /// </summary>
         /// <param name="saltString"></param>
         /// <param name="stringToHash"></param>
-        /// <returns></returns>
+        /// <returns> The hashed string </returns>
          public string Hasher(string saltString, string stringToHash)
          {
             const int HashSize = 128;

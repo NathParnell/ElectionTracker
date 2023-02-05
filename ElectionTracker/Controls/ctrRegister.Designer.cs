@@ -49,6 +49,7 @@
             this.txtPostcode = new System.Windows.Forms.TextBox();
             this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.dtDateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.btnLogIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +77,7 @@
             // txtForename
             // 
             this.txtForename.Location = new System.Drawing.Point(356, 242);
-            this.txtForename.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtForename.Margin = new System.Windows.Forms.Padding(2);
             this.txtForename.Name = "txtForename";
             this.txtForename.Size = new System.Drawing.Size(172, 20);
             this.txtForename.TabIndex = 0;
@@ -94,7 +95,7 @@
             // txtSurname
             // 
             this.txtSurname.Location = new System.Drawing.Point(565, 242);
-            this.txtSurname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSurname.Margin = new System.Windows.Forms.Padding(2);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(172, 20);
             this.txtSurname.TabIndex = 1;
@@ -112,7 +113,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(356, 479);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(172, 20);
             this.txtPassword.TabIndex = 6;
@@ -131,7 +132,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(356, 424);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(381, 20);
             this.txtEmail.TabIndex = 5;
@@ -149,7 +150,7 @@
             // btnRegister
             // 
             this.btnRegister.Location = new System.Drawing.Point(356, 527);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(380, 32);
             this.btnRegister.TabIndex = 8;
@@ -180,7 +181,7 @@
             // txtRePassword
             // 
             this.txtRePassword.Location = new System.Drawing.Point(565, 479);
-            this.txtRePassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRePassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtRePassword.Name = "txtRePassword";
             this.txtRePassword.Size = new System.Drawing.Size(172, 20);
             this.txtRePassword.TabIndex = 7;
@@ -190,7 +191,7 @@
             // 
             this.pbxLogo.Image = global::ElectionTracker.Properties.Resources.ElectionTrackerLogo;
             this.pbxLogo.Location = new System.Drawing.Point(2, 2);
-            this.pbxLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxLogo.Margin = new System.Windows.Forms.Padding(2);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(334, 92);
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -210,7 +211,7 @@
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(356, 285);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(381, 20);
             this.txtAddress.TabIndex = 2;
@@ -228,7 +229,7 @@
             // txtPostcode
             // 
             this.txtPostcode.Location = new System.Drawing.Point(356, 327);
-            this.txtPostcode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPostcode.Margin = new System.Windows.Forms.Padding(2);
             this.txtPostcode.Name = "txtPostcode";
             this.txtPostcode.Size = new System.Drawing.Size(381, 20);
             this.txtPostcode.TabIndex = 3;
@@ -246,16 +247,28 @@
             // dtDateOfBirth
             // 
             this.dtDateOfBirth.Location = new System.Drawing.Point(356, 375);
-            this.dtDateOfBirth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
             this.dtDateOfBirth.Name = "dtDateOfBirth";
             this.dtDateOfBirth.Size = new System.Drawing.Size(382, 20);
             this.dtDateOfBirth.TabIndex = 4;
+            // 
+            // btnLogIn
+            // 
+            this.btnLogIn.Location = new System.Drawing.Point(356, 572);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(380, 32);
+            this.btnLogIn.TabIndex = 34;
+            this.btnLogIn.Text = "Log in";
+            this.btnLogIn.UseVisualStyleBackColor = true;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // ctrRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.dtDateOfBirth);
             this.Controls.Add(this.lblDateOfBirth);
             this.Controls.Add(this.lblPostcode);
@@ -277,7 +290,7 @@
             this.Controls.Add(this.lblForename);
             this.Controls.Add(this.txtForename);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1100, 654);
             this.MinimumSize = new System.Drawing.Size(1100, 654);
             this.Name = "ctrRegister";
@@ -311,5 +324,6 @@
         private System.Windows.Forms.TextBox txtPostcode;
         private System.Windows.Forms.Label lblDateOfBirth;
         private System.Windows.Forms.DateTimePicker dtDateOfBirth;
+        private System.Windows.Forms.Button btnLogIn;
     }
 }

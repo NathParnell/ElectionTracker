@@ -5,15 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
-using System.Dynamic;
-using System.Globalization;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Collections.Specialized.BitVector32;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-
 
 namespace ElectionTracker.Services.Infrastructure
 {
@@ -291,6 +283,11 @@ namespace ElectionTracker.Services.Infrastructure
             }
         }
 
+        /// <summary>
+        /// gets the default connection string from app.config
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public string LoadConnectionString(string id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;

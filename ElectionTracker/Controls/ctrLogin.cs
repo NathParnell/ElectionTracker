@@ -24,6 +24,19 @@ namespace ElectionTracker.Controls
             InitializeComponent();
         }
 
+        /// <summary>
+        /// method called each time the control is opened 
+        /// </summary>
+        public void Init()
+        {
+            if (_userService.CurrentUser != null)
+            {
+                _userService.SetCurrentUser();
+            }
+            this.txtEmail.Text = string.Empty;
+            this.txtPassword.Text = string.Empty;
+        }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (RegisterClicked != null)
@@ -37,22 +50,17 @@ namespace ElectionTracker.Controls
             if (String.IsNullOrEmpty(txtEmail.Text) || String.IsNullOrEmpty(txtPassword.Text))
                 return;
 
-            _userService.AttemptLogin(txtEmail.Text, txtPassword.Text);
+            bool loginSuccessful = _userService.AttemptLogin(txtEmail.Text, txtPassword.Text);
 
-            if (LogInSuccess != null)
+            if (loginSuccessful)
             {
-                LogInSuccess();
+                if (LogInSuccess != null)
+                {
+                    LogInSuccess();
+                }
             }
-        }
 
-        public void Init()
-        {
-            if (_userService.CurrentUser != null)
-            {
-                _userService.SetCurrentUser();
-            }
-            this.txtEmail.Text = string.Empty;
-            this.txtPassword.Text = string.Empty;
+            
         }
 
         private void ctrLogin_Load(object sender, EventArgs e)

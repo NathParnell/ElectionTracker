@@ -17,8 +17,6 @@ namespace ElectionTracker
     {
         public static IServiceProvider ServiceProvider { get; private set; }
 
-
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

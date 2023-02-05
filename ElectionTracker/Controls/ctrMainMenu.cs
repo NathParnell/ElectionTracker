@@ -35,27 +35,38 @@ namespace ElectionTracker.Controls
             Init();
         }
 
+        /// <summary>
+        /// method called each time the control is opened 
+        /// </summary>
         public void Init()
         {
             DisplayUserDetails();
             DisplayUserElectionGroups();
         }
 
-
+        /// <summary>
+        /// displays the user's name in the for each
+        /// </summary>
         public void DisplayUserDetails()
         {
             try
             {
-
                 lblCurrentUserName.Text = _userService.CurrentUser.Forename + " " + _userService.CurrentUser.Surname;
             }
             catch(Exception ex)
             {
-
+                //means that the user hasnt pulled through so a user isnt logged in properly
+                if (LogOutClicked != null)
+                {
+                    LogOutClicked();
+                }
             }
         }
 
-
+        /// <summary>
+        /// method which controls the gerating of the flow layout pnel controls
+        /// creates a new control for each election group
+        /// </summary>
         public void DisplayUserElectionGroups()
         {
             flpUserElectionGroups.Controls.Clear();
