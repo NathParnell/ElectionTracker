@@ -26,7 +26,9 @@ namespace ElectionTracker.Forms
 
         private void btnCreateElection_Click(object sender, EventArgs e)
         {
-            Election newElection = new Election(txtElectionName.Text, txtElectionDescription.Text, _electionGroup.ElectionGroupID, Convert.ToDateTime(dtElectionStartDate.Text), Convert.ToDateTime(dtElectionEndDate.Text));
+            Election newElection = new Election(txtElectionName.Text, txtElectionDescription.Text, _electionGroup.ElectionGroupID,
+                dtElectionStartDate.Value.AddHours(dtElectionStartTime.Value.Hour).AddMinutes(dtElectionStartTime.Value.Minute),
+                dtElectionEndDate.Value.AddHours(dtElectionEndTime.Value.Hour).AddMinutes(dtElectionEndTime.Value.Minute));
 
             bool electionAdded = _electionservice.CreateElection(newElection);
             if (electionAdded)

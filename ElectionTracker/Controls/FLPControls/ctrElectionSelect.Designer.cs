@@ -48,20 +48,20 @@
             // 
             // btnEditElection
             // 
-            this.btnEditElection.Location = new System.Drawing.Point(419, 17);
+            this.btnEditElection.Location = new System.Drawing.Point(428, 38);
             this.btnEditElection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEditElection.Name = "btnEditElection";
-            this.btnEditElection.Size = new System.Drawing.Size(205, 26);
+            this.btnEditElection.Size = new System.Drawing.Size(162, 26);
             this.btnEditElection.TabIndex = 2;
             this.btnEditElection.Text = "Edit Election";
             this.btnEditElection.UseVisualStyleBackColor = true;
             // 
             // btnAddPostalVote
             // 
-            this.btnAddPostalVote.Location = new System.Drawing.Point(656, 17);
+            this.btnAddPostalVote.Location = new System.Drawing.Point(596, 38);
             this.btnAddPostalVote.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddPostalVote.Name = "btnAddPostalVote";
-            this.btnAddPostalVote.Size = new System.Drawing.Size(211, 26);
+            this.btnAddPostalVote.Size = new System.Drawing.Size(162, 26);
             this.btnAddPostalVote.TabIndex = 3;
             this.btnAddPostalVote.Text = "Add Postal Vote";
             this.btnAddPostalVote.UseVisualStyleBackColor = true;
@@ -69,10 +69,10 @@
             // 
             // btnAddBallotStationVote
             // 
-            this.btnAddBallotStationVote.Location = new System.Drawing.Point(656, 62);
+            this.btnAddBallotStationVote.Location = new System.Drawing.Point(764, 38);
             this.btnAddBallotStationVote.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddBallotStationVote.Name = "btnAddBallotStationVote";
-            this.btnAddBallotStationVote.Size = new System.Drawing.Size(211, 26);
+            this.btnAddBallotStationVote.Size = new System.Drawing.Size(162, 26);
             this.btnAddBallotStationVote.TabIndex = 4;
             this.btnAddBallotStationVote.Text = "Add Ballot Station Vote";
             this.btnAddBallotStationVote.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@
             // 
             // btnCountVotes
             // 
-            this.btnCountVotes.Location = new System.Drawing.Point(900, 38);
+            this.btnCountVotes.Location = new System.Drawing.Point(932, 38);
             this.btnCountVotes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCountVotes.Name = "btnCountVotes";
             this.btnCountVotes.Size = new System.Drawing.Size(139, 26);
@@ -102,10 +102,10 @@
             // 
             // btnCandidates
             // 
-            this.btnCandidates.Location = new System.Drawing.Point(419, 62);
+            this.btnCandidates.Location = new System.Drawing.Point(260, 38);
             this.btnCandidates.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCandidates.Name = "btnCandidates";
-            this.btnCandidates.Size = new System.Drawing.Size(205, 26);
+            this.btnCandidates.Size = new System.Drawing.Size(162, 26);
             this.btnCandidates.TabIndex = 7;
             this.btnCandidates.Text = "Candidates";
             this.btnCandidates.UseVisualStyleBackColor = true;
@@ -124,7 +124,7 @@
             this.Controls.Add(this.lblElectionName);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ctrElectionSelect";
-            this.Size = new System.Drawing.Size(1244, 106);
+            this.Size = new System.Drawing.Size(1226, 106);
             this.Load += new System.EventHandler(this.ctrElectionSelect_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

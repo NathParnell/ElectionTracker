@@ -44,5 +44,20 @@ namespace ElectionTracker.Controls
                 LogInSuccess();
             }
         }
+
+        public void Init()
+        {
+            if (_userService.CurrentUser != null)
+            {
+                _userService.SetCurrentUser();
+            }
+            this.txtEmail.Text = string.Empty;
+            this.txtPassword.Text = string.Empty;
+        }
+
+        private void ctrLogin_Load(object sender, EventArgs e)
+        {
+            Init();
+        }
     }
 }

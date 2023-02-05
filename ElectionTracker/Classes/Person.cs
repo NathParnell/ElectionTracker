@@ -11,9 +11,9 @@ namespace ElectionTracker.Classes
         public Person()
         { }
 
-        public Person(string Forename, string Surname, string Email)
+        public Person(string forename, string Surname, string Email)
         {
-            this.Forename = Forename;
+            this.Forename = forename;
             this.Surname = Surname;
             this.Email = Email;
         }

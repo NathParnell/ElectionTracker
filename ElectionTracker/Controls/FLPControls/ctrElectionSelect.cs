@@ -32,6 +32,7 @@ namespace ElectionTracker.Controls.FLPControls
         private void ctrElectionSelect_Load(object sender, EventArgs e)
         {
             //make a method which disables all controls
+            setControlColor();
             DisableControls();
             PopulateControls();
         }
@@ -66,6 +67,29 @@ namespace ElectionTracker.Controls.FLPControls
 
         }
 
+        /// <summary>
+        /// method checks whether the election is still active and if not it disables the button.
+        /// It also uses color to show the status of the election
+        /// </summary>
+        private void setControlColor()
+        {
+            if (_election.StartDate.Date > DateTime.Now.Date || _election.EndDate.Date < DateTime.Now.Date)
+            {
+                this.BackColor = Color.Red;
+                btnVote.Hide();
+            }
+            else if (DateTime.Now.AddDays(1).Date == _election.EndDate.Date)
+            {
+                this.BackColor = Color.Yellow;
+                btnVote.Show();
+            }
+            else
+            {
+                this.BackColor = Color.Green;
+                btnVote.Show();
+            }
+        }
+
         private void btnCandidates_Click(object sender, EventArgs e)
         {
             frmCandidates frmCandidates = new frmCandidates(_election, _electionService, _userRole);
@@ -92,7 +116,8 @@ namespace ElectionTracker.Controls.FLPControls
 
         private void btnCountVotes_Click(object sender, EventArgs e)
         {
-            
+            frmCountVotes frmCountVotes = new frmCountVotes(_electionService, _election);
+            frmCountVotes.ShowDialog();
         }
     }
 }

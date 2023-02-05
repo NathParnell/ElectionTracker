@@ -59,6 +59,7 @@
             this.Controls.Add(this.btnVote);
             this.Controls.Add(this.cmbCandidate);
             this.Name = "frmVote";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmVote";
             this.Load += new System.EventHandler(this.frmVote_Load);
             this.ResumeLayout(false);

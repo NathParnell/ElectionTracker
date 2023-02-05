@@ -38,29 +38,27 @@
             // cmbElectionGroup
             // 
             this.cmbElectionGroup.FormattingEnabled = true;
-            this.cmbElectionGroup.Location = new System.Drawing.Point(75, 110);
-            this.cmbElectionGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbElectionGroup.Location = new System.Drawing.Point(100, 135);
+            this.cmbElectionGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbElectionGroup.Name = "cmbElectionGroup";
-            this.cmbElectionGroup.Size = new System.Drawing.Size(294, 21);
+            this.cmbElectionGroup.Size = new System.Drawing.Size(391, 24);
             this.cmbElectionGroup.TabIndex = 0;
             // 
             // lblElectionGroup
             // 
             this.lblElectionGroup.AutoSize = true;
-            this.lblElectionGroup.Location = new System.Drawing.Point(73, 95);
-            this.lblElectionGroup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblElectionGroup.Location = new System.Drawing.Point(97, 117);
             this.lblElectionGroup.Name = "lblElectionGroup";
-            this.lblElectionGroup.Size = new System.Drawing.Size(77, 13);
+            this.lblElectionGroup.Size = new System.Drawing.Size(95, 16);
             this.lblElectionGroup.TabIndex = 1;
             this.lblElectionGroup.Text = "Election Group";
             // 
             // lblRole
             // 
             this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(73, 165);
-            this.lblRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRole.Location = new System.Drawing.Point(97, 203);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(149, 13);
+            this.lblRole.Size = new System.Drawing.Size(184, 16);
             this.lblRole.TabIndex = 3;
             this.lblRole.Text = "Are you a Voter or an Auditor?";
             // 
@@ -70,17 +68,18 @@
             this.cmbRole.Items.AddRange(new object[] {
             "Voter",
             "Auditor"});
-            this.cmbRole.Location = new System.Drawing.Point(75, 180);
-            this.cmbRole.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbRole.Location = new System.Drawing.Point(100, 222);
+            this.cmbRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(294, 21);
+            this.cmbRole.Size = new System.Drawing.Size(391, 24);
             this.cmbRole.TabIndex = 2;
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(145, 290);
+            this.btnRegister.Location = new System.Drawing.Point(193, 357);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(146, 37);
+            this.btnRegister.Size = new System.Drawing.Size(195, 46);
             this.btnRegister.TabIndex = 4;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
@@ -88,17 +87,18 @@
             // 
             // frmRegisterElectionGroup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(436, 563);
+            this.ClientSize = new System.Drawing.Size(581, 693);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.cmbRole);
             this.Controls.Add(this.lblElectionGroup);
             this.Controls.Add(this.cmbElectionGroup);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmRegisterElectionGroup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmRegisterElectionGroup";
             this.Load += new System.EventHandler(this.frmRegisterElectionGroup_Load);
             this.ResumeLayout(false);

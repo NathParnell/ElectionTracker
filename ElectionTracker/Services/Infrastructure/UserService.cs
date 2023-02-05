@@ -24,16 +24,16 @@ namespace ElectionTracker.Services.Infrastructure
 
         public User CurrentUser { get; set; }
 
-        public void SetCurrentUser(User user)
+        public void SetCurrentUser(User user = null)
         {
             this.CurrentUser = user;
         }
 
-        public bool CreateAccount(string Forename, string Surname, string Email, string Password)
+        public bool CreateAccount(string forename, string surname, string address, string postcode, DateTime dateOfBirth, string email, string password)
         {
-            User NewUser = new User(Forename, Surname, Email);
+            User NewUser = new User(forename, surname, address, postcode, dateOfBirth, email);
             NewUser.PasswordSalt = GenerateHashSalt();
-            NewUser.Password = Hasher(NewUser.PasswordSalt, Password);
+            NewUser.Password = Hasher(NewUser.PasswordSalt, password);
             _dataService.CreateUser(NewUser);
             SetCurrentUser(_dataService.GetUserByUserID(NewUser.UserID)); 
             //should this include a check to see if the db command has worked

@@ -77,7 +77,7 @@
             this.txtForename.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtForename.Name = "txtForename";
             this.txtForename.Size = new System.Drawing.Size(228, 22);
-            this.txtForename.TabIndex = 10;
+            this.txtForename.TabIndex = 0;
             // 
             // lblSurname
             // 
@@ -94,7 +94,7 @@
             this.txtSurname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(228, 22);
-            this.txtSurname.TabIndex = 12;
+            this.txtSurname.TabIndex = 1;
             // 
             // lblPassword
             // 
@@ -111,7 +111,8 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(228, 22);
-            this.txtPassword.TabIndex = 14;
+            this.txtPassword.TabIndex = 6;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblEmail
             // 
@@ -128,7 +129,7 @@
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(507, 22);
-            this.txtEmail.TabIndex = 16;
+            this.txtEmail.TabIndex = 5;
             // 
             // lblMessage
             // 
@@ -145,7 +146,7 @@
             this.btnRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(507, 39);
-            this.btnRegister.TabIndex = 22;
+            this.btnRegister.TabIndex = 8;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -174,7 +175,8 @@
             this.txtRePassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRePassword.Name = "txtRePassword";
             this.txtRePassword.Size = new System.Drawing.Size(228, 22);
-            this.txtRePassword.TabIndex = 25;
+            this.txtRePassword.TabIndex = 7;
+            this.txtRePassword.UseSystemPasswordChar = true;
             // 
             // pbxLogo
             // 
@@ -201,7 +203,7 @@
             this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(507, 22);
-            this.txtAddress.TabIndex = 28;
+            this.txtAddress.TabIndex = 2;
             // 
             // lblPostcode
             // 
@@ -218,7 +220,7 @@
             this.txtPostcode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPostcode.Name = "txtPostcode";
             this.txtPostcode.Size = new System.Drawing.Size(507, 22);
-            this.txtPostcode.TabIndex = 30;
+            this.txtPostcode.TabIndex = 3;
             // 
             // lblDateOfBirth
             // 
@@ -234,7 +236,7 @@
             this.dtDateOfBirth.Location = new System.Drawing.Point(474, 462);
             this.dtDateOfBirth.Name = "dtDateOfBirth";
             this.dtDateOfBirth.Size = new System.Drawing.Size(508, 22);
-            this.dtDateOfBirth.TabIndex = 34;
+            this.dtDateOfBirth.TabIndex = 4;
             // 
             // ctrRegister
             // 

@@ -48,6 +48,7 @@
             this.MaximumSize = new System.Drawing.Size(1485, 852);
             this.MinimumSize = new System.Drawing.Size(1485, 852);
             this.Name = "frmElectionTracker";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Election Tracker";
             this.Load += new System.EventHandler(this.frmElectionTracker_Load);
             this.ResumeLayout(false);

@@ -38,21 +38,12 @@ namespace ElectionTracker
             GenerateLoginControl();
         }
 
-        /// <summary>
-        /// Method to check if the panel is clear and if not it clears it
-        /// </summary>
-        private void ClearPanel()
-        {
-            if (pnlElectionTracker.Controls.Count != 0){
-                pnlElectionTracker.Controls.Clear();
-            }
-        }
-
         private void GenerateLoginControl()
         {
             ClearPanel();
             _ctrLogin.RegisterClicked += GenerateRegistrationControl;
             _ctrLogin.LogInSuccess += GenerateMainMenuControl;
+            _ctrLogin.Init();
             pnlElectionTracker.Controls.Add(_ctrLogin);
         }
 
@@ -67,13 +58,29 @@ namespace ElectionTracker
         {
             ClearPanel();
             _ctrMainMenu.ElectionGroupClicked+= GenerateElectionGroupManagerControl;
+            _ctrMainMenu.LogOutClicked += GenerateLoginControl;
+            _ctrMainMenu.Init();
             pnlElectionTracker.Controls.Add(_ctrMainMenu);
         }
 
         private void GenerateElectionGroupManagerControl()
         {
             ClearPanel();
+            _ctrElectionGroupManager.Init();
+            _ctrElectionGroupManager.MainMenuClicked += GenerateMainMenuControl;
+            _ctrElectionGroupManager.LogOutClicked += GenerateLoginControl;
             pnlElectionTracker.Controls.Add(_ctrElectionGroupManager);
+        }
+
+        /// <summary>
+        /// Method to check if the panel is clear and if not it clears it
+        /// </summary>
+        private void ClearPanel()
+        {
+            if (pnlElectionTracker.Controls.Count != 0)
+            {
+                pnlElectionTracker.Controls.Clear();
+            }
         }
 
     }

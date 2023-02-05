@@ -10,8 +10,8 @@ namespace ElectionTracker.Services
     public interface IUserService
     {
         User CurrentUser { get; set; }
-        void SetCurrentUser(User user);
-        bool CreateAccount(string Forename, string Surname, string Email, string Password);
+        void SetCurrentUser(User user = null);
+        bool CreateAccount(string forename, string surname, string address, string postcode, DateTime dateOfBirth, string email, string password);
         bool AttemptLogin(string email, string passwordAttempt);
         string GenerateHashSalt();
         string Hasher(string saltString, string stringToHash);

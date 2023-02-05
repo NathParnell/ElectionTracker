@@ -21,6 +21,7 @@ namespace ElectionTracker.Controls
         private readonly IElectionService _electionService;
 
         public event Action ElectionGroupClicked;
+        public event Action LogOutClicked;
 
         public ctrMainMenu(IUserService userService, IElectionService electionService)
         {
@@ -31,6 +32,11 @@ namespace ElectionTracker.Controls
 
         private void ctrMainMenu_Load(object sender, EventArgs e)
         {
+            Init();
+        }
+
+        public void Init()
+        {
             DisplayUserDetails();
             DisplayUserElectionGroups();
         }
@@ -40,6 +46,7 @@ namespace ElectionTracker.Controls
         {
             try
             {
+
                 lblCurrentUserName.Text = _userService.CurrentUser.Forename + " " + _userService.CurrentUser.Surname;
             }
             catch(Exception ex)
@@ -51,6 +58,8 @@ namespace ElectionTracker.Controls
 
         public void DisplayUserElectionGroups()
         {
+            flpUserElectionGroups.Controls.Clear();
+
             try
             {
                 List<ElectionGroupMembership> userElectionGroupMemberships = _electionService.GetUserElectionGroupMemberships();
@@ -76,8 +85,8 @@ namespace ElectionTracker.Controls
             {
                 Console.WriteLine(ex.Message);
             }
-            
         }
+
 
         private void GenerateElectionGroupControl(ElectionGroupMembership userElectionGroupMembership, ElectionGroup electionGroup)
         {
@@ -86,27 +95,35 @@ namespace ElectionTracker.Controls
             flpUserElectionGroups.Controls.Add(electionGroupControl);
         }
 
-        private void GenerateElectionGroupManager(ElectionGroup eg)
+        private void GenerateElectionGroupManager(ElectionGroup electionGroup)
         {
             if (ElectionGroupClicked != null)
             {
-                _electionService.SelectedElectionGroup = eg;
-                ElectionGroupClicked() ;
+                _electionService.SelectedElectionGroup = electionGroup;
+                ElectionGroupClicked();
             }
         }
-
-
 
         private void btnCreateElectionGroup_Click(object sender, EventArgs e)
         {
             frmCreateElectionGroup frmCreateElectionGroup = new frmCreateElectionGroup(_userService, _electionService);
             frmCreateElectionGroup.ShowDialog();
+
+            DisplayUserElectionGroups();
         }
 
         private void btnElectionGroupRegister_Click(object sender, EventArgs e)
         {
             frmRegisterElectionGroup frmRegisterElectionGroup = new frmRegisterElectionGroup(_userService, _electionService);
             frmRegisterElectionGroup.ShowDialog();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            if (LogOutClicked != null)
+            {
+                LogOutClicked();
+            }
         }
     }
 }

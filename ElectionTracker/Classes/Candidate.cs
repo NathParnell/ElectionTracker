@@ -11,13 +11,13 @@ namespace ElectionTracker.Classes
 
         public Candidate() { }
 
-        public Candidate(string Forename, string Surname, string Email, string ElectionID, string Description, string Partyname)
-            : base(Forename, Surname, Email)
+        public Candidate(string forename, string surname, string email, string electionID, string description, string partyname)
+            : base(forename, surname, email)
         {
             this.CandidateID = Taikandi.SequentialGuid.NewGuid().ToString();
-            this.ElectionID = ElectionID;
-            this.Description = Description;
-            this.Partyname = Partyname;
+            this.ElectionID = electionID;
+            this.Description = description;
+            this.Partyname = partyname;
         }
 
         public string CandidateID { get; set; }

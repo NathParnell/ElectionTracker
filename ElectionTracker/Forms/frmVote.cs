@@ -31,9 +31,11 @@ namespace ElectionTracker.Forms
 
         private void frmVote_Load(object sender, EventArgs e)
         {
+            _candidates = _electionService.GetCandidatesByElection(_election);
+
             Vote existingUserVote = CheckIfUserHasVoted();
 
-            if (existingUserVote != null && _voteMethod == "ElectionTracker")
+            if (existingUserVote.VoteID != null && _voteMethod == "ElectionTracker")
             {
                 //I used this to learn how to create a message box with buttons - https://stackoverflow.com/questions/5414270/messagebox-buttons
                 if (MessageBox.Show("You have already voted in this Election. Would you like to delete your existing vote so you can vote again?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -46,7 +48,7 @@ namespace ElectionTracker.Forms
                 }
             }
 
-            _candidates = _electionService.GetCandidatesByElection(_election);
+           
 
             foreach (Candidate candidate in _candidates)
             {
@@ -70,6 +72,10 @@ namespace ElectionTracker.Forms
 
         }
 
+        /// <summary>
+        /// returns an empty vote if the user hasnt voted already
+        /// </summary>
+        /// <returns></returns>
         private Vote CheckIfUserHasVoted()
         {
             //method below contains any vote put through by the user for any election ever

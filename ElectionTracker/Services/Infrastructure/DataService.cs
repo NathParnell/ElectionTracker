@@ -76,8 +76,8 @@ namespace ElectionTracker.Services.Infrastructure
         {
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
             {
-                string createVoteQuery = "Insert into Vote (VoteID, CandidateID, VoteID, VoteMethod)" +
-                                        "values (@VoteID, @CandidateID, @VoteID, @VoteMethod) ";
+                string createVoteQuery = "Insert into Vote (VoteID, CandidateID, UserID, VoteMethod)" +
+                                        "values (@VoteID, @CandidateID, @UserID, @VoteMethod) ";
                 conn.Execute(createVoteQuery, vote);
             }
         }

@@ -42,6 +42,9 @@ namespace ElectionTracker.Controls
 
             bool RegistrationComplete = _userService.CreateAccount(txtForename.Text,
                 txtSurname.Text,
+                txtAddress.Text,
+                txtPostcode.Text,
+                dtDateOfBirth.Value,
                 txtEmail.Text,
                 txtPassword.Text);
 
@@ -158,6 +161,5 @@ namespace ElectionTracker.Controls
 
             return false;
         }
-
     }
 }

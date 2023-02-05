@@ -15,15 +15,13 @@ namespace ElectionTracker.Forms
 {
     public partial class frmCountVotes : Form
     {
-        private readonly IUserService _userService;
         private readonly IElectionService _electionService;
         private Election _election;
 
-        public frmCountVotes(IElectionService electionService, IUserService userService, Election election)
+        public frmCountVotes(IElectionService electionService, Election election)
         {
             InitializeComponent();
             _electionService = electionService;
-            _userService = userService;
             _election = election;
         }
 

@@ -27,15 +27,19 @@ namespace ElectionTracker.Classes
 
         /// <summary>
         /// Constructor for a new user
+        /// password and password salt does not get set in the constructor.
         /// </summary>
         /// <param name="Forename"></param>
         /// <param name="Surname"></param>
         /// <param name="Email"></param>
         /// <param name="Password"></param>
-        public User (string Forename, string Surname, string Email)
-            : base(Forename, Surname, Email)
+        public User (string forename, string surname, string address, string postcode, DateTime dateOfBirth, string email)
+            : base(forename, surname, email)
         {
             this.UserID = Taikandi.SequentialGuid.NewGuid().ToString();
+            this.Address = address;
+            this.Postcode = postcode;
+            this.DateOfBirth = dateOfBirth;
             this.EntryDate = DateTime.Now;
         }
 

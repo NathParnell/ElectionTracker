@@ -33,6 +33,8 @@
             this.btnCreateElection = new System.Windows.Forms.Button();
             this.btnAcceptElectionGroupMembers = new System.Windows.Forms.Button();
             this.flpActiveElections = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnMainMenu = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,23 +85,50 @@
             // 
             // flpActiveElections
             // 
+            this.flpActiveElections.AutoScroll = true;
             this.flpActiveElections.Location = new System.Drawing.Point(103, 300);
-            this.flpActiveElections.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpActiveElections.Margin = new System.Windows.Forms.Padding(4);
             this.flpActiveElections.Name = "flpActiveElections";
-            this.flpActiveElections.Size = new System.Drawing.Size(1259, 382);
+            this.flpActiveElections.Size = new System.Drawing.Size(1259, 473);
             this.flpActiveElections.TabIndex = 12;
+            // 
+            // btnMainMenu
+            // 
+            this.btnMainMenu.BackColor = System.Drawing.Color.LightGray;
+            this.btnMainMenu.Location = new System.Drawing.Point(1020, 2);
+            this.btnMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMainMenu.Name = "btnMainMenu";
+            this.btnMainMenu.Size = new System.Drawing.Size(201, 113);
+            this.btnMainMenu.TabIndex = 13;
+            this.btnMainMenu.Text = "Main Menu";
+            this.btnMainMenu.UseVisualStyleBackColor = false;
+            this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BackColor = System.Drawing.Color.LightGray;
+            this.btnLogOut.Location = new System.Drawing.Point(1227, 2);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(201, 113);
+            this.btnLogOut.TabIndex = 14;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // ctrElectionGroupManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.Controls.Add(this.btnLogOut);
+            this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.flpActiveElections);
             this.Controls.Add(this.btnAcceptElectionGroupMembers);
             this.Controls.Add(this.btnCreateElection);
             this.Controls.Add(this.lblElectionGroupName);
             this.Controls.Add(this.pbxLogo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1467, 805);
             this.MinimumSize = new System.Drawing.Size(1467, 805);
             this.Name = "ctrElectionGroupManager";
@@ -118,5 +147,7 @@
         private System.Windows.Forms.Button btnCreateElection;
         private System.Windows.Forms.Button btnAcceptElectionGroupMembers;
         private System.Windows.Forms.FlowLayoutPanel flpActiveElections;
+        private System.Windows.Forms.Button btnMainMenu;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

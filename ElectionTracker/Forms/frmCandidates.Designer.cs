@@ -219,6 +219,7 @@
             this.Controls.Add(this.btnAddCandidate);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCandidates";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Candidates";
             this.Load += new System.EventHandler(this.frmCandidates_Load);
             this.ResumeLayout(false);
