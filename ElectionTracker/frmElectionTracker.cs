@@ -51,6 +51,7 @@ namespace ElectionTracker
         {
             ClearPanel();
             _ctrRegister.RegistrationSuccess+= GenerateMainMenuControl;
+            _ctrRegister.Init();
             pnlElectionTracker.Controls.Add(_ctrRegister);
         }
 
@@ -66,9 +67,9 @@ namespace ElectionTracker
         private void GenerateElectionGroupManagerControl()
         {
             ClearPanel();
-            _ctrElectionGroupManager.Init();
             _ctrElectionGroupManager.MainMenuClicked += GenerateMainMenuControl;
             _ctrElectionGroupManager.LogOutClicked += GenerateLoginControl;
+            _ctrElectionGroupManager.Init();
             pnlElectionTracker.Controls.Add(_ctrElectionGroupManager);
         }
 

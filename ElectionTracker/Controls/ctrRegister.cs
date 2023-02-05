@@ -30,6 +30,13 @@ namespace ElectionTracker.Controls
             InitializeComponent();
         }
 
+        public void Init()
+        {
+            foreach (var button in this.Controls.OfType<TextBox>())
+            {
+                button.Text = string.Empty;
+            }
+        }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -161,5 +168,6 @@ namespace ElectionTracker.Controls
 
             return false;
         }
+
     }
 }
