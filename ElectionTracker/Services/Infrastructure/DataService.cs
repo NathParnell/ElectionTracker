@@ -16,120 +16,228 @@ namespace ElectionTracker.Services.Infrastructure
     {
         public void CreateUser(User user)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string createUserQuery = "Insert into User (UserID, Forename, Surname, Email, Password, PasswordSalt, Address, Postcode, DateofBirth, EntryDate)" +
-                                        "values (@UserID, @Forename, @Surname, @Email, @Password, @PasswordSalt, @Address, @Postcode, @DateofBirth, @EntryDate) ";
-                conn.Execute(createUserQuery, user);
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string createUserQuery = "Insert into User (UserID, Forename, Surname, Email, Password, PasswordSalt, Address, Postcode, DateofBirth, EntryDate)" +
+                                            "values (@UserID, @Forename, @Surname, @Email, @Password, @PasswordSalt, @Address, @Postcode, @DateofBirth, @EntryDate) ";
+                    conn.Execute(createUserQuery, user);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
         public void CreateElectionGroup(ElectionGroup electionGroup)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string createElectionGroupQuery = "Insert into ElectionGroup (ElectionGroupID, Name, Description, EntryDate)" +
-                                        "values (@ElectionGroupID, @Name, @Description, @EntryDate) ";
-                conn.Execute(createElectionGroupQuery, electionGroup);
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string createElectionGroupQuery = "Insert into ElectionGroup (ElectionGroupID, Name, Description, EntryDate)" +
+                                            "values (@ElectionGroupID, @Name, @Description, @EntryDate) ";
+                    conn.Execute(createElectionGroupQuery, electionGroup);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
         public void CreateElectionGroupMembership(ElectionGroupMembership electionGroupMembership)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string createElectionGroupMembershipQuery = "Insert into ElectionGroupMembership (ElectionGroupMembershipID, ElectionGroupID, UserID, UserRole, Accepted)" +
-                                        "values (@ElectionGroupMembershipID, @ElectionGroupID, @UserID, @UserRole, @Accepted) ";
-                conn.Execute(createElectionGroupMembershipQuery, electionGroupMembership);
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string createElectionGroupMembershipQuery = "Insert into ElectionGroupMembership (ElectionGroupMembershipID, ElectionGroupID, UserID, UserRole, Accepted)" +
+                                            "values (@ElectionGroupMembershipID, @ElectionGroupID, @UserID, @UserRole, @Accepted) ";
+                    conn.Execute(createElectionGroupMembershipQuery, electionGroupMembership);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
         public void CreateElection(Election election)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string createElectionQuery = "Insert into Election (ElectionID, Name, Description, ElectionGroupID, StartDate, EndDate)" +
-                                        "values (@ElectionID, @Name, @Description, @ElectionGroupID, @StartDate, @EndDate) ";
-                conn.Execute(createElectionQuery, election);
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string createElectionQuery = "Insert into Election (ElectionID, Name, Description, ElectionGroupID, StartDate, EndDate)" +
+                                            "values (@ElectionID, @Name, @Description, @ElectionGroupID, @StartDate, @EndDate) ";
+                    conn.Execute(createElectionQuery, election);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
         public void CreateCandidate(Candidate candidate)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string createCandidateQuery = "Insert into Candidate (CandidateID, Forename, Surname, Email, ElectionID, Description, Partyname)" +
-                                        "values (@CandidateID, @Forename, @Surname, @Email, @ElectionID, @Description, @Partyname) ";
-                conn.Execute(createCandidateQuery, candidate);
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string createCandidateQuery = "Insert into Candidate (CandidateID, Forename, Surname, Email, ElectionID, Description, Partyname)" +
+                                            "values (@CandidateID, @Forename, @Surname, @Email, @ElectionID, @Description, @Partyname) ";
+                    conn.Execute(createCandidateQuery, candidate);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
         public void CreateVote(Vote vote)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string createVoteQuery = "Insert into Vote (VoteID, CandidateID, UserID, VoteMethod)" +
-                                        "values (@VoteID, @CandidateID, @UserID, @VoteMethod) ";
-                conn.Execute(createVoteQuery, vote);
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string createVoteQuery = "Insert into Vote (VoteID, CandidateID, UserID, VoteMethod)" +
+                                            "values (@VoteID, @CandidateID, @UserID, @VoteMethod) ";
+                    conn.Execute(createVoteQuery, vote);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
         public void AcceptElectionGroupRequest(string electionGroupMembershipID)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string createElectionGroupMembershipQuery = "Update ElectionGroupMembership Set Accepted = 1 Where ElectionGroupMembershipID = @ElectionGroupMembershipID";
-                                        
-                conn.Execute(createElectionGroupMembershipQuery, new { ElectionGroupMembershipID = electionGroupMembershipID});
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string createElectionGroupMembershipQuery = "Update ElectionGroupMembership Set Accepted = 1 Where ElectionGroupMembershipID = @ElectionGroupMembershipID";
+
+                    conn.Execute(createElectionGroupMembershipQuery, new { ElectionGroupMembershipID = electionGroupMembershipID });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        
+        public int CheckEmailIsUnique(string email)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getUserbyUserIDQuery = "Select * from User Where Email = @Email";
+                    int emailDuplicateCount = conn.Query(getUserbyUserIDQuery, new { Email = email }).ToList().Count;
+                    return emailDuplicateCount;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
             }
         }
 
         public List<User> GetAllUsers()
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getAllUsersQuery = "Select * from User";
-                var output = conn.Query<User>(getAllUsersQuery, new DynamicParameters());
-                return output.ToList();
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getAllUsersQuery = "Select * from User";
+                    var output = conn.Query<User>(getAllUsersQuery, new DynamicParameters()).ToList();
+                    return output;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public User GetUserByUserID(string userID)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getUserbyUserIDQuery = "Select * from User Where UserID = @UserID";
-                User currentUser = conn.QuerySingle<User>(getUserbyUserIDQuery, new { UserID = userID });
-                return currentUser;
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getUserbyUserIDQuery = "Select * from User Where UserID = @UserID";
+                    User currentUser = conn.QuerySingle<User>(getUserbyUserIDQuery, new { UserID = userID });
+                    return currentUser;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public User GetUserByEmail(string email)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getUserbyUserIDQuery = "Select * from User Where Email = @Email";
-                User currentUser = conn.QuerySingle<User>(getUserbyUserIDQuery, new { Email = email });
-                return currentUser;
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getUserbyUserIDQuery = "Select * from User Where Email = @Email";
+                    User currentUser = conn.QuerySingle<User>(getUserbyUserIDQuery, new { Email = email });
+                    return currentUser;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public List<ElectionGroup> GetAllElectionGroups()
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getAllElectionGroups = "Select * from ElectionGroup";
-                var output = conn.Query<ElectionGroup>(getAllElectionGroups, new DynamicParameters());
-                return output.ToList();
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getAllElectionGroups = "Select * from ElectionGroup";
+                    var output = conn.Query<ElectionGroup>(getAllElectionGroups, new DynamicParameters()).ToList();
+                    return output;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
+
         public ElectionGroup GetElectionGroupByName(string electionName)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getElectionGroupByName = "Select ElectionGroupID from ElectionGroup where Name = @Name";
-                ElectionGroup electionGroup = conn.QuerySingle<ElectionGroup>(getElectionGroupByName, new { Name = electionName});
-                return electionGroup;
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getElectionGroupByName = "Select ElectionGroupID from ElectionGroup where Name = @Name";
+                    ElectionGroup electionGroup = conn.QuerySingle<ElectionGroup>(getElectionGroupByName, new { Name = electionName });
+                    return electionGroup;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
@@ -138,8 +246,8 @@ namespace ElectionTracker.Services.Infrastructure
             using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
             {
                 string getUserElectionGroupIDs = "Select ElectionGroupID from ElectionGroupMembership where UserID = @UserID";
-                var output = conn.Query<string>(getUserElectionGroupIDs, new {UserID = userID});
-                return output.ToList();
+                var output = conn.Query<string>(getUserElectionGroupIDs, new {UserID = userID}).ToList();
+                return output;
             }
         }
 
@@ -150,17 +258,15 @@ namespace ElectionTracker.Services.Infrastructure
                 using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
                 {
                     string getUserElectionGroupIDs = "Select * from ElectionGroupMembership Where UserID = @UserID";
-                    var userElectionGroupMemberships = (conn.Query<ElectionGroupMembership>(getUserElectionGroupIDs, new { UserID = userID }));
-                    return userElectionGroupMemberships.ToList();
+                    var userElectionGroupMemberships = conn.Query<ElectionGroupMembership>(getUserElectionGroupIDs, new { UserID = userID }).ToList();
+                    return userElectionGroupMemberships;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                var empty = new List<ElectionGroupMembership>();
-                return empty;
+                return null;
             }
-            
         }
 
         public List<ElectionGroupMembership> GetUnaccpetedElectionGroupMembershipsForGroup(string electionGroupID)
@@ -184,102 +290,180 @@ namespace ElectionTracker.Services.Infrastructure
 
         public string GetUserRole(string userID, string electionGroupID)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getUserRoleInElectionGroupQuery = "Select UserRole from ElectionGroupMembership Where ElectionGroupID = @ElectionGroupID and UserID = @UserID";
-                var userElectionGroupMemberships = (conn.QuerySingle<string>(getUserRoleInElectionGroupQuery, new { ElectionGroupID = electionGroupID, UserID = userID }));
-                return userElectionGroupMemberships;
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getUserRoleInElectionGroupQuery = "Select UserRole from ElectionGroupMembership Where ElectionGroupID = @ElectionGroupID and UserID = @UserID";
+                    var userElectionGroupMemberships = (conn.QuerySingle<string>(getUserRoleInElectionGroupQuery, new { ElectionGroupID = electionGroupID, UserID = userID }));
+                    return userElectionGroupMemberships;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public List<Election> GetAllElections()
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getAllUsersQuery = "Select * from Election";
-                var output = conn.Query<Election>(getAllUsersQuery, new DynamicParameters());
-                return output.ToList();
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getAllUsersQuery = "Select * from Election";
+                    var output = conn.Query<Election>(getAllUsersQuery, new DynamicParameters()).ToList();
+                    return output;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public List<Election> GetElectionsByElectionGroupID(string electionGroupID)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getElectionsByElectionGroupIDQuery = "Select * from Election Where ElectionGroupID = @ElectionGroupID";
-                var elections = (conn.Query<Election>(getElectionsByElectionGroupIDQuery, new { ElectionGroupID = electionGroupID }));
-                return elections.ToList();
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getElectionsByElectionGroupIDQuery = "Select * from Election Where ElectionGroupID = @ElectionGroupID";
+                    var elections = conn.Query<Election>(getElectionsByElectionGroupIDQuery, new { ElectionGroupID = electionGroupID }).ToList();
+                    return elections;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public List<Candidate> GetCandidatesByElectionID(string electionID)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getCandidatesByElectionIDQuery = "Select * from Candidate Where ElectionID = @ElectionID";
-                var candidates = (conn.Query<Candidate>(getCandidatesByElectionIDQuery, new { ElectionID = electionID }));
-                return candidates.ToList();
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getCandidatesByElectionIDQuery = "Select * from Candidate Where ElectionID = @ElectionID";
+                    var candidates = conn.Query<Candidate>(getCandidatesByElectionIDQuery, new { ElectionID = electionID }).ToList();
+                    return candidates;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public List<Vote> GetVotesByUserID(string userID)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getVotesByUserIDQuery = "Select * from Vote Where UserID = @UserID";
-                var votes = (conn.Query<Vote>(getVotesByUserIDQuery, new { UserID = userID }));
-                return votes.ToList();
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getVotesByUserIDQuery = "Select * from Vote Where UserID = @UserID";
+                    var votes = conn.Query<Vote>(getVotesByUserIDQuery, new { UserID = userID }).ToList();
+                    return votes;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public List<Vote> GetVotesByCandidateID(string candidateID)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getVotesByCandidateIDQuery = "Select * from Vote Where CandidateID = @CandidateID";
-                var votes = (conn.Query<Vote>(getVotesByCandidateIDQuery, new { CandidateID = candidateID }));
-                return votes.ToList();
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getVotesByCandidateIDQuery = "Select * from Vote Where CandidateID = @CandidateID";
+                    var votes = conn.Query<Vote>(getVotesByCandidateIDQuery, new { CandidateID = candidateID }).ToList();
+                    return votes;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public string GetPassword(string email)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getPasswordQuery = "Select Password from User Where Email = @Email";
-                string password = conn.QuerySingle<string>(getPasswordQuery, new { Email = email });
-                return password;
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getPasswordQuery = "Select Password from User Where Email = @Email";
+                    string password = conn.QuerySingle<string>(getPasswordQuery, new { Email = email });
+                    return password;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
         }
 
         public string GetPasswordSalt(string email)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string getPasswordSaltQuery = "Select PasswordSalt from User Where Email = @Email";
-                string passwordSalt = conn.QuerySingle<string>(getPasswordSaltQuery, new {Email = email});
-                return passwordSalt;
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getPasswordSaltQuery = "Select PasswordSalt from User Where Email = @Email";
+                    string passwordSalt = conn.QuerySingle<string>(getPasswordSaltQuery, new { Email = email });
+                    return passwordSalt;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
             }
 
         }
 
         public void DeleteCandidate(string candidateID)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string DeleteCandidateQuery = "Delete from Candidate Where CandidateID = @CandidateID";
-                conn.Query(DeleteCandidateQuery, new { CandidateID = candidateID });
-                return;
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string DeleteCandidateQuery = "Delete from Candidate Where CandidateID = @CandidateID";
+                    conn.Query(DeleteCandidateQuery, new { CandidateID = candidateID });
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 
         public void DeleteVote(string voteID)
         {
-            using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+            try
             {
-                string DeleteVoteQuery = "Delete from Vote Where VoteID = @VoteID";
-                conn.Query(DeleteVoteQuery, new { VoteID = voteID });
-                return;
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string DeleteVoteQuery = "Delete from Vote Where VoteID = @VoteID";
+                    conn.Query(DeleteVoteQuery, new { VoteID = voteID });
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 

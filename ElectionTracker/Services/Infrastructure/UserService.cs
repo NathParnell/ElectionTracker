@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace ElectionTracker.Services.Infrastructure
 {
@@ -75,7 +76,8 @@ namespace ElectionTracker.Services.Infrastructure
                 }
                 return false;
             }
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
                 return false;
             }  
@@ -125,6 +127,36 @@ namespace ElectionTracker.Services.Infrastructure
             return _dataService.GetUserByUserID(userID);
         }
 
+        /// <summary>
+        /// Passes in email and checks whether the email has already been entered into the database
+        /// if it has return false, otherwise return true
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public bool CheckEmailIsUnique(string email)
+        {
 
+            int emailDuplicates = _dataService.CheckEmailIsUnique(email);
+            if (emailDuplicates == 0)
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// passes in a user input and a validation string to compare the input against
+        /// </summary>
+        /// <param name="UserInput"></param>
+        /// <param name="ValidationString"></param>
+        /// <returns></returns>
+        public bool ExpressionValidator(string UserInput, string ValidationString)
+        {
+            // I used this regex validator to ensure that user inputs are valid for the system - https://uibakery.io/regex-library/password-regex-csharp
+            Regex RegexValidator = new Regex(ValidationString);
+            if (RegexValidator.IsMatch(UserInput))
+                return true;
+
+            return false;
+        }
     }
 }

@@ -17,5 +17,7 @@ namespace ElectionTracker.Services
         string Hasher(string saltString, string stringToHash);
         List<User> GetAllUsers();
         User GetUserByUserID(string userID);
+        bool CheckEmailIsUnique(string email);
+        bool ExpressionValidator(string UserInput, string ValidationString);
     }
 }

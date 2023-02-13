@@ -37,6 +37,7 @@
             this.btnRegister = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,11 +119,22 @@
             this.pbxLogo.TabIndex = 7;
             this.pbxLogo.TabStop = false;
             // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorMessage.Location = new System.Drawing.Point(619, 607);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(238, 16);
+            this.lblErrorMessage.TabIndex = 8;
+            this.lblErrorMessage.Text = "Incorrect Username And / Or Password";
+            // 
             // ctrLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.pbxLogo);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnRegister);
@@ -154,5 +166,6 @@
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbxLogo;
+        private System.Windows.Forms.Label lblErrorMessage;
     }
 }

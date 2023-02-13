@@ -90,48 +90,26 @@ namespace ElectionTracker.Controls
             var errorMessage = new System.Text.StringBuilder();
             bool Authenticated = true;
 
-            if (String.IsNullOrEmpty(txtForename.Text))
+            foreach ( TextBox textBox in this.Controls.OfType<TextBox>())
             {
-                errorMessage.AppendLine("Please provide a Forename!");
-                lblForename.ForeColor = Color.Red;
-                Authenticated = false;
+                if (String.IsNullOrEmpty(textBox.Text.ToString()))
+                {
+                    errorMessage.AppendLine($"Please provide a {textBox.Name.Remove(0,3)}!");
+                    this.Controls[textBox.Name.Remove(0, 3).Insert(0,"lbl")].ForeColor = Color.Red;
+                    Authenticated = false;
+                }
             }
-
-
-            if (String.IsNullOrEmpty(txtSurname.Text))
-            {
-                errorMessage.AppendLine("Please provide a Surname!");
-                lblSurname.ForeColor = Color.Red;
-
-                Authenticated = false;
-            }
-
-            if (String.IsNullOrEmpty(txtAddress.Text))
-            {
-                errorMessage.AppendLine("Please provide an Address!");
-                lblAddress.ForeColor = Color.Red;
-
-                Authenticated = false;
-            }
-
-            if (String.IsNullOrEmpty(txtPostcode.Text))
-            {
-                errorMessage.AppendLine("Please provide a Postcode!");
-                lblPostcode.ForeColor = Color.Red;
-
-                Authenticated = false;
-            }
-            //create an over 18 checker
+            
             if (String.IsNullOrEmpty(dtDateOfBirth.Value.ToString()))
             {
-                errorMessage.AppendLine("Please provide a Postcode!");
-                lblPostcode.ForeColor = Color.Red;
+                errorMessage.AppendLine("Please provide a date of birth!");
+                lblDateOfBirth.ForeColor = Color.Red;
 
                 Authenticated = false;
             }
 
             //Email Regex String from - https://stackoverflow.com/questions/201323/how-can-i-validate-an-email-address-using-a-regular-expression
-            if (ExpressionValidator(txtEmail.Text, "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") == false)
+            if (_userService.ExpressionValidator(txtEmail.Text, "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$") == false)
             {
                 errorMessage.AppendLine("The Email you have entered is invalid!");
                 lblEmail.ForeColor = Color.Red;
@@ -139,35 +117,33 @@ namespace ElectionTracker.Controls
             }
 
             //Password Regex String from - https://uibakery.io/regex-library/password-regex-csharp
-            if ((ExpressionValidator(txtPassword.Text, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$") == false) || txtPassword.Text != txtRePassword.Text)
+            if ((_userService.ExpressionValidator(txtPassword.Text, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$") == false) || txtPassword.Text != txtRePassword.Text)
             {
                 errorMessage.AppendLine("The Password you have entered is invalid!");
                 lblPassword.ForeColor = Color.Red;
                 Authenticated = false;
-            }        
+            }
+
+
+            try
+            {
+                if (_userService.CheckEmailIsUnique(txtEmail.Text) == false)
+                {
+                    errorMessage.AppendLine("The Email you have entered has already been used to create an account");
+                    lblEmail.ForeColor = Color.Red;
+                    Authenticated = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
 
             lblRegistrationError.Text = errorMessage.ToString();
 
             return Authenticated;
         }
-
-
-        /// <summary>
-        /// passes in a user input and a validation string to compare the input against
-        /// </summary>
-        /// <param name="UserInput"></param>
-        /// <param name="ValidationString"></param>
-        /// <returns></returns>
-        private bool ExpressionValidator(string UserInput, string ValidationString)
-        {
-            // I used this regex validator to ensure that user inputs are valid for the system - https://uibakery.io/regex-library/password-regex-csharp
-            Regex RegexValidator = new Regex (ValidationString);
-            if (RegexValidator.IsMatch(UserInput))
-                return true;
-
-            return false;
-        }
-
 
     }
 }

@@ -33,8 +33,10 @@ namespace ElectionTracker.Controls
             {
                 _userService.SetCurrentUser();
             }
+
             this.txtEmail.Text = string.Empty;
             this.txtPassword.Text = string.Empty;
+            this.lblErrorMessage.Hide();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -59,8 +61,11 @@ namespace ElectionTracker.Controls
                     LogInSuccess();
                 }
             }
-
-            
+            else
+            {
+                Init();
+                lblErrorMessage.Show();
+            } 
         }
 
         private void ctrLogin_Load(object sender, EventArgs e)
