@@ -42,8 +42,8 @@ namespace ElectionTracker.Services.Infrastructure
                 user = _userService.CurrentUser;
             }
 
-            ElectionGroupMembership newMember = new ElectionGroupMembership(electionGroup.ElectionGroupID, userRole, user.UserID);
-            _dataService.CreateElectionGroupMembership(newMember);
+            ElectionGroupMembership newMembership = new ElectionGroupMembership(electionGroup.ElectionGroupID, userRole, user.UserID);
+            _dataService.CreateElectionGroupMembership(newMembership);
             return;
 
         }

@@ -24,17 +24,23 @@ namespace ElectionTracker.Tests.Services
             DateTime.Now,
             "c1040085@my.hallam.ac.uk");
 
+        private readonly IUserService _sut;
+
+        public UserServiceTests() 
+        {
+            _sut = new UserService(_dataServiceMock.Object);
+        }
+
 
         [Fact]
         public void TestCreateAccount()
         {
             //Arrange
-            IUserService sut = new UserService(_dataServiceMock.Object);
             _dataServiceMock.Setup(t => t.CreateUser(It.IsAny<User>()));
             _dataServiceMock.Setup(t => t.GetUserByUserID(It.IsAny<string>())).Returns(_testUser);
 
             //Act
-            bool actual = sut.CreateAccount(_testUser.Forename,
+            bool actual = _sut.CreateAccount(_testUser.Forename,
             _testUser.Surname,
             _testUser.Address,
             _testUser.Postcode,
@@ -44,20 +50,19 @@ namespace ElectionTracker.Tests.Services
 
             //Assert
             Assert.True(actual);
-            Assert.Equal(_testUser.Email, sut.CurrentUser.Email);
+            Assert.Equal(_testUser.Email, _sut.CurrentUser.Email);
         }
 
         [Fact]
         public void TestAttemptLogin()
         {
             //Arrange
-            IUserService sut = new UserService(_dataServiceMock.Object);
             _dataServiceMock.Setup(t => t.GetPasswordSalt(It.IsAny<string>())).Returns("qµQ\u001bæ¿UZƒBÚ\u0081S°Sðôrw‚Y©\fƒ\u0011\u000e€kùÉouÀŒ0qSÀ|¨69ãœí`\u0011¿aNÃ³²½\v\u008dUÁ€‘—7ká\u0081»Ùóä\tØ\f_ ‰\u0003ž\t<¢›¨e\u009d~?}ý¯7{ïë²\u0081”r‡Ùx\u001dlK¼5Ù\u0001–VNß`\vRM\rÇÆÖú”ú¢ÏC,ï’");
             _dataServiceMock.Setup(t => t.GetPassword(It.IsAny<string>())).Returns("\u001aòÒÀ?º”Õ»uÜ'©)\u0014âÏ˜R…ò•G<MïÄ\u008dûžMá‘7µ\u001d\u0014+\u0012»NƒÿÎ\u0001mN\n\u001e\u0018\t»3z\u0010é•<Áx¿ e4Gx;3Å}±“„üsa(äÞbz\u0010ñ!)À²?u¿nÙã¹kÚ \u0017Dœ\u001f¾…@tôKê­\u001co\nY²RÍ\u009d÷3’È\u0002‹~¢\u0090c\u0018");
             _dataServiceMock.Setup(t => t.GetUserByEmail(It.IsAny<string>())).Returns(_testUser);
 
             //Act
-            bool actual = sut.AttemptLogin(_testUser.Email, "Test1234!");
+            bool actual = _sut.AttemptLogin(_testUser.Email, "Test1234!");
 
             //Assert
             Assert.True(actual);
@@ -68,11 +73,10 @@ namespace ElectionTracker.Tests.Services
         public void TestGenerateHashSalt()
         {
             //Arrange
-            IUserService sut = new UserService(_dataServiceMock.Object);
 
             //Act
-            string salt1 = sut.GenerateHashSalt();
-            string salt2 = sut.GenerateHashSalt();
+            string salt1 = _sut.GenerateHashSalt();
+            string salt2 = _sut.GenerateHashSalt();
 
             //Assert
             Assert.NotEqual(salt1, salt2);
@@ -83,12 +87,11 @@ namespace ElectionTracker.Tests.Services
         public void TestHasher()
         {
             //Arrange
-            IUserService sut = new UserService(_dataServiceMock.Object);
             string expected = "\u001aòÒÀ?º”Õ»uÜ'©)\u0014âÏ˜R…ò•G<MïÄ\u008dûžMá‘7µ\u001d\u0014+\u0012»NƒÿÎ\u0001mN\n\u001e\u0018\t»3z\u0010é•<Áx¿ e4Gx;3Å}±“„üsa(äÞbz\u0010ñ!)À²?u¿nÙã¹kÚ \u0017Dœ\u001f¾…@tôKê­\u001co\nY²RÍ\u009d÷3’È\u0002‹~¢\u0090c\u0018";
             string saltString = "qµQ\u001bæ¿UZƒBÚ\u0081S°Sðôrw‚Y©\fƒ\u0011\u000e€kùÉouÀŒ0qSÀ|¨69ãœí`\u0011¿aNÃ³²½\v\u008dUÁ€‘—7ká\u0081»Ùóä\tØ\f_ ‰\u0003ž\t<¢›¨e\u009d~?}ý¯7{ïë²\u0081”r‡Ùx\u001dlK¼5Ù\u0001–VNß`\vRM\rÇÆÖú”ú¢ÏC,ï’";
             
             //Act
-            string actual = sut.Hasher(saltString, "Test1234!");
+            string actual = _sut.Hasher(saltString, "Test1234!");
             
             //Assert
             Assert.Equal(expected, actual);
@@ -98,11 +101,10 @@ namespace ElectionTracker.Tests.Services
         public void TestCheckEmailIsUnique()
         {
             //Arrange
-            IUserService sut = new UserService(_dataServiceMock.Object);
             _dataServiceMock.Setup(t => t.CheckEmailIsUnique(It.IsAny<string>())).Returns(0);
 
             //Act
-            bool actual = sut.CheckEmailIsUnique(_testUser.Email);
+            bool actual = _sut.CheckEmailIsUnique(_testUser.Email);
 
             //Assert
             Assert.True(actual);
@@ -112,11 +114,10 @@ namespace ElectionTracker.Tests.Services
         public void TestExpressionValidatorEmail()
         {
             //Arrange
-            IUserService sut = new UserService(_dataServiceMock.Object);
             string validationString = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
 
             //Act
-            bool actual = sut.ExpressionValidator(_testUser.Email, validationString);
+            bool actual = _sut.ExpressionValidator(_testUser.Email, validationString);
 
             //Assert
             Assert.True(actual);
@@ -126,11 +127,10 @@ namespace ElectionTracker.Tests.Services
         public void TestExpressionValidatorPassword()
         {
             //Arrange
-            IUserService sut = new UserService(_dataServiceMock.Object);
             string validationString = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 
             //Act
-            bool actual = sut.ExpressionValidator("Test1234!", validationString);
+            bool actual = _sut.ExpressionValidator("Test1234!", validationString);
 
             //Assert
             Assert.True(actual);
