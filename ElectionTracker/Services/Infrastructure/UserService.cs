@@ -69,10 +69,8 @@ namespace ElectionTracker.Services.Infrastructure
                 string hashedPasswordAttempt = Hasher(passwordSalt, passwordAttempt);
                 if (hashedPasswordAttempt == hashedPassword)
                 {
-                    SetCurrentUser(_dataService.GetUserByEmail(email));
-                    
+                    SetCurrentUser(_dataService.GetUserByEmail(email));          
                     return true;
-
                 }
                 return false;
             }
