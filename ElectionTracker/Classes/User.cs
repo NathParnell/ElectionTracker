@@ -10,13 +10,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 namespace ElectionTracker.Classes
 {
 
-    public enum UserAccountType
-    {
-        Administrator = 0,
-        Auditor = 1,
-        Voter = 2
-    }
-
     public class User : Person
     {
         /// <summary>
