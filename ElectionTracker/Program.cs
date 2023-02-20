@@ -1,15 +1,11 @@
-﻿using ElectionTracker.Services;
+﻿using ElectionTracker.Controls;
+using ElectionTracker.Forms;
+using ElectionTracker.Services;
 using ElectionTracker.Services.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ElectionTracker.Controls;
-using ElectionTracker.Forms;
-using ElectionTracker.Controls.FLPControls;
+using System;
+using System.Windows.Forms;
 
 namespace ElectionTracker
 {

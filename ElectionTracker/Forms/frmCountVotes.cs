@@ -1,14 +1,8 @@
-﻿using ElectionTracker.Classes;
-using ElectionTracker.Controls.FLPControls;
+﻿using ElectionTracker.Controls.FLPControls;
+using ElectionTracker.Models;
 using ElectionTracker.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ElectionTracker.Forms

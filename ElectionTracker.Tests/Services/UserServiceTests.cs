@@ -1,4 +1,4 @@
-﻿using ElectionTracker.Classes;
+﻿using ElectionTracker.Models;
 using ElectionTracker.Services;
 using ElectionTracker.Services.Infrastructure;
 using Moq;

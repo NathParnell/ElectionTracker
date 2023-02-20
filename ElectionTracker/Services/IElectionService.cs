@@ -1,9 +1,5 @@
-﻿using ElectionTracker.Classes;
-using System;
+﻿using ElectionTracker.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ElectionTracker.Services
 {

@@ -199,13 +199,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Candidate.cs" />
-    <Compile Include="Classes\ElectionGroup.cs" />
-    <Compile Include="Classes\ElectionGroupMembership.cs" />
-    <Compile Include="Classes\Election.cs" />
-    <Compile Include="Classes\Person.cs" />
-    <Compile Include="Classes\User.cs" />
-    <Compile Include="Classes\Vote.cs" />
+    <Compile Include="Models\Candidate.cs" />
+    <Compile Include="Models\ElectionGroup.cs" />
+    <Compile Include="Models\ElectionGroupMembership.cs" />
+    <Compile Include="Models\Election.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="Controls\ctrElectionGroupManager.cs">
       <SubType>UserControl</SubType>
     </Compile>
