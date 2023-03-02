@@ -119,6 +119,22 @@ namespace ElectionTracker.Services.Infrastructure
             return unacceptedElectionGroupRequests;
         }
 
+        /// <summary>
+        /// method takes in the new election object and runs checks on it
+        /// Checks that the start date is before the end date
+        /// </summary>
+        /// <param name="election"></param>
+        /// <returns>boolean confirming whether election passed validation</returns>
+        public bool NewElectionValidator(Election election)
+        {
+            if (election.StartDate > election.EndDate)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public bool CreateElection(Election newElection)
         {
             //I need to create a DataService method which will add in an election to the database 

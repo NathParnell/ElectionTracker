@@ -19,12 +19,19 @@ namespace ElectionTracker.Forms
 
         private void btnCreateElection_Click(object sender, EventArgs e)
         {
+            
             Election newElection = new Election(txtElectionName.Text, txtElectionDescription.Text, _electionGroup.ElectionGroupID,
                 dtElectionStartDate.Value.AddHours(dtElectionStartTime.Value.Hour).AddMinutes(dtElectionStartTime.Value.Minute),
                 dtElectionEndDate.Value.AddHours(dtElectionEndTime.Value.Hour).AddMinutes(dtElectionEndTime.Value.Minute));
 
+            if (_electionservice.NewElectionValidator(newElection) == false)
+            {
+                MessageBox.Show("This election's End Date is before the Start Date. Please change this!", "Invalid Election");
+                return;
+            }
+
             bool electionAdded = _electionservice.CreateElection(newElection);
-            if (electionAdded)
+            if (electionAdded == true)
             {
                 MessageBox.Show("Election has been added to " + _electionGroup.Name);
                 this.Dispose();
