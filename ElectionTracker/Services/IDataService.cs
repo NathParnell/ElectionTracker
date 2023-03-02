@@ -31,6 +31,7 @@ namespace ElectionTracker.Services
         string GetPasswordSalt(string email);
         void DeleteCandidate(string candidateID);
         void DeleteVote(string voteID);
+        void DeleteVotesByCandidateID(string candidateID);
 
         string LoadConnectionString(string id = "Default");
     }

@@ -160,9 +160,16 @@ namespace ElectionTracker.Services.Infrastructure
             return candidates;
         }
 
+        /// <summary>
+        /// We delete the candidates
+        /// We also delete the votes for any candidates so nothing gets confised and also voters get their vote back
+        /// </summary>
+        /// <param name="candidate"></param>
+        /// <returns></returns>
         public bool DeleteCandidate(Candidate candidate)
         {
             _dataService.DeleteCandidate(candidate.CandidateID);
+            _dataService.DeleteVotesByCandidateID(candidate.CandidateID);
             return true;
         }
 

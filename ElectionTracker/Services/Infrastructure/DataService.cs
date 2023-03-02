@@ -467,6 +467,23 @@ namespace ElectionTracker.Services.Infrastructure
             }
         }
 
+        public void DeleteVotesByCandidateID(string candidateID)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string DeleteVotesByCandidateIDQuery = "Delete from Vote Where CandidateID = @CandidateID";
+                    conn.Query(DeleteVotesByCandidateIDQuery, new { CandidateID = candidateID });
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
         /// <summary>
         /// gets the default connection string from app.config
         /// </summary>
