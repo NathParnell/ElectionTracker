@@ -27,9 +27,9 @@ namespace ElectionTracker.Controls.FLPControls
         private void ctrElectionSelect_Load(object sender, EventArgs e)
         {
             //make a method which disables all controls
-            setControlColor();
             DisableControls();
             PopulateControls();
+            setControlColor();
         }
 
         private void DisableControls()
@@ -72,16 +72,16 @@ namespace ElectionTracker.Controls.FLPControls
             {
                 this.BackColor = Color.Red;
                 btnVote.Hide();
+                btnAddBallotStationVote.Hide();
+                btnAddPostalVote.Hide();
             }
             else if (DateTime.Now.AddDays(1).Date == _election.EndDate.Date)
             {
                 this.BackColor = Color.Yellow;
-                btnVote.Show();
             }
             else
             {
                 this.BackColor = Color.Green;
-                btnVote.Show();
             }
         }
 
