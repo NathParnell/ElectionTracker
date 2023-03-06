@@ -123,7 +123,6 @@ namespace ElectionTracker.Controls
                 Authenticated = false;
             }
 
-
             try
             {
                 if (_userService.CheckEmailIsUnique(txtEmail.Text) == false)

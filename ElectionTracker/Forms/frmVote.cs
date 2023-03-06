@@ -29,7 +29,7 @@ namespace ElectionTracker.Forms
         {
             _candidates = _electionService.GetCandidatesByElection(_election);
 
-            Vote existingUserVote = CheckIfUserHasVoted();
+            Vote existingUserVote = _electionService.CheckIfUserHasVoted(_candidates);
 
             if (existingUserVote.VoteID != null && _voteMethod == "ElectionTracker")
             {
@@ -43,8 +43,6 @@ namespace ElectionTracker.Forms
                     this.Dispose();
                 }
             }
-
-           
 
             foreach (Candidate candidate in _candidates)
             {
@@ -67,35 +65,5 @@ namespace ElectionTracker.Forms
             }
 
         }
-
-        /// <summary>
-        /// returns an empty vote if the user hasnt voted already
-        /// </summary>
-        /// <returns></returns>
-        private Vote CheckIfUserHasVoted()
-        {
-            //method below contains any vote put through by the user for any election ever
-            List<Vote> userVotes = _electionService.GetVotesbyUser(_userService.CurrentUser);
-
-
-            Vote userVote = new Vote();
-
-            //goes through every vote
-            // I used this to help me do a "foreach where" statement - https://stackoverflow.com/questions/25412158/foreach-loop-with-a-where-clause
-            foreach (Vote vote in userVotes.Where(vote => vote.VoteMethod == VoteMethod.ElectionTracker))
-            {
-                foreach(Candidate candidate in _candidates)
-                {
-                    if (candidate.CandidateID == vote.CandidateID)
-                    {
-                        userVote = vote;
-                        return userVote;
-                    }
-                }
-            }
-
-            return userVote;
-        }
-
     }
 }

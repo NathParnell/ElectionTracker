@@ -23,6 +23,7 @@ namespace ElectionTracker.Services
         List<Candidate> GetCandidatesByElection(Election election);
         bool DeleteCandidate(Candidate candidate);
         bool CreateVote(Vote vote);
+        Vote CheckIfUserHasVoted(List<Candidate> candidates);
         List<Vote> GetVotesbyUser(User user);
         List<Vote> GetVotesbyCandidate(Candidate candidate);
         Candidate GetElectionWinner(Election election);

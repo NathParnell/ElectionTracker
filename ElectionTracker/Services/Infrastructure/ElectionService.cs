@@ -1,6 +1,7 @@
 ﻿using ElectionTracker.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 
 namespace ElectionTracker.Services.Infrastructure
@@ -177,6 +178,35 @@ namespace ElectionTracker.Services.Infrastructure
         {
             _dataService.CreateVote(vote);
             return true;
+        }
+
+        /// <summary>
+        /// returns an empty vote if the user hasnt voted already
+        /// </summary>
+        /// <param name="candidates"></param>
+        /// <returns></returns>
+        public Vote CheckIfUserHasVoted(List<Candidate> candidates)
+        {
+            //method below contains any vote put through by the user for any election ever
+            List<Vote> userVotes = GetVotesbyUser(_userService.CurrentUser);
+
+            Vote userVote = new Vote();
+
+            //goes through every vote
+            // I used this to help me do a "foreach where" statement - https://stackoverflow.com/questions/25412158/foreach-loop-with-a-where-clause
+            foreach (Vote vote in userVotes.Where(vote => vote.VoteMethod == VoteMethod.ElectionTracker))
+            {
+                foreach (Candidate candidate in candidates)
+                {
+                    if (candidate.CandidateID == vote.CandidateID)
+                    {
+                        userVote = vote;
+                        return userVote;
+                    }
+                }
+            }
+
+            return userVote;
         }
 
         public List<Vote> GetVotesbyUser(User User)
