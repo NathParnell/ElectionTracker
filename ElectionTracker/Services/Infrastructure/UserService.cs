@@ -1,4 +1,5 @@
-﻿using ElectionTracker.Models;
+﻿using ElectionTracker.Logger;
+using ElectionTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -11,6 +12,8 @@ namespace ElectionTracker.Services.Infrastructure
     {
         //IDataService dataService = new DataService();
         private readonly IDataService _dataService;
+        private readonly ILog _log = LogFactory.SetFileLogger("UserService");
+
         public UserService(IDataService dataService) 
         {
             _dataService = dataService;
@@ -74,7 +77,6 @@ namespace ElectionTracker.Services.Infrastructure
                 }
                 return false;
             }
-
             catch (Exception ex)
             {
                 return false;

@@ -1,4 +1,6 @@
-﻿using ElectionTracker.Models;
+﻿using ElectionTracker.Logger;
+using ElectionTracker.Models;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -8,6 +10,7 @@ namespace ElectionTracker.Services.Infrastructure
 {
     public class ElectionService: IElectionService
     {
+        private readonly ILog _log = LogFactory.SetFileLogger("ElectionService");
         private readonly IUserService _userService;
         private readonly IDataService _dataService;
 

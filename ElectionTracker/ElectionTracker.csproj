@@ -199,6 +199,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logger\ConsoleLogger.cs" />
+    <Compile Include="Logger\FileLogger.cs" />
+    <Compile Include="Logger\ILog.cs" />
+    <Compile Include="Logger\LogBase.cs" />
+    <Compile Include="Logger\LogFactory.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\ElectionGroup.cs" />
     <Compile Include="Models\ElectionGroupMembership.cs" />
