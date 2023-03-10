@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using ElectionTracker.Logger;
 using ElectionTracker.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace ElectionTracker.Services.Infrastructure
     /// </summary>
     public class DataService : IDataService
     {
+        private readonly ILog _log = LogFactory.SetConsoleLogger("DataService");
         public void CreateUser(User user)
         {
             try
@@ -27,7 +29,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
 
@@ -44,7 +46,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
 
@@ -61,7 +63,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
 
@@ -78,7 +80,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
 
@@ -95,7 +97,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
 
@@ -112,11 +114,11 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
 
-        public void AcceptElectionGroupRequest(string electionGroupMembershipID)
+        public void AcceptElectionGroupMembershipRequest(string electionGroupMembershipID)
         {
             try
             {
@@ -129,7 +131,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
         
@@ -146,7 +148,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 throw;
             }
         }
@@ -164,7 +166,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -182,7 +184,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -200,7 +202,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -218,7 +220,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -236,7 +238,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -264,7 +266,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -282,7 +284,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 var empty = new List<ElectionGroupMembership>();
                 return empty;
             }
@@ -301,7 +303,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -319,7 +321,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -337,7 +339,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -355,7 +357,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -373,7 +375,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -391,7 +393,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -409,7 +411,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
         }
@@ -427,7 +429,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
                 return null;
             }
 
@@ -446,7 +448,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
 
@@ -463,7 +465,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
 
@@ -480,7 +482,7 @@ namespace ElectionTracker.Services.Infrastructure
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                _log.Error(e.Message);
             }
         }
 

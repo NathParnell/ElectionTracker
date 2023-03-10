@@ -35,7 +35,7 @@ namespace ElectionTracker.Forms
             resetSelectedUserValues();
             cmbSelectUser.Items.Clear();
 
-            _unacceptedElectionGroupMemberships = _electionService.GetUnacceptedElectionGroupRequests(_electionService.SelectedElectionGroup);
+            _unacceptedElectionGroupMemberships = _electionService.GetUnacceptedElectionGroupMembershipRequests(_electionService.SelectedElectionGroup);
             List<User> usersToAccept = _userService.GetAllUsers();
 
             foreach (ElectionGroupMembership unacceptedElectionGroupMembership in _unacceptedElectionGroupMemberships)
@@ -93,7 +93,7 @@ namespace ElectionTracker.Forms
         private void btnAcceptUserRequest_Click(object sender, EventArgs e)
         {
 
-            _electionService.AcceptElectionGroupRequest(_selectedMembershipRequest);
+            _electionService.AcceptElectionGroupMembershipRequest(_selectedMembershipRequest);
 
             resetSelectedUserValues();
             setComboBoxValues();

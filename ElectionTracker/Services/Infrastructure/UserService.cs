@@ -47,13 +47,22 @@ namespace ElectionTracker.Services.Infrastructure
         /// <returns> confirmation account has been created </returns>
         public bool CreateAccount(string forename, string surname, string address, string postcode, DateTime dateOfBirth, string email, string password)
         {
-            User NewUser = new User(forename, surname, address, postcode, dateOfBirth, email);
-            NewUser.PasswordSalt = GenerateHashSalt();
-            NewUser.Password = Hasher(NewUser.PasswordSalt, password);
-            _dataService.CreateUser(NewUser);
-            SetCurrentUser(_dataService.GetUserByUserID(NewUser.UserID)); 
-            //should this include a check to see if the db command has worked
-            return true;
+            try
+            {
+                User newUser = new User(forename, surname, address, postcode, dateOfBirth, email);
+                newUser.PasswordSalt = GenerateHashSalt();
+                newUser.Password = Hasher(newUser.PasswordSalt, password);
+                _dataService.CreateUser(newUser);
+                SetCurrentUser(_dataService.GetUserByUserID(newUser.UserID));
+                _log.Info($"User {newUser.UserID} Created");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                _log.Info(ex.Message.ToString());
+                return false;
+            }
+            
         }
 
         /// <summary>
@@ -72,15 +81,23 @@ namespace ElectionTracker.Services.Infrastructure
                 string hashedPasswordAttempt = Hasher(passwordSalt, passwordAttempt);
                 if (hashedPasswordAttempt == hashedPassword)
                 {
-                    SetCurrentUser(_dataService.GetUserByEmail(email));          
+                    SetCurrentUser(_dataService.GetUserByEmail(email));
+                    _log.Info($"User {this.CurrentUser.UserID} Logged in");
                     return true;
                 }
+                _log.Info("Login Attempt Failed");
                 return false;
             }
-            catch (Exception ex)
+            catch (ArgumentNullException ex)
             {
+                _log.Error($"Email {email} does not exist in the database {ex.Message.ToString()}");
                 return false;
-            }  
+            } 
+            catch(Exception ex)
+            {
+                _log.Error(ex.Message.ToString());
+                return false;
+            }
         }
 
         /// <summary>

@@ -29,23 +29,42 @@ namespace ElectionTracker.Services.Infrastructure
 
         public bool CreateElectionGroup(string name, string description)
         {
-            ElectionGroup newElectiongroup = new ElectionGroup(name, description);
-            _dataService.CreateElectionGroup(newElectiongroup);
+            try
+            {
+                ElectionGroup newElectiongroup = new ElectionGroup(name, description);
+                _dataService.CreateElectionGroup(newElectiongroup);
 
-            CreateElectionGroupMembership(newElectiongroup, "Administrator");
-            return true;
+                CreateElectionGroupMembership(newElectiongroup, "Administrator");
+
+                _log.Info($"Election {newElectiongroup.ElectionGroupID} Created Successfully");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                _log.Error(ex.Message.ToString());
+                return false;
+            }
+           
         }
 
         public void CreateElectionGroupMembership(ElectionGroup electionGroup, string userRole, User user = null) 
         {
-            if (user == null)
+            try
             {
-                user = _userService.CurrentUser;
-            }
+                if (user == null)
+                {
+                    user = _userService.CurrentUser;
+                }
 
-            ElectionGroupMembership newMembership = new ElectionGroupMembership(electionGroup.ElectionGroupID, userRole, user.UserID);
-            _dataService.CreateElectionGroupMembership(newMembership);
-            return;
+                ElectionGroupMembership newMembership = new ElectionGroupMembership(electionGroup.ElectionGroupID, userRole, user.UserID);
+                _dataService.CreateElectionGroupMembership(newMembership);
+                _log.Info($" Election Group Membership {electionGroup.ElectionGroupID} created for {user.UserID}");
+            }
+            catch(Exception ex)
+            {
+                _log.Error(ex.Message.ToString());
+            }
+            
 
         }
 
@@ -106,18 +125,24 @@ namespace ElectionTracker.Services.Infrastructure
                 ElectionGroup electionGroup = _dataService.GetElectionGroupByName(name);
                 ElectionGroupMembership electionGroupMembershipRequest = new ElectionGroupMembership(electionGroup.ElectionGroupID, userRole, _userService.CurrentUser.UserID);
                 _dataService.CreateElectionGroupMembership(electionGroupMembershipRequest);
+                _log.Info($"Election Group Membership Request {electionGroup.ElectionGroupID} created for {_userService.CurrentUser.UserID}");
                 return true;
             }
-            catch (Exception ex) { return false; }
+            catch (Exception ex) 
+            {
+                _log.Error(ex.Message.ToString());
+                return false;
+            }
         }
 
-        public bool AcceptElectionGroupRequest(ElectionGroupMembership electionGroupMembership)
+        public bool AcceptElectionGroupMembershipRequest(ElectionGroupMembership electionGroupMembership)
         {
-            _dataService.AcceptElectionGroupRequest(electionGroupMembership.ElectionGroupMembershipID);
+            _dataService.AcceptElectionGroupMembershipRequest(electionGroupMembership.ElectionGroupMembershipID);
+            _log.Info($"Election Group Membership Request {electionGroupMembership.ElectionGroupID} accecpted for {electionGroupMembership.UserID}");
             return true;
         }
 
-        public List<ElectionGroupMembership> GetUnacceptedElectionGroupRequests(ElectionGroup electionGroup)
+        public List<ElectionGroupMembership> GetUnacceptedElectionGroupMembershipRequests(ElectionGroup electionGroup)
         {
             List<ElectionGroupMembership> unacceptedElectionGroupRequests = _dataService.GetUnaccpetedElectionGroupMembershipsForGroup(electionGroup.ElectionGroupID);
             return unacceptedElectionGroupRequests;
@@ -141,9 +166,18 @@ namespace ElectionTracker.Services.Infrastructure
 
         public bool CreateElection(Election newElection)
         {
-            //I need to create a DataService method which will add in an election to the database 
-            _dataService.CreateElection(newElection);
-            return true;
+            try
+            {
+                _dataService.CreateElection(newElection);
+                _log.Info($"Election {newElection.ElectionID} created in Election Group {newElection.ElectionGroupID}");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                _log.Error(ex.Message.ToString());
+                return false;
+            }
+            
         }
 
         public List<Election> GetElectionsbyElectionGroupID(string electionGroupID)
@@ -154,8 +188,18 @@ namespace ElectionTracker.Services.Infrastructure
 
         public bool CreateCandidate(Candidate candidate)
         {
-            _dataService.CreateCandidate(candidate);
-            return true;
+            try
+            {
+                _dataService.CreateCandidate(candidate);
+                _log.Info($"Candidate {candidate.CandidateID} created in Election {candidate.ElectionID}");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                _log.Error(ex.Message.ToString());
+                return false;
+            }
+            
         }
 
         public List<Candidate> GetCandidatesByElection(Election election)
@@ -172,15 +216,35 @@ namespace ElectionTracker.Services.Infrastructure
         /// <returns></returns>
         public bool DeleteCandidate(Candidate candidate)
         {
-            _dataService.DeleteCandidate(candidate.CandidateID);
-            _dataService.DeleteVotesByCandidateID(candidate.CandidateID);
-            return true;
+            try
+            {
+                _dataService.DeleteCandidate(candidate.CandidateID);
+                _dataService.DeleteVotesByCandidateID(candidate.CandidateID);
+                _log.Info($"Candidate {candidate.CandidateID} in Election {candidate.ElectionID} Deleted");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.Message.ToString());
+                return false;
+            }
+            
         }
 
         public bool CreateVote(Vote vote)
         {
-            _dataService.CreateVote(vote);
-            return true;
+            try
+            {
+                _dataService.CreateVote(vote);
+                _log.Info($"Vote {vote.VoteID} Created for Candidate {vote.CandidateID}");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                _log.Error (ex.Message.ToString());
+                return false;
+            }
+
         }
 
         /// <summary>
@@ -221,6 +285,7 @@ namespace ElectionTracker.Services.Infrastructure
         public List<Vote> GetVotesbyCandidate(Candidate candidate)
         {
             List<Vote> votes = _dataService.GetVotesByCandidateID(candidate.CandidateID);
+            _log.Info($"Candidate {candidate.CandidateID} Votes Viewed by User {_userService.CurrentUser.UserID}");
             return votes;
         }
 
@@ -245,8 +310,18 @@ namespace ElectionTracker.Services.Infrastructure
 
         public bool DeleteVote(Vote vote)
         {
-            _dataService.DeleteVote(vote.VoteID);
-            return true;
+            try
+            {
+                _dataService.DeleteVote(vote.VoteID);
+                _log.Info($"Vote {vote.VoteID} Deleted");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.ToString());
+                return false;
+            }
+
         }
 
     }
