@@ -49,6 +49,7 @@ namespace ElectionTracker.Services.Infrastructure
         {
             try
             {
+                email = email.ToLower();
                 User newUser = new User(forename, surname, address, postcode, dateOfBirth, email);
                 newUser.PasswordSalt = GenerateHashSalt();
                 newUser.Password = Hasher(newUser.PasswordSalt, password);
@@ -76,6 +77,7 @@ namespace ElectionTracker.Services.Infrastructure
         {
             try
             {
+                email = email.ToLower();
                 string passwordSalt = _dataService.GetPasswordSalt(email);
                 string hashedPassword = _dataService.GetPassword(email);
                 string hashedPasswordAttempt = Hasher(passwordSalt, passwordAttempt);
@@ -152,7 +154,7 @@ namespace ElectionTracker.Services.Infrastructure
         /// <returns></returns>
         public bool CheckEmailIsUnique(string email)
         {
-
+            email = email.ToLower();
             int emailDuplicates = _dataService.CheckEmailIsUnique(email);
             if (emailDuplicates == 0)
                 return true;
