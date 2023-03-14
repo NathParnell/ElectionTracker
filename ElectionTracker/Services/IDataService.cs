@@ -12,6 +12,7 @@ namespace ElectionTracker.Services
         void CreateCandidate(Candidate candidate);
         void CreateVote (Vote vote);
         void AcceptElectionGroupMembershipRequest(string electionGroupMembershipID);
+        void UpdateElection(Election election);
         int CheckEmailIsUnique(string email);
         List<User> GetAllUsers();
         User GetUserByUserID(string userID);
@@ -24,6 +25,7 @@ namespace ElectionTracker.Services
         string GetUserRole(string userID, string electionGroupID);
         List<Election> GetAllElections();
         List<Election> GetElectionsByElectionGroupID(string electionGroupID);
+        Election GetElectionByElectionID(string electionID);
         List<Candidate> GetCandidatesByElectionID(string electionID);
         List<Vote> GetVotesByUserID(string userID);
         List<Vote> GetVotesByCandidateID(string candidateID);

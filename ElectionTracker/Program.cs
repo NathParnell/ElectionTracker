@@ -30,7 +30,7 @@ namespace ElectionTracker
         
 
         /// <summary>
-        /// I used this  https://stackoverflow.com/questions/70475830/how-to-use-dependency-injection-in-winforms
+        /// I used this https://stackoverflow.com/questions/70475830/how-to-use-dependency-injection-in-winforms
         /// </summary>
         /// <returns></returns>
         static IHostBuilder CreateHostBuilder()
@@ -44,7 +44,7 @@ namespace ElectionTracker
                     services.AddTransient<frmCreateElectionGroup>();
                     services.AddTransient<frmRegisterElectionGroup>();
                     services.AddTransient<frmAcceptUserToElectionGroup>();
-                    services.AddTransient<frmCreateElection>();
+                    services.AddTransient<frmManageElection>();
                     services.AddTransient<frmCandidates>();
                     services.AddTransient<ctrRegister>();
                     services.AddTransient<ctrLogin>();

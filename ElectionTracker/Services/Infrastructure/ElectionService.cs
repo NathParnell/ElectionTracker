@@ -154,7 +154,7 @@ namespace ElectionTracker.Services.Infrastructure
         /// </summary>
         /// <param name="election"></param>
         /// <returns>boolean confirming whether election passed validation</returns>
-        public bool NewElectionValidator(Election election)
+        public bool ElectionValidator(Election election)
         {
             if (election.StartDate > election.EndDate)
             {
@@ -177,13 +177,33 @@ namespace ElectionTracker.Services.Infrastructure
                 _log.Error(ex.Message.ToString());
                 return false;
             }
-            
+        }
+
+        public bool UpdateElection(Election election)
+        {
+            try
+            {
+                _dataService.UpdateElection(election);
+                _log.Info($"Election {election.ElectionID} Updated in Election Group {election.ElectionGroupID}");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.Message.ToString());
+                return false;
+            }
         }
 
         public List<Election> GetElectionsbyElectionGroupID(string electionGroupID)
         {
             List<Election> elections = _dataService.GetElectionsByElectionGroupID(electionGroupID);
             return elections;
+        }
+
+        public Election GetElectionByElectionID(string electionID)
+        {
+            Election election = _dataService.GetElectionByElectionID(electionID);
+            return election;
         }
 
         public bool CreateCandidate(Candidate candidate)

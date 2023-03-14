@@ -265,11 +265,11 @@
     <Compile Include="Forms\frmCountVotes.Designer.cs">
       <DependentUpon>frmCountVotes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmCreateElection.cs">
+    <Compile Include="Forms\frmManageElection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmCreateElection.Designer.cs">
-      <DependentUpon>frmCreateElection.cs</DependentUpon>
+    <Compile Include="Forms\frmManageElection.Designer.cs">
+      <DependentUpon>frmManageElection.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmCreateElectionGroup.cs">
       <SubType>Form</SubType>
@@ -337,8 +337,8 @@
     <EmbeddedResource Include="Forms\frmCountVotes.resx">
       <DependentUpon>frmCountVotes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCreateElection.resx">
-      <DependentUpon>frmCreateElection.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmManageElection.resx">
+      <DependentUpon>frmManageElection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCreateElectionGroup.resx">
       <DependentUpon>frmCreateElectionGroup.cs</DependentUpon>

@@ -114,5 +114,11 @@ namespace ElectionTracker.Controls.FLPControls
             frmCountVotes frmCountVotes = new frmCountVotes(_electionService, _election);
             frmCountVotes.ShowDialog();
         }
+
+        private void btnEditElection_Click(object sender, EventArgs e)
+        {
+            frmManageElection frmManageElection = new frmManageElection(_electionService, _election.ElectionID);
+            frmManageElection.ShowDialog();
+        }
     }
 }

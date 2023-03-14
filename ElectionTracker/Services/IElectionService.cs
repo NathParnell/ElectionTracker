@@ -16,9 +16,11 @@ namespace ElectionTracker.Services
         bool JoinElectionGroupRequest(string name, string userRole);
         bool AcceptElectionGroupMembershipRequest(ElectionGroupMembership electionGroupMembership);
         List<ElectionGroupMembership> GetUnacceptedElectionGroupMembershipRequests(ElectionGroup electionGroup);
-        bool NewElectionValidator(Election election);
+        bool ElectionValidator(Election election);
         bool CreateElection(Election newElection);
+        bool UpdateElection(Election election);
         List<Election> GetElectionsbyElectionGroupID(string electionGroupID);
+        Election GetElectionByElectionID(string electionID);
         bool CreateCandidate(Candidate candidate);
         List<Candidate> GetCandidatesByElection(Election election);
         bool DeleteCandidate(Candidate candidate);

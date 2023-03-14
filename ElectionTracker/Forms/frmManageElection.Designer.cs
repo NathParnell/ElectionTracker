@@ -1,6 +1,6 @@
 ﻿namespace ElectionTracker.Forms
 {
-    partial class frmCreateElection
+    partial class frmManageElection
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCreateElection = new System.Windows.Forms.Button();
+            this.btnElectionAction = new System.Windows.Forms.Button();
             this.txtElectionDescription = new System.Windows.Forms.TextBox();
             this.lblElectionDescription = new System.Windows.Forms.Label();
             this.txtElectionName = new System.Windows.Forms.TextBox();
@@ -42,16 +42,16 @@
             this.dtElectionEndTime = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
-            // btnCreateElection
+            // btnElectionAction
             // 
-            this.btnCreateElection.Location = new System.Drawing.Point(243, 418);
-            this.btnCreateElection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCreateElection.Name = "btnCreateElection";
-            this.btnCreateElection.Size = new System.Drawing.Size(152, 23);
-            this.btnCreateElection.TabIndex = 9;
-            this.btnCreateElection.Text = "Create";
-            this.btnCreateElection.UseVisualStyleBackColor = true;
-            this.btnCreateElection.Click += new System.EventHandler(this.btnCreateElection_Click);
+            this.btnElectionAction.Location = new System.Drawing.Point(243, 418);
+            this.btnElectionAction.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnElectionAction.Name = "btnCreateElection";
+            this.btnElectionAction.Size = new System.Drawing.Size(152, 23);
+            this.btnElectionAction.TabIndex = 9;
+            this.btnElectionAction.Text = "Create";
+            this.btnElectionAction.UseVisualStyleBackColor = true;
+            this.btnElectionAction.Click += new System.EventHandler(this.btnElectionAction_Click);
             // 
             // txtElectionDescription
             // 
@@ -151,7 +151,7 @@
             this.dtElectionEndTime.Size = new System.Drawing.Size(191, 22);
             this.dtElectionEndTime.TabIndex = 16;
             // 
-            // frmCreateElection
+            // frmManageElection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -164,15 +164,15 @@
             this.Controls.Add(this.lblElectionEndDate);
             this.Controls.Add(this.dtElectionStartDate);
             this.Controls.Add(this.lblElectionStartDate);
-            this.Controls.Add(this.btnCreateElection);
+            this.Controls.Add(this.btnElectionAction);
             this.Controls.Add(this.txtElectionDescription);
             this.Controls.Add(this.lblElectionDescription);
             this.Controls.Add(this.txtElectionName);
             this.Controls.Add(this.lblElectionName);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmCreateElection";
+            this.Name = "frmManageElection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmCreateElection";
+            this.Text = "frmManageElection";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,7 +180,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnCreateElection;
+        private System.Windows.Forms.Button btnElectionAction;
         private System.Windows.Forms.TextBox txtElectionDescription;
         private System.Windows.Forms.Label lblElectionDescription;
         private System.Windows.Forms.TextBox txtElectionName;

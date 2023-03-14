@@ -43,8 +43,8 @@ namespace ElectionTracker.Controls
 
         private void btnCreateElection_Click(object sender, EventArgs e)
         {
-            frmCreateElection frmCreateElection = new frmCreateElection(_electionService);
-            frmCreateElection.ShowDialog();
+            frmManageElection frmManageElection = new frmManageElection(_electionService);
+            frmManageElection.ShowDialog();
 
             DisplayElections();
         }

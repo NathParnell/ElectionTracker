@@ -10,7 +10,6 @@ namespace ElectionTracker.Services.Infrastructure
 {
     public class UserService : IUserService
     {
-        //IDataService dataService = new DataService();
         private readonly IDataService _dataService;
         private readonly ILog _log = LogFactory.SetFileLogger("UserService");
 

@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ElectionTracker.Services.Infrastructure
 {
@@ -133,6 +134,24 @@ namespace ElectionTracker.Services.Infrastructure
             {
                 _log.Error(e.Message);
             }
+        }
+
+        public void UpdateElection(Election election)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string UpdateElection = "Update Election Set Name = @Name, Description = @Description, StartDate = @StartDate, EndDate = @EndDate Where ElectionID = @ElectionID";
+
+                    conn.Execute(UpdateElection, election);
+                }
+            }
+            catch (Exception e)
+            {
+                _log.Error(e.Message);
+            }
+
         }
         
         public int CheckEmailIsUnique(string email)
@@ -335,6 +354,24 @@ namespace ElectionTracker.Services.Infrastructure
                     string getElectionsByElectionGroupIDQuery = "Select * from Election Where ElectionGroupID = @ElectionGroupID";
                     var elections = conn.Query<Election>(getElectionsByElectionGroupIDQuery, new { ElectionGroupID = electionGroupID }).ToList();
                     return elections;
+                }
+            }
+            catch (Exception e)
+            {
+                _log.Error(e.Message);
+                return null;
+            }
+        }
+
+        public Election GetElectionByElectionID(string electionID)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getElectionByElectionIDQuery = "Select * from Election Where ElectionID = @ElectionID";
+                    var election = conn.QuerySingle<Election>(getElectionByElectionIDQuery, new { ElectionID = electionID });
+                    return election;
                 }
             }
             catch (Exception e)

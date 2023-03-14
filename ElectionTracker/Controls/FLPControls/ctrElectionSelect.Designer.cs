@@ -55,6 +55,7 @@
             this.btnEditElection.TabIndex = 2;
             this.btnEditElection.Text = "Edit Election";
             this.btnEditElection.UseVisualStyleBackColor = true;
+            this.btnEditElection.Click += new System.EventHandler(this.btnEditElection_Click);
             // 
             // btnAddPostalVote
             // 
