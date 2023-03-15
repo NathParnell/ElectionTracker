@@ -11,6 +11,7 @@ namespace ElectionTracker.Forms
 
         private ElectionGroup _electionGroup;
         private string _existingElectionID;
+        
         public frmManageElection(IElectionService electionService, string existingElectionID = null)
         {
             _electionservice = electionService;
@@ -25,6 +26,7 @@ namespace ElectionTracker.Forms
             if (_existingElectionID == null)
             {
                 btnElectionAction.Text = "Create Election";
+                btnDeleteElection.Hide();
             }
             else
             {
@@ -106,5 +108,15 @@ namespace ElectionTracker.Forms
             }
         }
 
+        private void btnDeleteElection_Click(object sender, EventArgs e)
+        {
+
+            if (DialogResult.Yes == MessageBox.Show("Are you sure you would like to delete this election", "Update Election", MessageBoxButtons.YesNo))
+            {
+                _electionservice.DeleteElection(_existingElectionID);
+                MessageBox.Show("Election Deleted");
+                this.Dispose();
+            }
+        }
     }
 }

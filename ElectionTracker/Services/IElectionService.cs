@@ -21,6 +21,7 @@ namespace ElectionTracker.Services
         bool UpdateElection(Election election);
         List<Election> GetElectionsbyElectionGroupID(string electionGroupID);
         Election GetElectionByElectionID(string electionID);
+        bool DeleteElection(string electionID);
         bool CreateCandidate(Candidate candidate);
         List<Candidate> GetCandidatesByElection(Election election);
         bool DeleteCandidate(Candidate candidate);

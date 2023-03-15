@@ -14,6 +14,7 @@ namespace ElectionTracker.Controls.FLPControls
         private ElectionGroupUserRole _userRole;
         private readonly IElectionService _electionService;
         private readonly IUserService _userService;
+        public event Action ElectionEdited;
 
         public ctrElectionSelect(Election election, ElectionGroupUserRole userRole, IElectionService electionService, IUserService userService)
         {
@@ -119,6 +120,11 @@ namespace ElectionTracker.Controls.FLPControls
         {
             frmManageElection frmManageElection = new frmManageElection(_electionService, _election.ElectionID);
             frmManageElection.ShowDialog();
+
+            if (ElectionEdited != null)
+            {
+                ElectionEdited();
+            }
         }
     }
 }

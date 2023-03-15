@@ -478,8 +478,25 @@ namespace ElectionTracker.Services.Infrastructure
             {
                 using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    string DeleteCandidateQuery = "Delete from Candidate Where CandidateID = @CandidateID";
-                    conn.Query(DeleteCandidateQuery, new { CandidateID = candidateID });
+                    string deleteCandidateQuery = "Delete from Candidate Where CandidateID = @CandidateID";
+                    conn.Query(deleteCandidateQuery, new { CandidateID = candidateID });
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                _log.Error(e.Message);
+            }
+        }
+
+        public void DeleteElection(string electionId)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string deleteElectionQuery = "Delete from Election Where ElectionID = @ElectionID";
+                    conn.Query(deleteElectionQuery, new { ElectionID = electionId });
                     return;
                 }
             }
@@ -495,8 +512,8 @@ namespace ElectionTracker.Services.Infrastructure
             {
                 using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    string DeleteVoteQuery = "Delete from Vote Where VoteID = @VoteID";
-                    conn.Query(DeleteVoteQuery, new { VoteID = voteID });
+                    string deleteVoteQuery = "Delete from Vote Where VoteID = @VoteID";
+                    conn.Query(deleteVoteQuery, new { VoteID = voteID });
                     return;
                 }
             }
@@ -512,8 +529,25 @@ namespace ElectionTracker.Services.Infrastructure
             {
                 using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    string DeleteVotesByCandidateIDQuery = "Delete from Vote Where CandidateID = @CandidateID";
-                    conn.Query(DeleteVotesByCandidateIDQuery, new { CandidateID = candidateID });
+                    string deleteVotesByCandidateIDQuery = "Delete from Vote Where CandidateID = @CandidateID";
+                    conn.Query(deleteVotesByCandidateIDQuery, new { CandidateID = candidateID });
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                _log.Error(e.Message);
+            }
+        }
+
+        public void DeleteVotesByElectionID(string electionID)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string deleteVotesByElectionIDQuery = "Delete from Vote Where ElectionID = @ElectionID";
+                    conn.Query(deleteVotesByElectionIDQuery, new { ElectionID = electionID });
                     return;
                 }
             }

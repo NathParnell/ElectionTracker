@@ -206,6 +206,22 @@ namespace ElectionTracker.Services.Infrastructure
             return election;
         }
 
+        public bool DeleteElection(string electionID)
+        {
+            try
+            {
+                _dataService.DeleteElection(electionID);
+                _dataService.DeleteVotesByElectionID(electionID);
+                _log.Info($"Election {electionID} Deleted");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                _log.Error(ex.Message.ToString());
+                return false;
+            }
+        }
+
         public bool CreateCandidate(Candidate candidate)
         {
             try
