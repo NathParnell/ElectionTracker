@@ -38,43 +38,45 @@
             // lblElectionGroupName
             // 
             this.lblElectionGroupName.AutoSize = true;
-            this.lblElectionGroupName.Location = new System.Drawing.Point(65, 66);
+            this.lblElectionGroupName.Location = new System.Drawing.Point(49, 54);
+            this.lblElectionGroupName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblElectionGroupName.Name = "lblElectionGroupName";
-            this.lblElectionGroupName.Size = new System.Drawing.Size(47, 16);
+            this.lblElectionGroupName.Size = new System.Drawing.Size(38, 13);
             this.lblElectionGroupName.TabIndex = 0;
             this.lblElectionGroupName.Text = "Name:";
             // 
             // txtElectionGroupName
             // 
-            this.txtElectionGroupName.Location = new System.Drawing.Point(91, 85);
-            this.txtElectionGroupName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtElectionGroupName.Location = new System.Drawing.Point(68, 69);
+            this.txtElectionGroupName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtElectionGroupName.Name = "txtElectionGroupName";
-            this.txtElectionGroupName.Size = new System.Drawing.Size(401, 22);
+            this.txtElectionGroupName.Size = new System.Drawing.Size(302, 20);
             this.txtElectionGroupName.TabIndex = 1;
             // 
             // txtElectionGroupDescription
             // 
-            this.txtElectionGroupDescription.Location = new System.Drawing.Point(91, 162);
-            this.txtElectionGroupDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtElectionGroupDescription.Location = new System.Drawing.Point(68, 132);
+            this.txtElectionGroupDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtElectionGroupDescription.Name = "txtElectionGroupDescription";
-            this.txtElectionGroupDescription.Size = new System.Drawing.Size(401, 22);
+            this.txtElectionGroupDescription.Size = new System.Drawing.Size(302, 20);
             this.txtElectionGroupDescription.TabIndex = 3;
             // 
             // lblElectionGroupDescription
             // 
             this.lblElectionGroupDescription.AutoSize = true;
-            this.lblElectionGroupDescription.Location = new System.Drawing.Point(65, 143);
+            this.lblElectionGroupDescription.Location = new System.Drawing.Point(49, 116);
+            this.lblElectionGroupDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblElectionGroupDescription.Name = "lblElectionGroupDescription";
-            this.lblElectionGroupDescription.Size = new System.Drawing.Size(78, 16);
+            this.lblElectionGroupDescription.Size = new System.Drawing.Size(63, 13);
             this.lblElectionGroupDescription.TabIndex = 2;
             this.lblElectionGroupDescription.Text = "Description:";
             // 
             // btnCreateElectionGroup
             // 
-            this.btnCreateElectionGroup.Location = new System.Drawing.Point(211, 209);
-            this.btnCreateElectionGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreateElectionGroup.Location = new System.Drawing.Point(158, 170);
+            this.btnCreateElectionGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCreateElectionGroup.Name = "btnCreateElectionGroup";
-            this.btnCreateElectionGroup.Size = new System.Drawing.Size(152, 23);
+            this.btnCreateElectionGroup.Size = new System.Drawing.Size(114, 19);
             this.btnCreateElectionGroup.TabIndex = 4;
             this.btnCreateElectionGroup.Text = "Create";
             this.btnCreateElectionGroup.UseVisualStyleBackColor = true;
@@ -82,23 +84,23 @@
             // 
             // frmCreateElectionGroup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(581, 251);
+            this.ClientSize = new System.Drawing.Size(437, 210);
             this.Controls.Add(this.btnCreateElectionGroup);
             this.Controls.Add(this.txtElectionGroupDescription);
             this.Controls.Add(this.lblElectionGroupDescription);
             this.Controls.Add(this.txtElectionGroupName);
             this.Controls.Add(this.lblElectionGroupName);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(599, 298);
+            this.MaximumSize = new System.Drawing.Size(453, 249);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(599, 298);
+            this.MinimumSize = new System.Drawing.Size(453, 249);
             this.Name = "frmCreateElectionGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Create Election Group";
+            this.Text = "Election Tracker - Create Election Group";
             this.ResumeLayout(false);
             this.PerformLayout();
 

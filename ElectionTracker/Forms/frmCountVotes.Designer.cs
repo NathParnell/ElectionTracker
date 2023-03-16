@@ -34,21 +34,25 @@
             // flpCandidateVotes
             // 
             this.flpCandidateVotes.AutoScroll = true;
-            this.flpCandidateVotes.Location = new System.Drawing.Point(27, 104);
+            this.flpCandidateVotes.Location = new System.Drawing.Point(20, 84);
+            this.flpCandidateVotes.Margin = new System.Windows.Forms.Padding(2);
             this.flpCandidateVotes.Name = "flpCandidateVotes";
-            this.flpCandidateVotes.Size = new System.Drawing.Size(460, 534);
+            this.flpCandidateVotes.Size = new System.Drawing.Size(345, 434);
             this.flpCandidateVotes.TabIndex = 0;
             // 
             // frmCountVotes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(516, 716);
+            this.ClientSize = new System.Drawing.Size(387, 582);
             this.Controls.Add(this.flpCandidateVotes);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCountVotes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmCountVotes";
+            this.Text = "Election Tracker - Count Votes";
             this.Load += new System.EventHandler(this.frmCountVotes_Load);
             this.ResumeLayout(false);
 

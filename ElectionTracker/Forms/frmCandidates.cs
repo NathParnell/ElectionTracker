@@ -50,12 +50,12 @@ namespace ElectionTracker.Forms
             Candidate newCandidate = new Candidate(txtCandidateForename.Text, txtCandidateSurname.Text, txtCandidateEmail.Text,
                 _election.ElectionID, txtCandidateDescription.Text, txtCandidatePartyname.Text);
 
-            _electionService.CreateCandidate(newCandidate);
-
-            ClearTextboxes();
-
-            FillCandidatesDropdown();
-
+            if (_electionService.CreateCandidate(newCandidate))
+            {
+                MessageBox.Show("Candidate Successfully Created");
+                ClearTextboxes();
+                FillCandidatesDropdown();
+            }
         }
 
 

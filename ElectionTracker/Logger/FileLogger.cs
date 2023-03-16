@@ -10,7 +10,8 @@ namespace ElectionTracker.Logger
 {
     public class FileLogger : LogBase
     {
-        public FileLogger(string serviceName) : base(serviceName)
+        public FileLogger(string serviceName) 
+            : base(serviceName)
         {
 
         }

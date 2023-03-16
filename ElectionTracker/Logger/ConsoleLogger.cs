@@ -8,7 +8,8 @@ namespace ElectionTracker.Logger
 {
     public class ConsoleLogger : LogBase
     {
-        public ConsoleLogger(string serviceName) : base(serviceName)
+        public ConsoleLogger(string serviceName) 
+            : base(serviceName)
         {
             
         }

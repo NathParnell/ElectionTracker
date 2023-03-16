@@ -35,16 +35,18 @@
             // cmbCandidate
             // 
             this.cmbCandidate.FormattingEnabled = true;
-            this.cmbCandidate.Location = new System.Drawing.Point(125, 61);
+            this.cmbCandidate.Location = new System.Drawing.Point(94, 50);
+            this.cmbCandidate.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCandidate.Name = "cmbCandidate";
-            this.cmbCandidate.Size = new System.Drawing.Size(297, 24);
+            this.cmbCandidate.Size = new System.Drawing.Size(224, 21);
             this.cmbCandidate.TabIndex = 0;
             // 
             // btnVote
             // 
-            this.btnVote.Location = new System.Drawing.Point(222, 126);
+            this.btnVote.Location = new System.Drawing.Point(166, 102);
+            this.btnVote.Margin = new System.Windows.Forms.Padding(2);
             this.btnVote.Name = "btnVote";
-            this.btnVote.Size = new System.Drawing.Size(111, 26);
+            this.btnVote.Size = new System.Drawing.Size(83, 21);
             this.btnVote.TabIndex = 1;
             this.btnVote.Text = "Vote";
             this.btnVote.UseVisualStyleBackColor = true;
@@ -52,15 +54,18 @@
             // 
             // frmVote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(553, 217);
+            this.ClientSize = new System.Drawing.Size(415, 176);
             this.Controls.Add(this.btnVote);
             this.Controls.Add(this.cmbCandidate);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmVote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmVote";
+            this.Text = "Election Tracker - Vote";
             this.Load += new System.EventHandler(this.frmVote_Load);
             this.ResumeLayout(false);
 
