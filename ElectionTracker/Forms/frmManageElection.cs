@@ -41,10 +41,10 @@ namespace ElectionTracker.Forms
 
             txtElectionName.Text = existingElection.Name;
             txtElectionDescription.Text = existingElection.Description;
-            dtElectionStartDate.Value = existingElection.StartDate;
-            dtElectionEndDate.Value = existingElection.EndDate;
-            dtElectionStartTime.Value = existingElection.StartDate;
-            dtElectionEndTime.Value = existingElection.EndDate;
+            dtElectionStartDate.Value = new DateTime(existingElection.StartDate.Year, existingElection.StartDate.Month, existingElection.StartDate.Day);
+            dtElectionEndDate.Value = new DateTime(existingElection.EndDate.Year, existingElection.EndDate.Month, existingElection.EndDate.Day);
+            dtElectionStartTime.Value = new DateTime(2003, 04, 15).AddHours(existingElection.StartDate.Hour).AddMinutes(existingElection.StartDate.Minute).AddSeconds(existingElection.StartDate.Second);
+            dtElectionEndTime.Value = new DateTime(2003,04,15).AddHours(existingElection.EndDate.Hour).AddMinutes(existingElection.EndDate.Minute).AddSeconds(existingElection.EndDate.Second);
         }
 
         private void btnElectionAction_Click(object sender, EventArgs e)
