@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateElectionGroup));
             this.lblElectionGroupName = new System.Windows.Forms.Label();
             this.txtElectionGroupName = new System.Windows.Forms.TextBox();
             this.txtElectionGroupDescription = new System.Windows.Forms.TextBox();
@@ -48,7 +49,7 @@
             // txtElectionGroupName
             // 
             this.txtElectionGroupName.Location = new System.Drawing.Point(68, 69);
-            this.txtElectionGroupName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtElectionGroupName.Margin = new System.Windows.Forms.Padding(2);
             this.txtElectionGroupName.Name = "txtElectionGroupName";
             this.txtElectionGroupName.Size = new System.Drawing.Size(302, 20);
             this.txtElectionGroupName.TabIndex = 1;
@@ -56,7 +57,7 @@
             // txtElectionGroupDescription
             // 
             this.txtElectionGroupDescription.Location = new System.Drawing.Point(68, 132);
-            this.txtElectionGroupDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtElectionGroupDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtElectionGroupDescription.Name = "txtElectionGroupDescription";
             this.txtElectionGroupDescription.Size = new System.Drawing.Size(302, 20);
             this.txtElectionGroupDescription.TabIndex = 3;
@@ -74,7 +75,7 @@
             // btnCreateElectionGroup
             // 
             this.btnCreateElectionGroup.Location = new System.Drawing.Point(158, 170);
-            this.btnCreateElectionGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreateElectionGroup.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateElectionGroup.Name = "btnCreateElectionGroup";
             this.btnCreateElectionGroup.Size = new System.Drawing.Size(114, 19);
             this.btnCreateElectionGroup.TabIndex = 4;
@@ -93,7 +94,8 @@
             this.Controls.Add(this.lblElectionGroupDescription);
             this.Controls.Add(this.txtElectionGroupName);
             this.Controls.Add(this.lblElectionGroupName);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(453, 249);
             this.MinimizeBox = false;

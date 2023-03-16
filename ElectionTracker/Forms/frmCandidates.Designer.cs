@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCandidates));
             this.btnAddCandidate = new System.Windows.Forms.Button();
             this.lblCandidateForename = new System.Windows.Forms.Label();
             this.txtCandidateForename = new System.Windows.Forms.TextBox();
@@ -209,6 +210,7 @@
             this.Controls.Add(this.txtCandidateForename);
             this.Controls.Add(this.lblCandidateForename);
             this.Controls.Add(this.btnAddCandidate);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCandidates";

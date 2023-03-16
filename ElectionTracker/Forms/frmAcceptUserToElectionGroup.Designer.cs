@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAcceptUserToElectionGroup));
             this.cmbSelectUser = new System.Windows.Forms.ComboBox();
             this.btnSelectUser = new System.Windows.Forms.Button();
             this.lblUserName = new System.Windows.Forms.Label();
@@ -114,6 +115,7 @@
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.btnSelectUser);
             this.Controls.Add(this.cmbSelectUser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAcceptUserToElectionGroup";

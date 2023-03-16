@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmElectionTracker));
             this.pnlElectionTracker = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
@@ -35,18 +36,21 @@
             // 
             this.pnlElectionTracker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlElectionTracker.Location = new System.Drawing.Point(0, 0);
+            this.pnlElectionTracker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlElectionTracker.Name = "pnlElectionTracker";
-            this.pnlElectionTracker.Size = new System.Drawing.Size(1467, 805);
+            this.pnlElectionTracker.Size = new System.Drawing.Size(1102, 661);
             this.pnlElectionTracker.TabIndex = 0;
             // 
             // frmElectionTracker
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1467, 805);
+            this.ClientSize = new System.Drawing.Size(1102, 661);
             this.Controls.Add(this.pnlElectionTracker);
-            this.MaximumSize = new System.Drawing.Size(1485, 852);
-            this.MinimumSize = new System.Drawing.Size(1485, 852);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(1118, 700);
+            this.MinimumSize = new System.Drawing.Size(1118, 700);
             this.Name = "frmElectionTracker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Election Tracker";

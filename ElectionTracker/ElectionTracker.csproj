@@ -309,6 +309,7 @@
     <Compile Include="Services\Infrastructure\ElectionService.cs" />
     <Compile Include="Services\Infrastructure\UserService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <Content Include="Imgs\ElectionTrackerLogoIcon.ico" />
     <None Include="Imgs\ElectionTrackerLogo.png" />
     <EmbeddedResource Include="Controls\ctrElectionGroupManager.resx">
       <DependentUpon>ctrElectionGroupManager.cs</DependentUpon>

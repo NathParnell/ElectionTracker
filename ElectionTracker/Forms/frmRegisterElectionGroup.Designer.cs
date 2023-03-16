@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegisterElectionGroup));
             this.cmbElectionGroup = new System.Windows.Forms.ComboBox();
             this.lblElectionGroup = new System.Windows.Forms.Label();
             this.lblRole = new System.Windows.Forms.Label();
@@ -97,6 +98,7 @@
             this.Controls.Add(this.cmbRole);
             this.Controls.Add(this.lblElectionGroup);
             this.Controls.Add(this.cmbElectionGroup);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

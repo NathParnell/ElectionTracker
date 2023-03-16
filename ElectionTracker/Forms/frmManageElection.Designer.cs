@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageElection));
             this.btnElectionAction = new System.Windows.Forms.Button();
             this.txtElectionDescription = new System.Windows.Forms.TextBox();
             this.lblElectionDescription = new System.Windows.Forms.Label();
@@ -187,6 +188,7 @@
             this.Controls.Add(this.lblElectionDescription);
             this.Controls.Add(this.txtElectionName);
             this.Controls.Add(this.lblElectionName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmManageElection";
