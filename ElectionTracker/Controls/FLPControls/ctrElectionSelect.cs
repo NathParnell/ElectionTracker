@@ -69,7 +69,7 @@ namespace ElectionTracker.Controls.FLPControls
         /// </summary>
         private void setControlColor()
         {
-            if (_election.StartDate.Date > DateTime.Now.Date || _election.EndDate.Date < DateTime.Now.Date)
+            if (_election.StartDate.Date > DateTime.Now.Date || _election.EndDate.Date < DateTime.Now.Value)
             {
                 this.BackColor = Color.Red;
                 btnVote.Hide();
