@@ -27,12 +27,12 @@ namespace ElectionTracker.Forms
             _selectedMembershipRequest = null;
             _unacceptedElectionGroupMemberships = null;
 
-            setComboBoxValues();
+            SetComboBoxValues();
         }
 
-        private void setComboBoxValues()
+        private void SetComboBoxValues()
         {
-            resetSelectedUserValues();
+            ResetSelectedUserValues();
             cmbSelectUser.Items.Clear();
 
             _unacceptedElectionGroupMemberships = _electionService.GetUnacceptedElectionGroupMembershipRequests(_electionService.SelectedElectionGroup);
@@ -53,7 +53,7 @@ namespace ElectionTracker.Forms
 
         private void btnSelectUser_Click(object sender, EventArgs e)
         {
-            resetSelectedUserValues();
+            ResetSelectedUserValues();
 
             if (cmbSelectUser.SelectedIndex == -1)
             {
@@ -64,11 +64,11 @@ namespace ElectionTracker.Forms
 
             User selectedUser = _userService.GetUserByUserID(_selectedMembershipRequest.UserID);
 
-            setSelectedUserValues(selectedUser);
+            SetSelectedUserValues(selectedUser);
 
         }
 
-        private void setSelectedUserValues(User selectedUser)
+        private void SetSelectedUserValues(User selectedUser)
         {
             lblUserName.Text = "Name: " + selectedUser.Forename + " " + selectedUser.Surname;
             lblAddress.Text = "Address: " + selectedUser.Address + " " + selectedUser.Postcode;
@@ -78,7 +78,7 @@ namespace ElectionTracker.Forms
             btnAcceptUserRequest.Enabled = true;
         }
 
-        private void resetSelectedUserValues()
+        private void ResetSelectedUserValues()
         {
             lblUserName.Text = "";
             lblAddress.Text = "";
@@ -92,12 +92,10 @@ namespace ElectionTracker.Forms
 
         private void btnAcceptUserRequest_Click(object sender, EventArgs e)
         {
-
             _electionService.AcceptElectionGroupMembershipRequest(_selectedMembershipRequest);
 
-            resetSelectedUserValues();
-            setComboBoxValues();
-
+            ResetSelectedUserValues();
+            SetComboBoxValues();
         }
     }
 }

@@ -39,11 +39,11 @@ namespace ElectionTracker.Controls
         /// <summary>
         /// displays the user's name in the for each
         /// </summary>
-        public void DisplayUserDetails()
+        private void DisplayUserDetails()
         {
             try
             {
-                lblCurrentUserName.Text = _userService.CurrentUser.Forename + " " + _userService.CurrentUser.Surname;
+                lblCurrentUserName.Text = $"Current User: {_userService.CurrentUser.Forename} {_userService.CurrentUser.Surname}";
             }
             catch(Exception ex)
             {
@@ -59,7 +59,7 @@ namespace ElectionTracker.Controls
         /// method which controls the gerating of the flow layout pnel controls
         /// creates a new control for each election group
         /// </summary>
-        public void DisplayUserElectionGroups()
+        private void DisplayUserElectionGroups()
         {
             flpUserElectionGroups.Controls.Clear();
 

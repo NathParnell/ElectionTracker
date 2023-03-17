@@ -29,7 +29,6 @@ namespace ElectionTracker.Controls
             }
 
             ttPassword.SetToolTip(txtPassword, "Must be at least 7 characters long, Contain a special character, uppercase letter, lowercase letter and a number");
-
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

@@ -36,9 +36,28 @@ namespace ElectionTracker.Controls
 
             _userRole = _electionService.GetUserRole();
 
+            DisplayUserDetails();
+
             ManagePermissions();
 
             DisplayElections();
+        }
+
+
+        private void DisplayUserDetails()
+        {
+            try
+            {
+                lblCurrentUserName.Text = $"Current User: {_userService.CurrentUser.Forename} {_userService.CurrentUser.Surname}";
+            }
+            catch (Exception ex)
+            {
+                //means that the user hasnt pulled through so a user isnt logged in properly
+                if (LogOutClicked != null)
+                {
+                    LogOutClicked();
+                }
+            }
         }
 
         private void btnCreateElection_Click(object sender, EventArgs e)

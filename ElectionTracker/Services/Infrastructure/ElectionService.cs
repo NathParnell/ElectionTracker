@@ -360,7 +360,5 @@ namespace ElectionTracker.Services.Infrastructure
 
         }
 
-    }
-
-   
+    }  
 }

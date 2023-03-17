@@ -21,11 +21,11 @@ namespace ElectionTracker.Forms
 
         private void frmCountVotes_Load(object sender, EventArgs e)
         {
-            checkWinner();
-            displayCandidateVotes();
+            CheckWinner();
+            DisplayCandidateVotes();
         }
 
-        private void checkWinner()
+        private void CheckWinner()
         {
             if (_election.EndDate < DateTime.Now)
             {
@@ -35,7 +35,7 @@ namespace ElectionTracker.Forms
         }
 
 
-        private void displayCandidateVotes()
+        private void DisplayCandidateVotes()
         {
             List<Candidate> candidates = _electionService.GetCandidatesByElection(_election);
 

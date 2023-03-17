@@ -35,6 +35,7 @@
             this.flpActiveElections = new System.Windows.Forms.FlowLayoutPanel();
             this.btnMainMenu = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.lblCurrentUserName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,11 +117,23 @@
             this.btnLogOut.UseVisualStyleBackColor = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // lblCurrentUserName
+            // 
+            this.lblCurrentUserName.AutoSize = true;
+            this.lblCurrentUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentUserName.Location = new System.Drawing.Point(33, 145);
+            this.lblCurrentUserName.MaximumSize = new System.Drawing.Size(251, 30);
+            this.lblCurrentUserName.MinimumSize = new System.Drawing.Size(251, 30);
+            this.lblCurrentUserName.Name = "lblCurrentUserName";
+            this.lblCurrentUserName.Size = new System.Drawing.Size(251, 30);
+            this.lblCurrentUserName.TabIndex = 15;
+            // 
             // ctrElectionGroupManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.Controls.Add(this.lblCurrentUserName);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.flpActiveElections);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpActiveElections;
         private System.Windows.Forms.Button btnMainMenu;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Label lblCurrentUserName;
     }
 }

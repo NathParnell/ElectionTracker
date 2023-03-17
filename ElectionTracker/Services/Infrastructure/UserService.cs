@@ -31,7 +31,6 @@ namespace ElectionTracker.Services.Infrastructure
             this.CurrentUser = user;
         }
 
-
         /// <summary>
         /// Takes in account parameters and creates a user in the database
         /// Then sets the current user variable to be the new user
@@ -61,8 +60,7 @@ namespace ElectionTracker.Services.Infrastructure
             {
                 _log.Info(ex.Message.ToString());
                 return false;
-            }
-            
+            }  
         }
 
         /// <summary>

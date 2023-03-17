@@ -18,24 +18,26 @@ namespace ElectionTracker.Forms
             _electionGroup = _electionservice.SelectedElectionGroup;
             _existingElectionID = existingElectionID;
             InitializeComponent();
-            init();
+            Init();
         }
 
-        private void init()
+        private void Init()
         {
             if (_existingElectionID == null)
             {
+                lblTitle.Text = "Create Election";
                 btnElectionAction.Text = "Create Election";
                 btnDeleteElection.Hide();
             }
             else
             {
+                lblTitle.Text = " Election";
                 btnElectionAction.Text = "Edit Election";
-                getExistingElectionDetails();
+                GetExistingElectionDetails();
             }
         }
 
-        private void getExistingElectionDetails()
+        private void GetExistingElectionDetails()
         {
             Election existingElection = _electionservice.GetElectionByElectionID(_existingElectionID);
 
@@ -51,13 +53,13 @@ namespace ElectionTracker.Forms
         {
             if (_existingElectionID == null)
             {
-                createElection();
+                CreateElection();
             }
             else if (_existingElectionID != null)
             {
                 if(DialogResult.Yes == MessageBox.Show("Are you sure you would like to update this election", "Update Election", MessageBoxButtons.YesNo))
                 {
-                    updateElection();
+                    UpdateElection();
                 }
             }
         }
@@ -65,7 +67,7 @@ namespace ElectionTracker.Forms
         /// <summary>
         /// method called when the election is being created
         /// </summary>
-        private void createElection()
+        private void CreateElection()
         {
             Election newElection = new Election(txtElectionName.Text, txtElectionDescription.Text, _electionGroup.ElectionGroupID,
                 dtElectionStartDate.Value.AddHours(dtElectionStartTime.Value.Hour).AddMinutes(dtElectionStartTime.Value.Minute),
@@ -88,7 +90,7 @@ namespace ElectionTracker.Forms
         /// <summary>
         /// method called when an existing election is being edited
         /// </summary>
-        private void updateElection()
+        private void UpdateElection()
         {
             Election updatedElection = new Election(_existingElectionID, txtElectionName.Text, txtElectionDescription.Text, _electionGroup.ElectionGroupID,
                 dtElectionStartDate.Value.AddHours(dtElectionStartTime.Value.Hour).AddMinutes(dtElectionStartTime.Value.Minute),
