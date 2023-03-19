@@ -381,6 +381,24 @@ namespace ElectionTracker.Services.Infrastructure
             }
         }
 
+        public List<Election> GetElectionsByName(string electionName)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getElectionsByNameQuery = "Select * from Election Where Name = @Name";
+                    var elections = conn.Query<Election>(getElectionsByNameQuery, new { Name = electionName }).ToList();
+                    return elections;
+                }
+            }
+            catch (Exception e)
+            {
+                _log.Error(e.Message);
+                return null;
+            }
+        }
+
         public Election GetElectionByElectionID(string electionID)
         {
             try

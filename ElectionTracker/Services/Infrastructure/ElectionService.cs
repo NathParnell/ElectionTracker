@@ -161,13 +161,32 @@ namespace ElectionTracker.Services.Infrastructure
         /// </summary>
         /// <param name="election"></param>
         /// <returns>boolean confirming whether election passed validation</returns>
-        public bool ElectionValidator(Election election)
+        public bool ElectionDateValidator(Election election)
         {
             if (election.StartDate > election.EndDate)
             {
                 return false;
             }
 
+            return true;
+        }
+
+        /// <summary>
+        /// Method which checks whether the election name has already been taken but I have added in a barrier for edited elections.
+        /// </summary>
+        /// <param name="election"></param>
+        /// <returns></returns>
+        public bool ElectionNameValidator(Election election)
+        {
+            List<Election> duplicateElections = _dataService.GetElectionsByName(election.Name);
+
+            foreach(Election duplicateElection in duplicateElections)
+            {
+                if (duplicateElection.ElectionGroupID == election.ElectionGroupID && duplicateElection.ElectionID != election.ElectionID)
+                {
+                    return false;
+                }
+            }
             return true;
         }
 

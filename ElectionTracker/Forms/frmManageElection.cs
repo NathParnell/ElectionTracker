@@ -2,6 +2,7 @@
 using ElectionTracker.Services;
 using System;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace ElectionTracker.Forms
 {
@@ -73,9 +74,8 @@ namespace ElectionTracker.Forms
                 dtElectionStartDate.Value.AddHours(dtElectionStartTime.Value.Hour).AddMinutes(dtElectionStartTime.Value.Minute),
                 dtElectionEndDate.Value.AddHours(dtElectionEndTime.Value.Hour).AddMinutes(dtElectionEndTime.Value.Minute));
 
-            if (_electionservice.ElectionValidator(newElection) == false)
+            if (ElectionValidator(newElection) == false)
             {
-                MessageBox.Show("This election's End Date is before the Start Date. Please change this!", "Invalid Election");
                 return;
             }
 
@@ -96,9 +96,8 @@ namespace ElectionTracker.Forms
                 dtElectionStartDate.Value.AddHours(dtElectionStartTime.Value.Hour).AddMinutes(dtElectionStartTime.Value.Minute),
                 dtElectionEndDate.Value.AddHours(dtElectionEndTime.Value.Hour).AddMinutes(dtElectionEndTime.Value.Minute));
 
-            if (_electionservice.ElectionValidator(updatedElection) == false)
+            if (ElectionValidator(updatedElection) == false)
             {
-                MessageBox.Show("This election's End Date is before the Start Date. Please change this!", "Invalid Election");
                 return;
             }
 
@@ -108,6 +107,24 @@ namespace ElectionTracker.Forms
                 MessageBox.Show("Election has been added to " + _electionGroup.Name);
                 this.Dispose();
             }
+        }
+
+        private bool ElectionValidator(Election election)
+        {
+            if (_electionservice.ElectionDateValidator(election) == false)
+            {
+                MessageBox.Show("This election's End Date is before the Start Date. Please change this!", "Invalid Election");
+                return false;
+            }
+
+            if (_electionservice.ElectionNameValidator(election) == false)
+            {
+                MessageBox.Show("The Election Name you have entered is the name of another Election in this Election Group!", "Invalid Election");
+                return false;
+            }
+
+
+            return true;
         }
 
         private void btnDeleteElection_Click(object sender, EventArgs e)

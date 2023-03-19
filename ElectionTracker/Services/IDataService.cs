@@ -26,6 +26,7 @@ namespace ElectionTracker.Services
         string GetUserRole(string userID, string electionGroupID);
         List<Election> GetAllElections();
         List<Election> GetElectionsByElectionGroupID(string electionGroupID);
+        List<Election> GetElectionsByName(string electionName);
         Election GetElectionByElectionID(string electionID);
         List<Candidate> GetCandidatesByElectionID(string electionID);
         List<Vote> GetVotesByUserID(string userID);
