@@ -22,10 +22,22 @@ namespace ElectionTracker
 
         private void btnCreateElectionGroup_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtElectionGroupName.Text) || String.IsNullOrEmpty(txtElectionGroupDescription.Text))
+            {
+                MessageBox.Show("Please ensure you have entered both a Name and Description for your Election Group!");
+                return;
+            }
+
+            if (!_electionService.CheckElectionGroupNameIsUnique(txtElectionGroupName.Text))
+            {
+                MessageBox.Show("This Election Group name is already in use. Please Rename this Election Group");
+                return;
+            }
+
             bool success = _electionService.CreateElectionGroup(txtElectionGroupName.Text, txtElectionGroupDescription.Text);
             if (success)
             {
-                MessageBox.Show("Election group created");
+                MessageBox.Show("Election Group created");
                 this.Dispose();
             }
 

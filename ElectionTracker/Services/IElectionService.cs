@@ -8,6 +8,7 @@ namespace ElectionTracker.Services
         ElectionGroup SelectedElectionGroup { get; set; }
         void SetSelectedElectionGroup(ElectionGroup selectedElectionGroup);
         bool CreateElectionGroup(string name, string description);
+        bool CheckElectionGroupNameIsUnique(string electionGroupName);
         void CreateElectionGroupMembership(ElectionGroup electionGroup, string userRole, User user = null);
         List<ElectionGroup> GetAllElectionGroups();
         List<ElectionGroup> GetElectionGroupsUserIsNotAPartOf(User user = null);

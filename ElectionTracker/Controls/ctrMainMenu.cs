@@ -43,7 +43,7 @@ namespace ElectionTracker.Controls
         {
             try
             {
-                lblCurrentUserName.Text = $"Current User: {_userService.CurrentUser.Forename} {_userService.CurrentUser.Surname}";
+                lblCurrentUserName.Text = $"Current User: { _userService.CurrentUser.Forename} {_userService.CurrentUser.Surname}";
             }
             catch(Exception ex)
             {

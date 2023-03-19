@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ElectionTracker.Services.Infrastructure
 {
@@ -44,7 +45,15 @@ namespace ElectionTracker.Services.Infrastructure
                 _log.Error(ex.Message.ToString());
                 return false;
             }
-           
+        }
+
+        public bool CheckElectionGroupNameIsUnique(string electionGroupName)
+        {
+            int electionGroupNameDuplicates = _dataService.CheckElectionGroupNameIsUnique(electionGroupName);
+            if (electionGroupNameDuplicates == 0)
+                return true;
+
+            return false;
         }
 
         public void CreateElectionGroupMembership(ElectionGroup electionGroup, string userRole, User user = null) 
@@ -64,8 +73,6 @@ namespace ElectionTracker.Services.Infrastructure
             {
                 _log.Error(ex.Message.ToString());
             }
-            
-
         }
 
         public List<ElectionGroup> GetAllElectionGroups()

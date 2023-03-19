@@ -34,7 +34,11 @@ namespace ElectionTracker.Forms
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if ((cmbElectionGroup.SelectedIndex == -1) || cmbRole.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please Select the Election Group you wish to join and your requested role within this Election Group!");
                 return;
+            }
+
              
             bool requestMade = _electionService.JoinElectionGroupRequest(cmbElectionGroup.Text, cmbRole.Text);
             if (requestMade)

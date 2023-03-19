@@ -160,9 +160,27 @@ namespace ElectionTracker.Services.Infrastructure
             {
                 using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    string getUserbyUserIDQuery = "Select * from User Where Email = @Email";
-                    int emailDuplicateCount = conn.Query(getUserbyUserIDQuery, new { Email = email }).ToList().Count;
+                    string getUsersByEmail = "Select * from User Where Email = @Email";
+                    int emailDuplicateCount = conn.Query(getUsersByEmail, new { Email = email }).ToList().Count;
                     return emailDuplicateCount;
+                }
+            }
+            catch (Exception e)
+            {
+                _log.Error(e.Message);
+                throw;
+            }
+        }
+
+        public int CheckElectionGroupNameIsUnique(string electionGroupName)
+        {
+            try
+            {
+                using (IDbConnection conn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string getElectionGroupsByName = "Select * from ElectionGroup Where Name = @Name";
+                    int electionGroupNameDuplicateCount = conn.Query(getElectionGroupsByName, new { Name = electionGroupName }).ToList().Count;
+                    return electionGroupNameDuplicateCount;
                 }
             }
             catch (Exception e)

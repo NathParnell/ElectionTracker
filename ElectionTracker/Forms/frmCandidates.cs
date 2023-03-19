@@ -43,6 +43,7 @@ namespace ElectionTracker.Forms
                 if (String.IsNullOrEmpty(textBox.Text))
                 {
                     //add in some code promting user to fill in all values
+                    MessageBox.Show("Please fill in all Candidate fields!");
                     return;
                 }
             }

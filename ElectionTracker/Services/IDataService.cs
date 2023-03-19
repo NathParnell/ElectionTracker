@@ -14,6 +14,7 @@ namespace ElectionTracker.Services
         void AcceptElectionGroupMembershipRequest(string electionGroupMembershipID);
         void UpdateElection(Election election);
         int CheckEmailIsUnique(string email);
+        int CheckElectionGroupNameIsUnique(string electionGroupName);
         List<User> GetAllUsers();
         User GetUserByUserID(string userID);
         User GetUserByEmail(string email);
