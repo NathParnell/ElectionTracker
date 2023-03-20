@@ -16,7 +16,8 @@ namespace ElectionTracker.Services.Infrastructure
     /// </summary>
     public class DataService : IDataService
     {
-        private readonly ILog _log = LogFactory.CreateLogger("DataService", LoggerType.FileLogger);
+        private readonly ILog _log = LogFactory.CreateLogger("DataService", LoggerType.FileLogger );
+
         public void CreateUser(User user)
         {
             try
