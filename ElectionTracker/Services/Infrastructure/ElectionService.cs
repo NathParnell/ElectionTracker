@@ -11,7 +11,7 @@ namespace ElectionTracker.Services.Infrastructure
 {
     public class ElectionService: IElectionService
     {
-        private readonly ILog _log = LogFactory.SetFileLogger("ElectionService");
+        private readonly ILog _log = LogFactory.CreateLogger("ElectionService", LoggerType.FileLogger);
         private readonly IUserService _userService;
         private readonly IDataService _dataService;
 

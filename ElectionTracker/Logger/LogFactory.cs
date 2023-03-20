@@ -7,28 +7,27 @@ using System.Threading.Tasks;
 
 namespace ElectionTracker.Logger
 {
+
+    public enum LoggerType
+    {
+        ConsoleLogger = 0,
+        FileLogger = 1
+    }
+
     public static class LogFactory
     {
-        /// <summary>
-        /// calling this creates an instance of the File logger
-        /// </summary>
-        /// <param name="serviceName"></param>
-        /// <returns></returns>
-        public static ILog SetFileLogger(string serviceName)
+        public static ILog CreateLogger(string serviceName, LoggerType loggerType)
         {
-            ILog fileLogger = new FileLogger(serviceName);
-            return fileLogger;
-        }
-
-        /// <summary>
-        /// calling this creates an instance of the console logger
-        /// </summary>
-        /// <param name="serviceName"></param>
-        /// <returns></returns>
-        public static ILog SetConsoleLogger(string serviceName)
-        {
-            ILog consoleLogger = new ConsoleLogger(serviceName);
-            return consoleLogger;
+            if (loggerType == LoggerType.FileLogger)
+            {
+                ILog fileLogger = new FileLogger(serviceName);
+                return fileLogger;
+            }
+            else
+            {
+                ILog consoleLogger = new ConsoleLogger(serviceName);
+                return consoleLogger;
+            }
         }
 
     }
