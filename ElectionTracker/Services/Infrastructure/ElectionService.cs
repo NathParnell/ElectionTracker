@@ -114,10 +114,6 @@ namespace ElectionTracker.Services.Infrastructure
             return userElectionGroupMembership;
         }
 
-        /// <summary>
-        /// Gets the user role of a user relative to the Election group they are in, and it converts the value into the correct type.
-        /// </summary>
-        /// <returns></returns>
         public ElectionGroupUserRole GetUserRole()
         {
             ElectionGroupUserRole userRole = (ElectionGroupUserRole) int.Parse(_dataService.GetUserRole(_userService.CurrentUser.UserID, SelectedElectionGroup.ElectionGroupID)); ;
@@ -155,12 +151,6 @@ namespace ElectionTracker.Services.Infrastructure
             return unacceptedElectionGroupRequests;
         }
 
-        /// <summary>
-        /// method takes in the new election object and runs checks on it
-        /// Checks that the start date is before the end date
-        /// </summary>
-        /// <param name="election"></param>
-        /// <returns>boolean confirming whether election passed validation</returns>
         public bool ElectionDateValidator(Election election)
         {
             if (election.StartDate > election.EndDate)
@@ -171,11 +161,7 @@ namespace ElectionTracker.Services.Infrastructure
             return true;
         }
 
-        /// <summary>
-        /// Method which checks whether the election name has already been taken but I have added in a barrier for edited elections.
-        /// </summary>
-        /// <param name="election"></param>
-        /// <returns></returns>
+
         public bool ElectionNameValidator(Election election)
         {
             List<Election> duplicateElections = _dataService.GetElectionsByName(election.Name);
@@ -270,12 +256,7 @@ namespace ElectionTracker.Services.Infrastructure
             return candidates;
         }
 
-        /// <summary>
-        /// We delete the candidates
-        /// We also delete the votes for any candidates so nothing gets confised and also voters get their vote back
-        /// </summary>
-        /// <param name="candidate"></param>
-        /// <returns></returns>
+
         public bool DeleteCandidate(Candidate candidate)
         {
             try
@@ -309,11 +290,6 @@ namespace ElectionTracker.Services.Infrastructure
 
         }
 
-        /// <summary>
-        /// returns an empty vote if the user hasnt voted already
-        /// </summary>
-        /// <param name="candidates"></param>
-        /// <returns></returns>
         public Vote CheckIfUserHasVoted(List<Candidate> candidates)
         {
             //method below contains any vote put through by the user for any election ever
@@ -351,11 +327,6 @@ namespace ElectionTracker.Services.Infrastructure
             return votes;
         }
 
-        /// <summary>
-        /// method which counts the votes of each candidate in an election and then returns the candidate with the most votes
-        /// </summary>
-        /// <param name="election"></param>
-        /// <returns></returns>
         public Candidate GetElectionWinner(Election election)
         {
             List<Candidate> electionCandidates = GetCandidatesByElection(election);
